@@ -31,3 +31,5 @@
 .experience-details ul{padding-left:18px;color:var(--muted);font-size:14px;line-height:1.8}
 .experience-details li+li{margin-top:8px}
 @media(max-width:700px){.experience-entry{grid-template-columns:36px minmax(0,1fr);gap:12px 18px;padding:28px 0}.experience-details{grid-column:2}.experience-section .split-heading{align-items:flex-start}.experience-list{margin-top:32px}}
+
+.experience-meta p:not(.date){font-size:16px;line-height:1.6}
