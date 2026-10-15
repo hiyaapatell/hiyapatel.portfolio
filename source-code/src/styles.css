@@ -33,3 +33,34 @@
 @media(max-width:700px){.experience-entry{grid-template-columns:36px minmax(0,1fr);gap:12px 18px;padding:28px 0}.experience-details{grid-column:2}.experience-section .split-heading{align-items:flex-start}.experience-list{margin-top:32px}}
 
 .experience-meta p:not(.date){font-size:16px;line-height:1.6}
+
+/* Portrait introduction and immersive education laps */
+.intro-grid{grid-template-columns:minmax(0,1.25fr) minmax(0,.8fr);gap:9%;align-items:center}
+.intro-content .intro-copy{max-width:610px;margin-top:36px}
+.intro-portrait{margin:0;position:relative;transform:rotate(2deg);border:1px solid var(--line);padding:10px;background:var(--surface);box-shadow:0 28px 70px #0003}
+.intro-portrait.in-view{transform:rotate(2deg)}
+.intro-portrait img{width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;object-position:center 65%}
+.intro-portrait figcaption{display:flex;justify-content:space-between;gap:12px;padding:18px 8px 10px;font-size:11px;font-weight:600;letter-spacing:1.5px}
+.intro-portrait figcaption span:last-child{display:flex;align-items:center;gap:6px;color:var(--muted)}
+.education-scene.section{padding:0;height:160vh;min-height:1000px;background:#111;color:#f4ecdf}
+.education-scene .journey-sticky{height:100svh;min-height:760px;max-width:none;overflow:hidden;padding:110px max(6vw,24px) 90px;display:flex;align-items:center;isolation:isolate}
+.education-backdrop{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:-3}
+.education-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,9,8,.88),rgba(7,9,8,.28) 55%,rgba(7,9,8,.5)),linear-gradient(0deg,#111b,transparent 30%,#1113);z-index:-2}
+.education-layout{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.85fr);align-items:center;gap:10%;width:100%;max-width:1400px;margin:auto}
+.education-copy h2{font-size:clamp(56px,6.5vw,96px);text-shadow:0 2px 30px #0007}
+.education-copy>p{color:#e2ddd5;font-size:16px;max-width:380px}
+.education-copy .eyebrow{margin-bottom:28px;color:#f4ecdf}
+.education-laps{display:flex;gap:14px;margin-top:38px}
+.education-laps button{width:76px;min-height:88px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;border:1px solid #ffffff65;border-radius:8px;background:#151515aa;backdrop-filter:blur(10px);transition:transform .2s,background .2s}
+.education-laps button:hover{transform:translateY(-5px)}
+.education-laps button.selected{background:#ef3c34;border-color:#ef3c34;color:white;box-shadow:0 8px 30px #ef3c3435}
+.education-laps button span{font-family:'Barlow Condensed',sans-serif;font-size:32px;line-height:1}
+.education-laps button small{font-size:11px}
+.education-scene .journey-card{background:#171b19df;backdrop-filter:blur(18px);padding:38px;box-shadow:0 24px 65px #0006;min-height:360px}
+.education-scene .journey-card h3{font-size:clamp(32px,3.2vw,46px)}
+.education-scene .journey-card h4{font-size:16px}
+.education-scene .journey-card>p{font-size:15px}
+.education-scene .journey-card .muted{font-size:13px}
+.education-footer{position:absolute;bottom:32px;left:6vw;right:6vw;display:flex;justify-content:space-between;gap:16px;font-size:10px;letter-spacing:2px;color:#ddd5}
+@media(max-width:800px){.intro-grid{grid-template-columns:1fr;gap:42px}.intro-portrait{width:min(100%,420px);justify-self:center}.education-scene.section{height:auto;min-height:0}.education-scene .journey-sticky{position:relative;height:auto;min-height:100svh;padding:80px 24px 100px}.education-layout{grid-template-columns:1fr;gap:36px}.education-copy h2{font-size:clamp(48px,10vw,72px)}.education-copy>p{font-size:14px}.education-laps{margin-top:24px}.education-scene .journey-card{padding:26px;min-height:0}.education-backdrop{object-position:55% center}.education-shade{background:linear-gradient(180deg,#111b,#1115 45%,#1119)}.education-footer{font-size:8px;letter-spacing:1px;left:24px;right:24px}}
+@media(prefers-reduced-motion:reduce){.education-laps button{transition:none}.education-laps button:hover{transform:none}}
