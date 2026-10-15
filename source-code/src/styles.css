@@ -64,3 +64,19 @@
 .education-footer{position:absolute;bottom:32px;left:6vw;right:6vw;display:flex;justify-content:space-between;gap:16px;font-size:10px;letter-spacing:2px;color:#ddd5}
 @media(max-width:800px){.intro-grid{grid-template-columns:1fr;gap:42px}.intro-portrait{width:min(100%,420px);justify-self:center}.education-scene.section{height:auto;min-height:0}.education-scene .journey-sticky{position:relative;height:auto;min-height:100svh;padding:80px 24px 100px}.education-layout{grid-template-columns:1fr;gap:36px}.education-copy h2{font-size:clamp(48px,10vw,72px)}.education-copy>p{font-size:14px}.education-laps{margin-top:24px}.education-scene .journey-card{padding:26px;min-height:0}.education-backdrop{object-position:55% center}.education-shade{background:linear-gradient(180deg,#111b,#1115 45%,#1119)}.education-footer{font-size:8px;letter-spacing:1px;left:24px;right:24px}}
 @media(prefers-reduced-motion:reduce){.education-laps button{transition:none}.education-laps button:hover{transform:none}}
+
+/* Car-focused scroll and process workshop */
+.hero{height:200svh}
+.hero-world{transform-origin:65% 73%;transform:scale(calc(1 + var(--progress)*1.35))}
+.hero-copy,.hero-pins{opacity:clamp(0,calc(1 - var(--progress)*2.6),1)}
+.hero-location,.scroll-cue{opacity:clamp(0,calc(1 - var(--progress)*2),1)}
+.experience-meta p:not(.date){font-weight:700;color:var(--text);font-size:17px}
+.process{isolation:isolate;overflow:hidden;background:#111614;color:#f6f1e9}
+.process-backdrop{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:-3}
+.process-shade{position:absolute;inset:0;z-index:-2;background:linear-gradient(90deg,#0c100fe8,#0c100f80 55%,#0c100f20),linear-gradient(0deg,#0c100ff2,transparent 75%)}
+.process-steps article{background:#121715b8;backdrop-filter:blur(6px);padding:24px 20px;border-radius:0 0 8px 8px}
+.process-steps p{color:#dfded9}
+.process .eyebrow,.process h2,.process h3{color:#f6f1e9}
+.process em{color:#ef3c34}
+@media(max-width:700px){.hero{height:175svh;min-height:1100px}.hero-world{transform-origin:65% 73%;transform:scale(calc(1 + var(--progress)*.9))}.process-backdrop{object-position:65% center}.process-steps{gap:20px 14px}.process-steps article{padding:18px 12px}}
+@media(prefers-reduced-motion:reduce){.hero{height:100svh;min-height:680px}.hero-world{transform:none!important}.hero-copy,.hero-pins,.hero-location,.scroll-cue{opacity:1!important}}

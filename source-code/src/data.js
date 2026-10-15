@@ -12,7 +12,7 @@ export const projects = [
  {id:'angle',name:'Angle',category:'E-commerce · App design',year:'2025',tag:'Find your fit. Keep moving.',description:'An activewear shopping experience, from discovery to checkout.',image:'angle.webp',color:'#f2cf3b',link:'https://www.behance.net/gallery/251791063/Angle-E-commerce-App',role:'UI/UX designer',scope:'Activewear shopping app · 3 weeks',problem:'Shopping for activewear calls for clear product information and a focused route from browsing to checkout.',process:'I completed user research and designed more than 40 high-fidelity Figma screens in three weeks, covering filters, product details and checkout.',outcome:'A connected shopping app concept spanning discovery, evaluation and purchase.',skills:['User research','40+ screens','Product filters','Checkout flows']}
 ];
 export const education = [
- {label:'MIT',title:'Massachusetts Institute of Technology',date:'Dec 2026',role:'MAS & STS coursework',body:'What is a Better Future? & Revolutionary Ventures',note:'Exploring futures, technology and venture ideas.'},
+ {label:'MIT',title:'Massachusetts Institute of Technology',date:'Dec 2026',role:'MAS & STS',body:'What is a Better Future? & Revolutionary Ventures',note:'Exploring futures, technology and venture ideas.'},
  {label:'MassArt',title:'Massachusetts College of Art & Design',date:'May 2027',role:'Master of Design (MDes)',body:'Design Innovation',note:'Connecting research, systems thinking and human-centered design.'},
  {label:'Nirma',title:'Nirma University',date:'May 2025',role:'Bachelor of Design',body:'Communication Design',note:'A foundation in visual communication, storytelling and design.'}
 ];
