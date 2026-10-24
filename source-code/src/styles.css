@@ -67,7 +67,7 @@
 
 /* Car-focused scroll and process workshop */
 .hero{height:200svh}
-.hero-world{transform-origin:65% 73%;transform:scale(calc(1 + var(--progress)*1.35))}
+.hero-world{transform-origin:65% 73%;transform:scale(calc(1 + var(--progress)*.28))}
 .hero-copy,.hero-pins{opacity:clamp(0,calc(1 - var(--progress)*2.6),1)}
 .hero-location,.scroll-cue{opacity:clamp(0,calc(1 - var(--progress)*2),1)}
 .experience-meta p:not(.date){font-weight:700;color:var(--text);font-size:17px}
@@ -78,7 +78,7 @@
 .process-steps p{color:#dfded9}
 .process .eyebrow,.process h2,.process h3{color:#f6f1e9}
 .process em{color:#ef3c34}
-@media(max-width:700px){.hero{height:175svh;min-height:1100px}.hero-world{transform-origin:65% 73%;transform:scale(calc(1 + var(--progress)*.9))}.process-backdrop{object-position:65% center}.process-steps{gap:20px 14px}.process-steps article{padding:18px 12px}}
+@media(max-width:700px){.hero{height:175svh;min-height:1100px}.hero-world{transform-origin:65% 73%;transform:scale(calc(1 + var(--progress)*.2))}.process-backdrop{object-position:65% center}.process-steps{gap:20px 14px}.process-steps article{padding:18px 12px}}
 @media(prefers-reduced-motion:reduce){.hero{height:100svh;min-height:680px}.hero-world{transform:none!important}.hero-copy,.hero-pins,.hero-location,.scroll-cue{opacity:1!important}}
 
 /* Navigation follows the complete page order, scrollable on narrow screens. */
@@ -90,3 +90,18 @@
 .dock>a.nav-contact,.dock>a.nav-contact.active{background:#ef3c34;color:#fff;margin-left:6px}
 .dock>a.nav-contact:hover{background:#d92e27;color:#fff}
 @media(max-width:700px){.dock{width:max-content}.dock>a{padding:12px 9px;font-size:10px}.dock>a.nav-contact{margin-left:2px}}
+
+/* Focused portfolio polish: restrained zoom, clear actions, tactile process. */
+.journey-link{display:flex;width:max-content;align-items:center;gap:10px;margin-top:16px;padding:11px 17px;font-size:12px;transition:background .2s,translate .2s,border-color .2s}
+.journey-link svg{width:17px;height:17px}
+.journey-link:hover,.journey-link:focus-visible{background:#ef3c34;border-color:#ef3c34;translate:4px 0}
+.process-steps .process-card{position:relative;transition:transform .25s,background .25s,box-shadow .25s,border-color .25s;outline-offset:5px}
+.process-steps .process-card:hover,.process-steps .process-card:focus-visible{transform:translateY(-9px);background:#25201ee8;border-top-color:#f1cf69;box-shadow:0 18px 35px #0005}
+.process-card h3,.process-card>span{transition:color .25s}
+.process-card:hover h3,.process-card:focus-visible h3,.process-card:hover>span,.process-card:focus-visible>span{color:#f1cf69}
+.resume-button{transition:transform .2s,background .2s,color .2s,box-shadow .2s,border-color .2s}
+.resume-button svg{transition:transform .2s}
+.resume-button:hover,.resume-button:focus-visible{transform:translateY(-4px);background:var(--red);border-color:var(--red);color:#fff;box-shadow:0 10px 28px #ef3c3438}
+.resume-button:hover svg,.resume-button:focus-visible svg{transform:translate(3px,-3px)}
+@media(max-width:760px){.journey-link{font-size:10px;padding:9px 12px;margin-top:12px}.journey-link svg{width:14px;height:14px}}
+@media(prefers-reduced-motion:reduce){.journey-link,.process-steps .process-card,.process-card h3,.process-card>span,.resume-button,.resume-button svg{transition:none}.process-steps .process-card:hover,.process-steps .process-card:focus-visible,.resume-button:hover,.resume-button:focus-visible,.resume-button:hover svg,.resume-button:focus-visible svg{transform:none}.journey-link:hover,.journey-link:focus-visible{translate:none}}
