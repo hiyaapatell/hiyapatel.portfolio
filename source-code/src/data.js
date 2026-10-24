@@ -1,5 +1,5 @@
 export const asset = name => `${import.meta.env.BASE_URL}assets/${name}`;
-export const resume = `${import.meta.env.BASE_URL}Hiya-Patel-Resume.pdf`;
+export const resume = `${import.meta.env.BASE_URL}Hiya-Patel-Resume.pdf?v=20261024-1720`;
 export const email = 'hhpatel@mit.edu';
 export const linkedin = 'https://www.linkedin.com/in/hiya-patel-b4276925b/';
 export const behance = 'https://www.behance.net/hiyaapatell';
