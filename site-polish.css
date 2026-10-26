@@ -17,6 +17,10 @@ body {
   scroll-behavior: smooth;
 }
 
+html.smooth-driver {
+  scroll-behavior: auto;
+}
+
 body,
 .section,
 .dock,
@@ -61,6 +65,40 @@ html.motion-ready .upward-reveal.upward-visible {
   font-weight: 700;
   letter-spacing: -0.06em;
   line-height: 0.8;
+  text-decoration: none;
+}
+
+/* The intro arrives a line at a time, then keeps its question playful. */
+.intro-question-heading.reveal {
+  transform: none;
+}
+
+.intro-question-heading .intro-line {
+  display: block;
+  overflow: hidden;
+  padding: 0.025em 0 0.11em;
+  margin: -0.025em 0 -0.11em;
+}
+
+.intro-question-heading .intro-line > span {
+  display: block;
+  opacity: 0;
+  transform: translate3d(0, 112%, 0);
+  transition: opacity 480ms var(--polish-ease), transform 760ms var(--polish-ease);
+  will-change: opacity, transform;
+}
+
+.intro-question-heading .intro-line:nth-child(2) > span {
+  transition-delay: 100ms;
+}
+
+.intro-question-heading .intro-line:nth-child(3) > span {
+  transition-delay: 200ms;
+}
+
+.intro-question-heading.in-view .intro-line > span {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
 }
 
 .question-word {
@@ -103,76 +141,27 @@ html.motion-ready .upward-reveal.upward-visible {
   white-space: nowrap;
 }
 
-.race-cursor {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 10000;
-  width: 36px;
-  height: 36px;
-  opacity: 0;
-  pointer-events: none;
-  transform-origin: 50% 50%;
-  transition: opacity 160ms ease;
-  will-change: transform;
+/* More notes, with smaller cards and clearer rhythm. */
+#notes .notes-row {
+  gap: 16px;
 }
 
-.race-cursor.is-active {
-  opacity: 1;
+#notes .notes-row > * {
+  flex: 0 0 clamp(190px, 17vw, 220px);
+  min-height: 150px;
+  padding: 18px;
 }
 
-.race-cursor-trail {
-  position: absolute;
-  top: 17px;
-  right: 17px;
-  width: 38px;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--red) 54%, var(--yellow));
-  box-shadow: 0 0 14px color-mix(in srgb, var(--red) 55%, transparent);
-  transform: translateX(-13px);
-}
-
-.race-cursor-dot {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  width: 12px;
-  height: 12px;
-  border: 2px solid var(--cream);
-  border-radius: 50%;
-  background: var(--red);
-  box-shadow: 0 0 0 4px color-mix(in srgb, var(--red) 20%, transparent), 0 3px 11px #0006;
-  transition: width 180ms var(--polish-ease), height 180ms var(--polish-ease), background-color 180ms ease;
-}
-
-.race-cursor-number {
-  position: absolute;
-  top: -3px;
-  left: 25px;
-  color: var(--cream);
-  font-family: "Barlow Condensed", Impact, sans-serif;
+#notes .notes-row .visitor-note p,
+#notes .notes-row .editor-note p {
   font-size: 13px;
-  font-weight: 700;
-  letter-spacing: -0.04em;
-  opacity: 0;
-  transform: translateX(-5px) rotate(-10deg);
-  transition: opacity 160ms ease, transform 240ms var(--polish-ease);
+  line-height: 1.45;
 }
 
-.race-cursor.is-link .race-cursor-dot {
-  width: 18px;
-  height: 18px;
-  border-color: var(--yellow);
-  background: var(--red);
-}
-
-.race-cursor.is-link .race-cursor-number {
-  opacity: 1;
-  transform: translateX(0) rotate(-10deg);
-}
-
-.race-cursor.is-pressed .race-cursor-dot {
-  transform: scale(0.72);
+#notes .notes-row .visitor-note strong {
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .site-footer .footer-credit {
@@ -244,22 +233,6 @@ html.motion-ready .upward-reveal.upward-visible {
   }
 }
 
-@media (hover: hover) and (pointer: fine) {
-  html.race-cursor-enabled,
-  html.race-cursor-enabled body,
-  html.race-cursor-enabled a,
-  html.race-cursor-enabled button,
-  html.race-cursor-enabled [role="button"] {
-    cursor: none !important;
-  }
-
-  html.race-cursor-enabled input,
-  html.race-cursor-enabled textarea,
-  html.race-cursor-enabled select {
-    cursor: text !important;
-  }
-}
-
 @media (max-width: 560px) {
   .contact footer.site-footer {
     margin-top: 62px;
@@ -277,6 +250,19 @@ html.motion-ready .upward-reveal.upward-visible {
 
   .question-word::after {
     font-size: 0.14em;
+  }
+}
+
+@media (max-width: 760px) {
+  #notes .notes-row > * {
+    flex-basis: 184px;
+    min-height: 142px;
+    padding: 16px;
+  }
+
+  #notes .notes-row .visitor-note p,
+  #notes .notes-row .editor-note p {
+    font-size: 12px;
   }
 }
 
@@ -304,7 +290,10 @@ html.motion-ready .upward-reveal.upward-visible {
     transition: none;
   }
 
-  .race-cursor {
-    display: none;
+  .intro-question-heading .intro-line > span {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
+
 }

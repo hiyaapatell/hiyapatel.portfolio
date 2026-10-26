@@ -83,6 +83,32 @@
     elements.forEach((element) => observer.observe(element));
   }
 
+  function enhanceIntroHeadline() {
+    const heading = document.querySelector("#story h2");
+    if (!heading) return;
+
+    heading.classList.add("intro-question-heading");
+    if (heading.querySelector(".intro-line")) return;
+
+    const question = heading.querySelector("em") || document.createElement("em");
+    if (!question.textContent) question.textContent = "question.";
+    const line = (content, className = "") => {
+      const outer = document.createElement("span");
+      const inner = document.createElement("span");
+      outer.className = `intro-line ${className}`.trim();
+      if (typeof content === "string") inner.textContent = content;
+      else inner.append(content);
+      outer.append(inner);
+      return outer;
+    };
+
+    heading.replaceChildren(
+      line("Good design starts"),
+      line("with a better"),
+      line(question, "question-line")
+    );
+  }
+
   function decorateQuestion() {
     const question = document.querySelector("#story h2 em");
     if (!question) return;
@@ -90,64 +116,77 @@
     question.setAttribute("data-echo", "keep asking");
   }
 
-  function setupRaceCursor() {
-    const supportsCursor = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-    if (reducedMotion.matches || !supportsCursor || document.querySelector(".race-cursor")) return;
+  function setupSmoothScroll() {
+    const supportsFinePointer = window.matchMedia("(pointer: fine)").matches;
+    if (reducedMotion.matches || !supportsFinePointer || window.__hiyaSmoothScrollTo) return;
 
-    const cursor = document.createElement("div");
-    cursor.className = "race-cursor";
-    cursor.setAttribute("aria-hidden", "true");
-    cursor.innerHTML = '<span class="race-cursor-trail"></span><span class="race-cursor-dot"></span><span class="race-cursor-number">16</span>';
-    document.body.append(cursor);
-    document.documentElement.classList.add("race-cursor-enabled");
-
-    let targetX = -100;
-    let targetY = -100;
-    let currentX = -100;
-    let currentY = -100;
-    let angle = 0;
-    let interactive = false;
-    let hasPosition = false;
+    const root = document.documentElement;
+    root.classList.add("smooth-driver");
+    let current = window.scrollY;
+    let target = current;
     let frame;
 
-    const render = () => {
+    const maxScroll = () => Math.max(0, root.scrollHeight - window.innerHeight);
+    const clampScroll = (value) => Math.max(0, Math.min(maxScroll(), value));
+    const tick = () => {
       frame = undefined;
-      const dx = targetX - currentX;
-      const dy = targetY - currentY;
-      currentX += dx * 0.24;
-      currentY += dy * 0.24;
-      if (Math.abs(dx) + Math.abs(dy) > 0.25) angle = Math.atan2(dy, dx) * (180 / Math.PI);
-      cursor.style.transform = `translate3d(${currentX - 18}px, ${currentY - 18}px, 0) rotate(${angle}deg) scale(${interactive ? 1.16 : 1})`;
-      if (Math.abs(dx) + Math.abs(dy) > 0.2) frame = requestAnimationFrame(render);
-    };
-
-    const queueRender = () => {
-      if (!frame) frame = requestAnimationFrame(render);
-    };
-
-    document.addEventListener("pointermove", (event) => {
-      if (event.pointerType && event.pointerType !== "mouse") return;
-      targetX = event.clientX;
-      targetY = event.clientY;
-      if (!hasPosition) {
-        currentX = targetX;
-        currentY = targetY;
-        hasPosition = true;
+      const distance = target - current;
+      current += distance * 0.13;
+      if (Math.abs(distance) < 0.5) {
+        current = target;
+        window.scrollTo(0, current);
+        return;
       }
-      cursor.classList.add("is-active");
-      queueRender();
+      window.scrollTo(0, current);
+      frame = requestAnimationFrame(tick);
+    };
+    const schedule = () => {
+      if (!frame) frame = requestAnimationFrame(tick);
+    };
+    const scrollTo = (position) => {
+      current = window.scrollY;
+      target = clampScroll(position);
+      schedule();
+    };
+
+    window.__hiyaSmoothScrollTo = scrollTo;
+    window.addEventListener("wheel", (event) => {
+      if (event.ctrlKey || event.metaKey || event.shiftKey || Math.abs(event.deltaX) > Math.abs(event.deltaY)) return;
+      const eventTarget = event.target instanceof Element ? event.target : null;
+      if (document.querySelector("dialog[open]") || eventTarget?.closest("dialog,textarea,input,select,.project-deck,.notes-row,[data-native-scroll]")) return;
+
+      const multiplier = event.deltaMode === 1 ? 18 : 1;
+      event.preventDefault();
+      if (!frame) current = window.scrollY;
+      target = clampScroll((frame ? target : current) + event.deltaY * multiplier * 0.9);
+      schedule();
+    }, { passive: false });
+
+    window.addEventListener("scroll", () => {
+      if (!frame) {
+        current = window.scrollY;
+        target = current;
+      }
     }, { passive: true });
+  }
 
-    document.addEventListener("pointerover", (event) => {
-      const target = event.target instanceof Element ? event.target : null;
-      interactive = Boolean(target?.closest("a,button,input,textarea,select,[role=button]"));
-      cursor.classList.toggle("is-link", interactive);
-      queueRender();
+  function seedNotes() {
+    const row = document.querySelector("#notes .notes-row");
+    if (!row || row.dataset.seeded) return;
+    const defaults = [
+      ["A design peer · sample", "You make the complicated feel calm."],
+      ["A research collaborator · sample", "You start with the people, then make the path clear."],
+      ["A studio friend · sample", "Curious, thoughtful, and always ready to test another idea."]
+    ];
+    const existing = row.querySelectorAll(".visitor-note").length;
+    const editorNote = row.querySelector(".editor-note");
+    defaults.slice(0, Math.max(0, 3 - existing)).forEach(([name, message]) => {
+      const note = document.createElement("article");
+      note.className = "visitor-note starter-note";
+      note.innerHTML = `<p>${message}</p><strong>${name}</strong>`;
+      row.insertBefore(note, editorNote);
     });
-
-    document.addEventListener("pointerdown", () => cursor.classList.add("is-pressed"));
-    document.addEventListener("pointerup", () => cursor.classList.remove("is-pressed"));
-    window.addEventListener("blur", () => cursor.classList.remove("is-active"));
+    row.dataset.seeded = "true";
   }
 
   function enableSmoothAnchors() {
@@ -167,10 +206,10 @@
       if (!target) return;
 
       event.preventDefault();
-      target.scrollIntoView({
-        behavior: reducedMotion.matches ? "auto" : "smooth",
-        block: "start"
-      });
+      const offset = Number.parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
+      const destination = window.scrollY + target.getBoundingClientRect().top - offset;
+      if (!reducedMotion.matches && typeof window.__hiyaSmoothScrollTo === "function") window.__hiyaSmoothScrollTo(destination);
+      else target.scrollIntoView({ behavior: reducedMotion.matches ? "auto" : "smooth", block: "start" });
       history.replaceState(null, "", hash);
     });
   }
@@ -179,10 +218,12 @@
     if (initialized || !document.querySelector("#contact footer")) return false;
     initialized = true;
     refineFooter();
-    addUpwardReveals();
+    enhanceIntroHeadline();
     decorateQuestion();
+    seedNotes();
+    addUpwardReveals();
+    setupSmoothScroll();
     enableSmoothAnchors();
-    setupRaceCursor();
     return true;
   }
 
