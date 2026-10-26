@@ -137,52 +137,9 @@
     }, { passive: true });
   }
 
-  function seedNotes() {
-    const row = document.querySelector("#notes .notes-row");
-    if (!row || row.dataset.seeded) return;
-    const defaults = [
-      ["A design peer · sample", "You make the complicated feel calm."],
-      ["A research collaborator · sample", "You start with the people, then make the path clear."],
-      ["A studio friend · sample", "Curious, thoughtful, and always ready to test another idea."]
-    ];
-    const existing = row.querySelectorAll(".visitor-note").length;
-    const editorNote = row.querySelector(".editor-note");
-    defaults.slice(0, Math.max(0, 3 - existing)).forEach(([name, message]) => {
-      const note = document.createElement("article");
-      note.className = "visitor-note starter-note";
-      note.innerHTML = `<p>${message}</p><strong>${name}</strong>`;
-      row.insertBefore(note, editorNote);
-    });
-    row.dataset.seeded = "true";
-  }
-
-  function addPortfolioProject() {
-    const deck = document.querySelector("#work .project-deck");
-    if (!deck) return;
-
-    deck.classList.add("has-seven-projects");
-    let card = deck.querySelector(".project-card.portfolio-website");
-    if (!card) {
-      card = document.createElement("a");
-      card.className = "project-card portfolio-website";
-      card.href = "https://devpatel122003.com/";
-      card.target = "_blank";
-      card.rel = "noreferrer";
-      card.setAttribute("aria-label", "Visit Dev Patel's Portfolio Website");
-      card.style.setProperty("--card-color", "#ef3c34");
-      card.innerHTML = `<div class="card-top"><span>HP / WEB</span><b>03</b></div>
-        <div class="project-image portfolio-website"><img src="./assets/portfolio-website.png" alt="Preview of Dev Patel's portfolio website" loading="lazy"/></div>
-        <div class="card-bottom"><span>Portfolio · Web design</span><h3>Portfolio<br/>Website</h3><p>Built to put the work in motion.</p><div><span>2026</span><span aria-hidden="true">↗</span></div></div>`;
-      deck.insertBefore(card, deck.children[2] || null);
-    }
-    [...deck.querySelectorAll(".project-card")].forEach((projectCard, index) => {
-      projectCard.style.setProperty("--index", String(index));
-    });
-  }
-
   function updateWorkTitle() {
     const title = document.querySelector("#work .center-heading h2");
-    if (title) title.innerHTML = `The starting <em>seven.</em>`;
+    if (title) title.innerHTML = `The starting <em>six.</em>`;
   }
 
   function enableSmoothAnchors() {
@@ -214,8 +171,6 @@
     if (initialized || !document.querySelector("#contact footer")) return false;
     initialized = true;
     refineFooter();
-    seedNotes();
-    addPortfolioProject();
     updateWorkTitle();
     addUpwardReveals();
     setupSmoothScroll();
