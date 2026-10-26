@@ -63,6 +63,118 @@ html.motion-ready .upward-reveal.upward-visible {
   line-height: 0.8;
 }
 
+.question-word {
+  position: relative;
+  display: inline-block;
+  color: var(--red);
+  cursor: help;
+  transition: color 260ms ease, transform 360ms var(--polish-ease), text-shadow 360ms var(--polish-ease);
+}
+
+.question-word::before {
+  position: absolute;
+  right: 0.03em;
+  bottom: -0.08em;
+  left: 0.02em;
+  height: 0.045em;
+  background: var(--yellow);
+  content: "";
+  transform: scaleX(0.18);
+  transform-origin: left;
+  transition: transform 400ms var(--polish-ease);
+}
+
+.question-word::after {
+  position: absolute;
+  bottom: -1.05em;
+  left: 0.08em;
+  color: var(--yellow);
+  content: attr(data-echo);
+  font-family: Inter, Arial, sans-serif;
+  font-size: 0.12em;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  line-height: 1;
+  opacity: 0;
+  pointer-events: none;
+  text-transform: uppercase;
+  transform: translate3d(-0.2em, 0.45em, 0);
+  transition: opacity 220ms ease, transform 380ms var(--polish-ease);
+  white-space: nowrap;
+}
+
+.race-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+  width: 36px;
+  height: 36px;
+  opacity: 0;
+  pointer-events: none;
+  transform-origin: 50% 50%;
+  transition: opacity 160ms ease;
+  will-change: transform;
+}
+
+.race-cursor.is-active {
+  opacity: 1;
+}
+
+.race-cursor-trail {
+  position: absolute;
+  top: 17px;
+  right: 17px;
+  width: 38px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--red) 54%, var(--yellow));
+  box-shadow: 0 0 14px color-mix(in srgb, var(--red) 55%, transparent);
+  transform: translateX(-13px);
+}
+
+.race-cursor-dot {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  width: 12px;
+  height: 12px;
+  border: 2px solid var(--cream);
+  border-radius: 50%;
+  background: var(--red);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--red) 20%, transparent), 0 3px 11px #0006;
+  transition: width 180ms var(--polish-ease), height 180ms var(--polish-ease), background-color 180ms ease;
+}
+
+.race-cursor-number {
+  position: absolute;
+  top: -3px;
+  left: 25px;
+  color: var(--cream);
+  font-family: "Barlow Condensed", Impact, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  opacity: 0;
+  transform: translateX(-5px) rotate(-10deg);
+  transition: opacity 160ms ease, transform 240ms var(--polish-ease);
+}
+
+.race-cursor.is-link .race-cursor-dot {
+  width: 18px;
+  height: 18px;
+  border-color: var(--yellow);
+  background: var(--red);
+}
+
+.race-cursor.is-link .race-cursor-number {
+  opacity: 1;
+  transform: translateX(0) rotate(-10deg);
+}
+
+.race-cursor.is-pressed .race-cursor-dot {
+  transform: scale(0.72);
+}
+
 .site-footer .footer-credit {
   color: var(--muted);
   font-size: 10px;
@@ -115,6 +227,37 @@ html.motion-ready .upward-reveal.upward-visible {
     border-top-color: var(--red);
     box-shadow: var(--polish-shadow);
   }
+
+  .question-word:hover {
+    color: var(--yellow);
+    text-shadow: 0 0 22px color-mix(in srgb, var(--yellow) 42%, transparent);
+    transform: translateY(-0.08em) skewX(-3deg);
+  }
+
+  .question-word:hover::before {
+    transform: scaleX(1);
+  }
+
+  .question-word:hover::after {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  html.race-cursor-enabled,
+  html.race-cursor-enabled body,
+  html.race-cursor-enabled a,
+  html.race-cursor-enabled button,
+  html.race-cursor-enabled [role="button"] {
+    cursor: none !important;
+  }
+
+  html.race-cursor-enabled input,
+  html.race-cursor-enabled textarea,
+  html.race-cursor-enabled select {
+    cursor: text !important;
+  }
 }
 
 @media (max-width: 560px) {
@@ -130,6 +273,10 @@ html.motion-ready .upward-reveal.upward-visible {
   .site-footer .footer-credit {
     font-size: 8px;
     letter-spacing: 0.12em;
+  }
+
+  .question-word::after {
+    font-size: 0.14em;
   }
 }
 
@@ -155,5 +302,9 @@ html.motion-ready .upward-reveal.upward-visible {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+
+  .race-cursor {
+    display: none;
   }
 }

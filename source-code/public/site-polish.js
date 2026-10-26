@@ -24,9 +24,14 @@
       footer.children[1]?.textContent === "2026 Hiya Patel";
 
     if (!isCurrent) {
+      const mark = document.createElement("a");
+      mark.className = "footer-mark";
+      mark.href = "#top";
+      mark.textContent = "HP";
+      mark.setAttribute("aria-label", "Back to top");
       footer.className = "site-footer";
       footer.replaceChildren(
-        copy("HP", "footer-mark", "Hiya Patel"),
+        mark,
         copy("2026 Hiya Patel", "footer-credit")
       );
     }
@@ -78,6 +83,73 @@
     elements.forEach((element) => observer.observe(element));
   }
 
+  function decorateQuestion() {
+    const question = document.querySelector("#story h2 em");
+    if (!question) return;
+    question.classList.add("question-word");
+    question.setAttribute("data-echo", "keep asking");
+  }
+
+  function setupRaceCursor() {
+    const supportsCursor = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    if (reducedMotion.matches || !supportsCursor || document.querySelector(".race-cursor")) return;
+
+    const cursor = document.createElement("div");
+    cursor.className = "race-cursor";
+    cursor.setAttribute("aria-hidden", "true");
+    cursor.innerHTML = '<span class="race-cursor-trail"></span><span class="race-cursor-dot"></span><span class="race-cursor-number">16</span>';
+    document.body.append(cursor);
+    document.documentElement.classList.add("race-cursor-enabled");
+
+    let targetX = -100;
+    let targetY = -100;
+    let currentX = -100;
+    let currentY = -100;
+    let angle = 0;
+    let interactive = false;
+    let hasPosition = false;
+    let frame;
+
+    const render = () => {
+      frame = undefined;
+      const dx = targetX - currentX;
+      const dy = targetY - currentY;
+      currentX += dx * 0.24;
+      currentY += dy * 0.24;
+      if (Math.abs(dx) + Math.abs(dy) > 0.25) angle = Math.atan2(dy, dx) * (180 / Math.PI);
+      cursor.style.transform = `translate3d(${currentX - 18}px, ${currentY - 18}px, 0) rotate(${angle}deg) scale(${interactive ? 1.16 : 1})`;
+      if (Math.abs(dx) + Math.abs(dy) > 0.2) frame = requestAnimationFrame(render);
+    };
+
+    const queueRender = () => {
+      if (!frame) frame = requestAnimationFrame(render);
+    };
+
+    document.addEventListener("pointermove", (event) => {
+      if (event.pointerType && event.pointerType !== "mouse") return;
+      targetX = event.clientX;
+      targetY = event.clientY;
+      if (!hasPosition) {
+        currentX = targetX;
+        currentY = targetY;
+        hasPosition = true;
+      }
+      cursor.classList.add("is-active");
+      queueRender();
+    }, { passive: true });
+
+    document.addEventListener("pointerover", (event) => {
+      const target = event.target instanceof Element ? event.target : null;
+      interactive = Boolean(target?.closest("a,button,input,textarea,select,[role=button]"));
+      cursor.classList.toggle("is-link", interactive);
+      queueRender();
+    });
+
+    document.addEventListener("pointerdown", () => cursor.classList.add("is-pressed"));
+    document.addEventListener("pointerup", () => cursor.classList.remove("is-pressed"));
+    window.addEventListener("blur", () => cursor.classList.remove("is-active"));
+  }
+
   function enableSmoothAnchors() {
     document.addEventListener("click", (event) => {
       const link = event.target.closest('a[href^="#"]');
@@ -108,7 +180,9 @@
     initialized = true;
     refineFooter();
     addUpwardReveals();
+    decorateQuestion();
     enableSmoothAnchors();
+    setupRaceCursor();
     return true;
   }
 
