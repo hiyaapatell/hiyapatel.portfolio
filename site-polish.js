@@ -83,39 +83,6 @@
     elements.forEach((element) => observer.observe(element));
   }
 
-  function enhanceIntroHeadline() {
-    const heading = document.querySelector("#story h2");
-    if (!heading) return;
-
-    heading.classList.add("intro-question-heading");
-    if (heading.querySelector(".intro-line")) return;
-
-    const question = heading.querySelector("em") || document.createElement("em");
-    if (!question.textContent) question.textContent = "question.";
-    const line = (content, className = "") => {
-      const outer = document.createElement("span");
-      const inner = document.createElement("span");
-      outer.className = `intro-line ${className}`.trim();
-      if (typeof content === "string") inner.textContent = content;
-      else inner.append(content);
-      outer.append(inner);
-      return outer;
-    };
-
-    heading.replaceChildren(
-      line("Good design starts"),
-      line("with a better"),
-      line(question, "question-line")
-    );
-  }
-
-  function decorateQuestion() {
-    const question = document.querySelector("#story h2 em");
-    if (!question) return;
-    question.classList.add("question-word");
-    question.setAttribute("data-echo", "keep asking");
-  }
-
   function setupSmoothScroll() {
     const supportsFinePointer = window.matchMedia("(pointer: fine)").matches;
     if (reducedMotion.matches || !supportsFinePointer || window.__hiyaSmoothScrollTo) return;
@@ -189,6 +156,30 @@
     row.dataset.seeded = "true";
   }
 
+  function addPortfolioProject() {
+    const deck = document.querySelector("#work .project-deck");
+    if (!deck) return;
+
+    deck.classList.add("has-seven-projects");
+    let card = deck.querySelector(".project-card.portfolio-website");
+    if (!card) {
+      card = document.createElement("a");
+      card.className = "project-card portfolio-website";
+      card.href = "https://devpatel122003.com/";
+      card.target = "_blank";
+      card.rel = "noreferrer";
+      card.setAttribute("aria-label", "Visit Dev Patel's Portfolio Website");
+      card.style.setProperty("--card-color", "#ef3c34");
+      card.innerHTML = `<div class="card-top"><span>HP / WEB</span><b>03</b></div>
+        <div class="project-image portfolio-website"><img src="./assets/portfolio-website.png" alt="Preview of Dev Patel's portfolio website" loading="lazy"/></div>
+        <div class="card-bottom"><span>Portfolio · Web design</span><h3>Portfolio<br/>Website</h3><p>Built to put the work in motion.</p><div><span>2026</span><span aria-hidden="true">↗</span></div></div>`;
+      deck.insertBefore(card, deck.children[2] || null);
+    }
+    [...deck.querySelectorAll(".project-card")].forEach((projectCard, index) => {
+      projectCard.style.setProperty("--index", String(index));
+    });
+  }
+
   function enableSmoothAnchors() {
     document.addEventListener("click", (event) => {
       const link = event.target.closest('a[href^="#"]');
@@ -218,9 +209,8 @@
     if (initialized || !document.querySelector("#contact footer")) return false;
     initialized = true;
     refineFooter();
-    enhanceIntroHeadline();
-    decorateQuestion();
     seedNotes();
+    addPortfolioProject();
     addUpwardReveals();
     setupSmoothScroll();
     enableSmoothAnchors();

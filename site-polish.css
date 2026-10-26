@@ -32,6 +32,27 @@ body,
     box-shadow 360ms ease;
 }
 
+/* A quiet, always-on cinematic movement for the landing scene. */
+.hero .paddock {
+  animation: heroPaddockDrift 18s var(--polish-ease) infinite alternate;
+  transform-origin: 65% 73%;
+  will-change: transform;
+}
+
+.hero .hero-shade {
+  animation: heroAtmosphere 10s ease-in-out infinite alternate;
+}
+
+@keyframes heroPaddockDrift {
+  from { transform: scale(1.03) translate3d(-0.4%, 0, 0); }
+  to { transform: scale(1.09) translate3d(0.7%, -0.45%, 0); }
+}
+
+@keyframes heroAtmosphere {
+  from { opacity: 0.82; }
+  to { opacity: 1; }
+}
+
 html.motion-ready .upward-reveal {
   opacity: 0;
   transform: translate3d(0, 22px, 0);
@@ -68,79 +89,6 @@ html.motion-ready .upward-reveal.upward-visible {
   text-decoration: none;
 }
 
-/* The intro arrives a line at a time, then keeps its question playful. */
-.intro-question-heading.reveal {
-  transform: none;
-}
-
-.intro-question-heading .intro-line {
-  display: block;
-  overflow: hidden;
-  padding: 0.025em 0 0.11em;
-  margin: -0.025em 0 -0.11em;
-}
-
-.intro-question-heading .intro-line > span {
-  display: block;
-  opacity: 0;
-  transform: translate3d(0, 112%, 0);
-  transition: opacity 480ms var(--polish-ease), transform 760ms var(--polish-ease);
-  will-change: opacity, transform;
-}
-
-.intro-question-heading .intro-line:nth-child(2) > span {
-  transition-delay: 100ms;
-}
-
-.intro-question-heading .intro-line:nth-child(3) > span {
-  transition-delay: 200ms;
-}
-
-.intro-question-heading.in-view .intro-line > span {
-  opacity: 1;
-  transform: translate3d(0, 0, 0);
-}
-
-.question-word {
-  position: relative;
-  display: inline-block;
-  color: var(--red);
-  cursor: help;
-  transition: color 260ms ease, transform 360ms var(--polish-ease), text-shadow 360ms var(--polish-ease);
-}
-
-.question-word::before {
-  position: absolute;
-  right: 0.03em;
-  bottom: -0.08em;
-  left: 0.02em;
-  height: 0.045em;
-  background: var(--yellow);
-  content: "";
-  transform: scaleX(0.18);
-  transform-origin: left;
-  transition: transform 400ms var(--polish-ease);
-}
-
-.question-word::after {
-  position: absolute;
-  bottom: -1.05em;
-  left: 0.08em;
-  color: var(--yellow);
-  content: attr(data-echo);
-  font-family: Inter, Arial, sans-serif;
-  font-size: 0.12em;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  line-height: 1;
-  opacity: 0;
-  pointer-events: none;
-  text-transform: uppercase;
-  transform: translate3d(-0.2em, 0.45em, 0);
-  transition: opacity 220ms ease, transform 380ms var(--polish-ease);
-  white-space: nowrap;
-}
-
 /* More notes, with smaller cards and clearer rhythm. */
 #notes .notes-row {
   gap: 16px;
@@ -162,6 +110,47 @@ html.motion-ready .upward-reveal.upward-visible {
   font-size: 9px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+
+/* Seven cards keep the portfolio deck balanced without changing its feel. */
+.project-deck.has-seven-projects {
+  height: 455px;
+}
+
+.project-deck.has-seven-projects .project-card {
+  width: 220px;
+  height: 342px;
+  left: calc(50% - 110px + (var(--index) - 3) * 132px);
+  top: 68px;
+}
+
+.project-deck.has-seven-projects .project-image {
+  height: 132px;
+}
+
+.project-deck.has-seven-projects .card-bottom {
+  padding: 15px;
+}
+
+.project-deck.has-seven-projects .card-bottom h3 {
+  font-size: 31px;
+}
+
+.project-card.portfolio-website .project-image {
+  background: #151515;
+}
+
+.project-card.portfolio-website .project-image img {
+  object-position: center;
+}
+
+@media (hover: hover) {
+  .project-card.portfolio-website:hover,
+  .project-card.portfolio-website:focus-visible {
+    transform: translateY(-25px) rotate(0deg) scale(1.08);
+    box-shadow: var(--polish-shadow-strong);
+    z-index: 11;
+  }
 }
 
 .site-footer .footer-credit {
@@ -217,20 +206,6 @@ html.motion-ready .upward-reveal.upward-visible {
     box-shadow: var(--polish-shadow);
   }
 
-  .question-word:hover {
-    color: var(--yellow);
-    text-shadow: 0 0 22px color-mix(in srgb, var(--yellow) 42%, transparent);
-    transform: translateY(-0.08em) skewX(-3deg);
-  }
-
-  .question-word:hover::before {
-    transform: scaleX(1);
-  }
-
-  .question-word:hover::after {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
 }
 
 @media (max-width: 560px) {
@@ -248,12 +223,24 @@ html.motion-ready .upward-reveal.upward-visible {
     letter-spacing: 0.12em;
   }
 
-  .question-word::after {
-    font-size: 0.14em;
-  }
 }
 
 @media (max-width: 760px) {
+  .project-deck.has-seven-projects {
+    height: 380px;
+  }
+
+  .project-deck.has-seven-projects .project-card {
+    width: 255px;
+    height: 322px;
+    left: auto;
+    top: auto;
+  }
+
+  .project-deck.has-seven-projects .project-image {
+    height: 125px;
+  }
+
   #notes .notes-row > * {
     flex-basis: 184px;
     min-height: 142px;
@@ -290,10 +277,9 @@ html.motion-ready .upward-reveal.upward-visible {
     transition: none;
   }
 
-  .intro-question-heading .intro-line > span {
-    opacity: 1;
-    transform: none;
-    transition: none;
+  .hero .paddock,
+  .hero .hero-shade {
+    animation: none;
   }
 
 }
