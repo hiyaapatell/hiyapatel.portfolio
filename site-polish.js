@@ -48,8 +48,7 @@
       "#contact .eyebrow",
       "#contact h2",
       "#contact .contact-keys",
-      "#contact .keyboard-tip",
-      "#contact .email-copy"
+      "#contact .keyboard-tip"
     ];
 
     const elements = [...document.querySelectorAll(selectors.join(","))]
