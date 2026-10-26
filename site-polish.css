@@ -1,0 +1,159 @@
+/* Motion and interaction polish for the portfolio's static GitHub Pages build. */
+
+:root {
+  scroll-behavior: smooth;
+  --polish-shadow: 0 13px 30px rgba(0, 0, 0, 0.18);
+  --polish-shadow-strong: 0 19px 42px rgba(0, 0, 0, 0.26);
+  --polish-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+:root[data-theme="light"] {
+  --polish-shadow: 0 13px 28px rgba(54, 35, 21, 0.13);
+  --polish-shadow-strong: 0 20px 42px rgba(54, 35, 21, 0.2);
+}
+
+html,
+body {
+  scroll-behavior: smooth;
+}
+
+body,
+.section,
+.dock,
+.tool-trigger,
+.tool-grid > button,
+.experience-section,
+.site-footer {
+  transition: background-color 360ms ease, color 360ms ease, border-color 360ms ease,
+    box-shadow 360ms ease;
+}
+
+html.motion-ready .upward-reveal {
+  opacity: 0;
+  transform: translate3d(0, 22px, 0);
+  transition: opacity 600ms var(--polish-ease) var(--upward-delay, 0ms),
+    transform 760ms var(--polish-ease) var(--upward-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+html.motion-ready .upward-reveal.upward-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/* A compact, two-part footer that holds its rhythm in either theme. */
+.contact footer.site-footer {
+  width: 100%;
+  margin-top: clamp(56px, 9vw, 112px);
+  padding-top: 20px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 20px;
+  border-top: 1px solid var(--line);
+  color: var(--text);
+}
+
+.site-footer .footer-mark {
+  color: var(--red);
+  font-family: "Barlow Condensed", Impact, sans-serif;
+  font-size: clamp(34px, 4vw, 58px);
+  font-weight: 700;
+  letter-spacing: -0.06em;
+  line-height: 0.8;
+}
+
+.site-footer .footer-credit {
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+@media (hover: hover) {
+  .available,
+  .theme,
+  .dock > a,
+  .hero-cta,
+  .contact-key,
+  .email-copy,
+  .tool-trigger,
+  .tool-grid > button,
+  .experience-entry,
+  .primary,
+  .secondary {
+    transition: transform 260ms var(--polish-ease), box-shadow 260ms var(--polish-ease),
+      background-color 260ms ease, border-color 260ms ease, color 260ms ease;
+  }
+
+  .available:hover,
+  .theme:hover,
+  .hero-cta:hover,
+  .contact-key:hover,
+  .email-copy:hover,
+  .tool-trigger:hover,
+  .primary:hover,
+  .secondary:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--polish-shadow);
+  }
+
+  .dock > a:hover {
+    transform: translateY(-2px);
+  }
+
+  .tool-grid > button:hover {
+    transform: translateY(-5px);
+    border-color: var(--red);
+    box-shadow: var(--polish-shadow);
+  }
+
+  .experience-entry:hover {
+    transform: translateX(5px);
+    border-top-color: var(--red);
+    box-shadow: var(--polish-shadow);
+  }
+}
+
+@media (max-width: 560px) {
+  .contact footer.site-footer {
+    margin-top: 62px;
+    padding-top: 17px;
+  }
+
+  .site-footer .footer-mark {
+    font-size: 38px;
+  }
+
+  .site-footer .footer-credit {
+    font-size: 8px;
+    letter-spacing: 0.12em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html,
+  body {
+    scroll-behavior: auto;
+  }
+
+  html.motion-ready .upward-reveal,
+  html.motion-ready .upward-reveal.upward-visible,
+  .available,
+  .theme,
+  .dock > a,
+  .hero-cta,
+  .contact-key,
+  .email-copy,
+  .tool-trigger,
+  .tool-grid > button,
+  .experience-entry,
+  .primary,
+  .secondary {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
