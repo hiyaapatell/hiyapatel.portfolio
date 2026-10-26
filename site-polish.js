@@ -180,6 +180,11 @@
     });
   }
 
+  function updateWorkTitle() {
+    const title = document.querySelector("#work .center-heading h2");
+    if (title) title.innerHTML = `The starting <em>seven.</em>`;
+  }
+
   function enableSmoothAnchors() {
     document.addEventListener("click", (event) => {
       const link = event.target.closest('a[href^="#"]');
@@ -211,6 +216,7 @@
     refineFooter();
     seedNotes();
     addPortfolioProject();
+    updateWorkTitle();
     addUpwardReveals();
     setupSmoothScroll();
     enableSmoothAnchors();
