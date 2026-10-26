@@ -161,7 +161,7 @@ html.motion-ready .upward-reveal.upward-visible {
 
   .experience-entry:hover {
     transform: translateX(5px);
-    box-shadow: var(--polish-shadow);
+    box-shadow: 0 8px 24px #ef3c3420;
   }
 
 }
