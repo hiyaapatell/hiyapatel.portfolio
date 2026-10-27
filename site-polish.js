@@ -357,7 +357,6 @@
     enhanceExperience();
     enhanceToolkitCategories();
     enhanceDriverPass();
-    enhanceEducationLocations();
     setupSmoothScroll();
     enableSmoothAnchors();
     return true;
