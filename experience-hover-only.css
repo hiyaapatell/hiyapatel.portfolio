@@ -1,0 +1,5 @@
+
+/* Career cards stay neutral until deliberately explored. */
+#experience .experience-entry.experience-active:not(:hover):not(:focus-visible){transform:none;background:transparent;border-color:transparent;border-top-color:var(--line);box-shadow:none}
+#experience .experience-entry.experience-active:not(:hover):not(:focus-visible):before{transform:scaleY(.18)}
+#experience .experience-stint.selected:not(:hover):not(:focus-visible){background:transparent;border-color:var(--line);color:var(--muted);box-shadow:none}
