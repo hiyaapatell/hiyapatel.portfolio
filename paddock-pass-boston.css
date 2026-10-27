@@ -17,3 +17,11 @@
 #about .driver-pass .driver-pass-back{border-radius:5px;box-shadow:0 15px 25px #0005}
 #about .driver-pass:not(.is-flipped)::after{content:"CLICK TO FLIP";position:absolute;right:8px;bottom:-25px;font-size:8px;letter-spacing:1.2px;color:var(--yellow);opacity:0;transition:opacity 200ms ease}
 #about .driver-pass:not(.is-flipped):hover::after,#about .driver-pass:not(.is-flipped):focus-visible::after{opacity:1}
+
+/* The remaining moodboard cards get the paddock-pass hover energy, without flipping. */
+#about .moodboard .about-note,#about .moodboard .photo-note,#about .moodboard .small-note,#about .moodboard .location-note{transition:transform 320ms cubic-bezier(.22,1,.36,1),filter 320ms ease,box-shadow 320ms ease}
+#about .moodboard .about-note:hover,#about .moodboard .about-note:focus-visible{transform:rotate(.5deg) translateY(-12px);filter:drop-shadow(0 20px 16px #0008)}
+#about .moodboard .photo-note:hover,#about .moodboard .photo-note:focus-visible{transform:rotate(2deg) translateY(-12px);filter:drop-shadow(0 20px 16px #0008)}
+#about .moodboard .small-note:hover,#about .moodboard .small-note:focus-visible{transform:rotate(-1deg) translateY(-12px);filter:drop-shadow(0 20px 16px #0008)}
+#about .moodboard .location-note:hover,#about .moodboard .location-note:focus-visible{transform:rotate(-1deg) translateY(-12px);filter:drop-shadow(0 20px 16px #0008)}
+@media(prefers-reduced-motion:reduce){#about .moodboard .about-note,#about .moodboard .photo-note,#about .moodboard .small-note,#about .moodboard .location-note{transition:none}#about .moodboard .about-note:hover,#about .moodboard .photo-note:hover,#about .moodboard .small-note:hover,#about .moodboard .location-note:hover{transform:none}}
