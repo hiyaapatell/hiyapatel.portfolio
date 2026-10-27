@@ -232,6 +232,68 @@
     select(activeIndex);
   }
 
+
+  function enhanceToolkitCategories() {
+    const section = document.querySelector("#toolkit");
+    const reveal = section?.querySelector(".tool-reveal");
+    const grid = reveal?.querySelector(".tool-grid");
+    const cards = grid ? [...grid.querySelectorAll("button")] : [];
+    if (!section || !reveal || !grid || !cards.length || reveal.dataset.categoriesReady) return;
+    reveal.dataset.categoriesReady = "true";
+
+    const groups = {
+      DESIGN: new Set(["Figma", "Adobe CC", "Canva", "Framer"]),
+      RESEARCH: new Set(["FigJam", "Notion"]),
+      TOOLKIT: new Set(["HTML / CSS", "Python"])
+    };
+    const descriptions = {
+      DESIGN: "Design tools for visual systems, interface craft and prototypes.",
+      RESEARCH: "Research tools for synthesis, workshops and clearer decisions.",
+      TOOLKIT: "Technical tools that bring ideas into the browser."
+    };
+    const controls = document.createElement("div");
+    controls.className = "skill-category-controls";
+    controls.setAttribute("role", "group");
+    controls.setAttribute("aria-label", "Explore skills by category");
+    const description = reveal.querySelector(".tool-description");
+    let active = "";
+
+    const setCategory = (category) => {
+      const closing = active === category && reveal.classList.contains("opened");
+      if (closing) {
+        active = "";
+        reveal.classList.remove("opened");
+        cards.forEach((card) => card.classList.remove("skill-category-hidden"));
+        buttons.forEach((button) => button.setAttribute("aria-pressed", "false"));
+        if (description) description.textContent = "Choose a category to explore the toolkit.";
+        return;
+      }
+      active = category;
+      reveal.classList.add("opened");
+      cards.forEach((card) => {
+        const name = card.querySelector("span")?.textContent.trim() || "";
+        card.classList.toggle("skill-category-hidden", !groups[category].has(name));
+      });
+      buttons.forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.category === category)));
+      if (description) description.textContent = descriptions[category];
+    };
+
+    const buttons = Object.keys(groups).map((category) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "skill-category";
+      button.dataset.category = category;
+      button.textContent = category;
+      button.setAttribute("aria-pressed", "false");
+      button.addEventListener("click", () => setCategory(category));
+      controls.append(button);
+      return button;
+    });
+    const trigger = reveal.querySelector(".tool-trigger");
+    trigger?.insertAdjacentElement("afterend", controls);
+    if (description) description.textContent = "Choose a category to explore the toolkit.";
+  }
+
   function initialize() {
     if (initialized || !document.querySelector("#contact footer")) return false;
     initialized = true;
@@ -240,6 +302,7 @@
     updateWorkTitle();
     addUpwardReveals();
     enhanceExperience();
+    enhanceToolkitCategories();
     setupSmoothScroll();
     enableSmoothAnchors();
     return true;

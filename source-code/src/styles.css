@@ -208,3 +208,24 @@
 #experience .experience-stint-controls:before{left:48px;right:48px;top:39px;background:var(--red);box-shadow:0 0 16px #ef3c3440}
 #experience .experience-stint-controls:after{display:none}
 @media(max-width:760px){#experience .experience-stint-controls{min-width:0}#experience .experience-stint-controls:before{left:40px;right:40px}}
+
+/* Three focused ways into the toolkit. */
+#toolkit .tool-trigger{display:none}
+#toolkit .skill-category-controls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;max-width:780px;margin:30px auto 0}
+#toolkit .skill-category{min-height:84px;border:1px solid var(--line);border-top:3px solid var(--red);background:var(--surface);color:var(--text);font-family:"Barlow Condensed",Impact,sans-serif;font-size:clamp(22px,3vw,34px);letter-spacing:.02em;transition:transform 240ms cubic-bezier(.22,1,.36,1),background-color 240ms ease,color 240ms ease,box-shadow 240ms ease}
+#toolkit .skill-category:hover,#toolkit .skill-category:focus-visible,#toolkit .skill-category[aria-pressed="true"]{transform:translateY(-5px);background:var(--red);color:#fff;box-shadow:0 15px 28px #ef3c3430}
+#toolkit .tool-grid>button.skill-category-hidden{display:none}
+#toolkit .tool-description{margin-top:20px}
+#notes .empty-note{transition:transform 240ms cubic-bezier(.22,1,.36,1),background-color 240ms ease,color 240ms ease,box-shadow 240ms ease,border-color 240ms ease}
+#notes .empty-note:hover,#notes .empty-note:focus-visible{transform:translateY(-8px) rotate(-3deg);background:var(--red);border-color:var(--red)!important;color:#fff;box-shadow:0 18px 34px #ef3c3435}
+#notes .empty-note:hover svg,#notes .empty-note:focus-visible svg,#notes .empty-note:hover small,#notes .empty-note:focus-visible small{color:#fff}
+@media(max-width:620px){#toolkit .skill-category-controls{gap:8px}#toolkit .skill-category{min-height:64px;font-size:21px}}
+
+/* Smaller overlapping availability notes. */
+#story .mini-stickers{width:min(100%,520px);height:205px;margin-top:30px}
+#story .mini-stickers .sticker{width:52%;min-height:158px;padding:20px 18px;box-shadow:6px 9px 0 #0002}
+#story .mini-stickers .sticker.red{left:0;top:0}
+#story .mini-stickers .sticker.cream{left:43%;top:22px}
+#story .mini-stickers .sticker strong{font-size:clamp(22px,2.35vw,30px);line-height:1.08}
+#story .mini-stickers .sticker span{font-size:clamp(11px,1.15vw,15px);margin-top:14px}
+@media(max-width:760px){#story .mini-stickers{height:auto;width:100%;margin-top:26px}#story .mini-stickers .sticker{width:min(100%,360px);min-height:0;padding:20px}#story .mini-stickers .sticker strong{font-size:26px}}

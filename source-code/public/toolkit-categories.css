@@ -1,0 +1,12 @@
+
+/* Three focused ways into the toolkit. */
+#toolkit .tool-trigger{display:none}
+#toolkit .skill-category-controls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;max-width:780px;margin:30px auto 0}
+#toolkit .skill-category{min-height:84px;border:1px solid var(--line);border-top:3px solid var(--red);background:var(--surface);color:var(--text);font-family:"Barlow Condensed",Impact,sans-serif;font-size:clamp(22px,3vw,34px);letter-spacing:.02em;transition:transform 240ms cubic-bezier(.22,1,.36,1),background-color 240ms ease,color 240ms ease,box-shadow 240ms ease}
+#toolkit .skill-category:hover,#toolkit .skill-category:focus-visible,#toolkit .skill-category[aria-pressed="true"]{transform:translateY(-5px);background:var(--red);color:#fff;box-shadow:0 15px 28px #ef3c3430}
+#toolkit .tool-grid>button.skill-category-hidden{display:none}
+#toolkit .tool-description{margin-top:20px}
+#notes .empty-note{transition:transform 240ms cubic-bezier(.22,1,.36,1),background-color 240ms ease,color 240ms ease,box-shadow 240ms ease,border-color 240ms ease}
+#notes .empty-note:hover,#notes .empty-note:focus-visible{transform:translateY(-8px) rotate(-3deg);background:var(--red);border-color:var(--red)!important;color:#fff;box-shadow:0 18px 34px #ef3c3435}
+#notes .empty-note:hover svg,#notes .empty-note:focus-visible svg,#notes .empty-note:hover small,#notes .empty-note:focus-visible small{color:#fff}
+@media(max-width:620px){#toolkit .skill-category-controls{gap:8px}#toolkit .skill-category{min-height:64px;font-size:21px}}
