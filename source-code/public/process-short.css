@@ -1,0 +1,18 @@
+/* Short, equal-height process cards — compact like the reference. */
+#process .process-steps{align-items:stretch}
+#process .process-steps .process-card{
+  min-height:260px;
+  height:260px;
+  padding:20px 24px 22px;
+  overflow:visible;
+}
+#process .process-card>span{margin:0 0 14px}
+#process .process-card h3{min-height:2.05em;font-size:clamp(28px,2.55vw,38px);line-height:1.03}
+#process .process-card p{margin-top:12px;font-size:12px;line-height:1.45}
+@media(max-width:900px){
+  #process .process-steps .process-card{height:auto;min-height:250px}
+}
+@media(max-width:560px){
+  #process .process-steps .process-card{height:auto;min-height:0;padding:20px 16px}
+  #process .process-card h3{min-height:0}
+}
