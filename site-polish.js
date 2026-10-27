@@ -347,6 +347,29 @@
     new MutationObserver(update).observe(label, { childList: true, characterData: true, subtree: true });
   }
 
+
+  function enableDevPatelPanelLink() {
+    const isProfilePanel = (image, event) => {
+      if (!image?.src.includes("dev-portfolio-details.jpg")) return false;
+      const box = image.getBoundingClientRect();
+      if (!box.width || !box.height) return false;
+      const x = (event.clientX - box.left) / box.width;
+      const y = (event.clientY - box.top) / box.height;
+      return x >= .02 && x <= .37 && y >= .58 && y <= .99;
+    };
+    document.addEventListener("pointermove", (event) => {
+      const image = event.target.closest?.("img");
+      if (image?.src.includes("dev-portfolio-details.jpg")) image.style.cursor = isProfilePanel(image, event) ? "pointer" : "";
+    });
+    document.addEventListener("click", (event) => {
+      const image = event.target.closest?.("img");
+      if (!isProfilePanel(image, event)) return;
+      event.preventDefault();
+      event.stopPropagation();
+      window.open("https://devpatel122003.com", "_blank", "noopener,noreferrer");
+    });
+  }
+
   function initialize() {
     if (initialized || !document.querySelector("#contact footer")) return false;
     initialized = true;
@@ -357,6 +380,7 @@
     enhanceExperience();
     enhanceToolkitCategories();
     enhanceDriverPass();
+    enableDevPatelPanelLink();
     setupSmoothScroll();
     enableSmoothAnchors();
     return true;
