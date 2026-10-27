@@ -1,0 +1,8 @@
+
+/* Compact process cards with full, even copy. */
+#process .process-steps{align-items:stretch}
+#process .process-steps .process-card{height:auto;min-height:300px;aspect-ratio:auto;overflow:visible;padding:24px 28px 28px}
+#process .process-card>span{margin-bottom:22px}
+#process .process-card p{margin-top:16px;overflow:visible}
+@media(max-width:900px){#process .process-steps .process-card{min-height:300px}}
+@media(max-width:560px){#process .process-steps .process-card{min-height:0;padding:20px 16px}}
