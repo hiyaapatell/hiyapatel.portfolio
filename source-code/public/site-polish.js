@@ -121,10 +121,39 @@
     });
   }
 
+  function rotateCuriosity() {
+    const word = document.querySelector(".hero h1 em");
+    if (!word) return;
+    const words = [
+      ["curiosity", "en"], ["જિજ્ઞાસા", "gu"], ["curiosità", "it"],
+      ["जिज्ञासा", "hi"], ["curiosidad", "es"], ["कुतूहल", "mr"],
+      ["curiosité", "fr"], ["好奇心", "zh"]
+    ];
+    let index = 0;
+    word.classList.add("rotating-curiosity");
+    word.closest("h1").setAttribute("aria-label", "Designed for people. Driven by curiosity.");
+    word.setAttribute("aria-hidden", "true");
+    const render = () => {
+      word.textContent = words[index][0] + ".";
+      word.lang = words[index][1];
+      word.classList.remove("word-changing");
+    };
+    render();
+    window.setInterval(() => {
+      if (document.hidden) return;
+      word.classList.add("word-changing");
+      window.setTimeout(() => {
+        index = (index + 1) % words.length;
+        render();
+      }, reducedMotion.matches ? 0 : 200);
+    }, 2600);
+  }
+
   function initialize() {
     if (initialized || !document.querySelector("#contact footer")) return false;
     initialized = true;
     refineFooter();
+    rotateCuriosity();
     updateWorkTitle();
     addUpwardReveals();
     setupSmoothScroll();
