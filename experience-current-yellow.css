@@ -23,3 +23,7 @@
 .project-card.angle .card-bottom h3{font-size:26px!important;line-height:1.05!important;white-space:nowrap!important;letter-spacing:-.025em!important}
 .project-card.angle .card-bottom{padding:17px 16px!important}
 .project-card.angle .card-bottom p{font-size:10px!important;margin:0 0 10px!important}
+
+/* Rounded icon-card border treatment. */
+#toolkit .tool-grid>button,#toolkit .tool-grid>button.selected{border:2px solid var(--line)!important;border-radius:28px!important}
+#toolkit .tool-grid>button.selected{border-color:var(--red)!important}
