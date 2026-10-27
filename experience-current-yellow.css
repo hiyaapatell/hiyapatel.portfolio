@@ -27,3 +27,6 @@
 /* Rounded icon-card border treatment. */
 #toolkit .tool-grid>button,#toolkit .tool-grid>button.selected{border:2px solid var(--line)!important;border-radius:28px!important}
 #toolkit .tool-grid>button.selected{border-color:var(--red)!important}
+
+/* Project 06 lifts to the front exactly like every other project card. */
+.project-card.angle.lifted,.project-card.angle:focus-visible{transform:translateY(-27px) rotate(0deg) scale(1.1)!important;z-index:10!important;box-shadow:0 30px 70px #000b!important}
