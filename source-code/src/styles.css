@@ -123,3 +123,11 @@
 .case-dialog .tags span:hover{transform:translateY(-3px);border-color:var(--red);background:var(--surface);box-shadow:0 8px 20px rgba(239,60,52,.13)}
 }
 @media(prefers-reduced-motion:reduce){.case-story article,.case-story article>span,.case-dialog .tags span{transition:none}.case-story article:hover,.case-dialog .tags span:hover{transform:none}}
+
+/* Challenge-card hover language for the process steps. */
+.process-steps .process-card{position:relative;overflow:hidden;min-height:340px;padding:34px 38px 42px;border:1px solid #f4ecdf38;border-top:5px solid #ef3c34;border-radius:0 0 18px 18px;background:#111816df;box-shadow:0 12px 28px #0003;transition:transform .32s cubic-bezier(.22,1,.36,1),background .32s ease,box-shadow .32s ease,border-color .32s ease,border-radius .32s ease;outline-offset:6px}
+.process-steps .process-card:hover,.process-steps .process-card:focus-visible{transform:translateY(-12px);border-color:#ff655e88;border-top-color:#ff5a50;border-radius:22px;background:linear-gradient(145deg,#34201f,#212523);box-shadow:0 22px 44px #0008}
+.process-card h3,.process-card>span,.process-card p{transition:color .28s ease}
+.process-card:hover h3,.process-card:focus-visible h3,.process-card:hover>span,.process-card:focus-visible>span{color:#ff665e}
+.process-card:hover p,.process-card:focus-visible p{color:#f4ecdf}
+@media(max-width:760px){.process-steps .process-card{min-height:0;padding:25px 18px 29px}}
