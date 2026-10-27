@@ -242,43 +242,44 @@
     reveal.dataset.categoriesReady = "true";
 
     const groups = {
-      DESIGN: new Set(["Figma", "Adobe CC", "Canva", "Framer"]),
-      RESEARCH: new Set(["FigJam", "Notion"]),
-      TOOLKIT: new Set(["HTML / CSS", "Python"])
-    };
-    const descriptions = {
-      DESIGN: "Design tools for visual systems, interface craft and prototypes.",
-      RESEARCH: "Research tools for synthesis, workshops and clearer decisions.",
-      TOOLKIT: "Technical tools that bring ideas into the browser."
+      DESIGN: ["Product Design", "UI/UX Design", "Interaction Design", "Visual Design", "Responsive Design", "Accessibility", "Information Architecture", "User Flows", "Wireframing", "Prototyping", "Design Systems"],
+      RESEARCH: ["User Research", "User Interviews", "Usability Testing", "Competitive Analysis", "Journey Mapping", "Affinity Mapping", "Heuristic Evaluation", "UX Strategy"]
     };
     const controls = document.createElement("div");
     controls.className = "skill-category-controls";
     controls.setAttribute("role", "group");
     controls.setAttribute("aria-label", "Explore skills by category");
+    const list = document.createElement("div");
+    list.className = "skill-list";
+    list.setAttribute("aria-live", "polite");
+    grid.insertAdjacentElement("beforebegin", list);
     const description = reveal.querySelector(".tool-description");
     let active = "";
 
+    const renderList = (category) => {
+      list.replaceChildren(...groups[category].map((skill) => {
+        const item = document.createElement("span");
+        item.textContent = skill;
+        return item;
+      }));
+    };
     const setCategory = (category) => {
-      const closing = active === category && reveal.classList.contains("opened");
-      if (closing) {
-        active = "";
-        reveal.classList.remove("opened");
-        cards.forEach((card) => card.classList.remove("skill-category-hidden"));
-        buttons.forEach((button) => button.setAttribute("aria-pressed", "false"));
-        if (description) description.textContent = "Choose a category to explore the toolkit.";
-        return;
-      }
       active = category;
       reveal.classList.add("opened");
-      cards.forEach((card) => {
-        const name = card.querySelector("span")?.textContent.trim() || "";
-        card.classList.toggle("skill-category-hidden", !groups[category].has(name));
-      });
+      const showTools = category === "TOOLKIT";
+      list.hidden = showTools;
+      grid.hidden = !showTools;
+      if (showTools) {
+        cards.forEach((card) => card.classList.remove("skill-category-hidden"));
+        if (description) description.textContent = "Tools I use to turn ideas into thoughtful, usable experiences.";
+      } else {
+        renderList(category);
+        if (description) description.textContent = category === "DESIGN" ? "Design skills from concept to system." : "Research methods that keep the work grounded in people.";
+      }
       buttons.forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.category === category)));
-      if (description) description.textContent = descriptions[category];
     };
 
-    const buttons = Object.keys(groups).map((category) => {
+    const buttons = ["DESIGN", "RESEARCH", "TOOLKIT"].map((category) => {
       const button = document.createElement("button");
       button.type = "button";
       button.className = "skill-category";
@@ -289,11 +290,9 @@
       controls.append(button);
       return button;
     });
-    const trigger = reveal.querySelector(".tool-trigger");
-    trigger?.insertAdjacentElement("afterend", controls);
-    if (description) description.textContent = "Choose a category to explore the toolkit.";
+    reveal.querySelector(".tool-trigger")?.insertAdjacentElement("afterend", controls);
+    setCategory("DESIGN");
   }
-
   function initialize() {
     if (initialized || !document.querySelector("#contact footer")) return false;
     initialized = true;

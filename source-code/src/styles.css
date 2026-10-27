@@ -249,3 +249,11 @@
   #process .process-steps .process-card{height:auto;min-height:0;padding:20px 16px}
   #process .process-card h3{min-height:0}
 }
+
+/* Skill category content: clear lists for Design and Research, existing icons for Toolkit. */
+#toolkit .skill-list{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;max-width:920px;margin:38px auto 0}
+#toolkit .skill-list span{padding:12px 16px;border:1px solid var(--line);border-left:3px solid var(--red);background:var(--surface);font-size:12px;line-height:1.2;transition:transform 180ms ease,background-color 180ms ease}
+#toolkit .skill-list span:hover{transform:translateY(-3px);background:#3b1818;color:#fff}
+#toolkit .tool-grid[hidden],#toolkit .skill-list[hidden]{display:none!important}
+#toolkit .opened .tool-grid{max-height:260px;opacity:1;margin:38px 0 18px;transform:none;padding:8px}
+@media(max-width:620px){#toolkit .skill-list{gap:8px;margin-top:28px}#toolkit .skill-list span{font-size:11px;padding:10px 12px}}
