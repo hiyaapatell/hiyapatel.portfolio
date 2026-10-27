@@ -293,6 +293,40 @@
     reveal.querySelector(".tool-trigger")?.insertAdjacentElement("afterend", controls);
     setCategory("DESIGN");
   }
+  function enhanceDriverPass() {
+    const pass = document.querySelector("#about .driver-pass");
+    if (!pass || pass.dataset.flipReady) return;
+    pass.dataset.flipReady = "true";
+    const inner = document.createElement("div");
+    inner.className = "driver-pass-inner";
+    const front = document.createElement("div");
+    front.className = "driver-pass-face driver-pass-front";
+    while (pass.firstChild) front.append(pass.firstChild);
+    const back = document.createElement("div");
+    back.className = "driver-pass-face driver-pass-back";
+    back.innerHTML = '<span class="pass-back-label">PADDOCK ACCESS / 2026</span><span class="pass-back-number">HP</span><strong>DESIGNER’S BRIEF</strong><p>Question first.<br/>Make it clear.<br/>Keep improving.</p><span class="pass-back-tip">TAP TO RETURN ↺</span>';
+    inner.append(front, back);
+    pass.append(inner);
+    pass.setAttribute("role", "button");
+    pass.tabIndex = 0;
+    pass.setAttribute("aria-label", "Flip Hiya Patel paddock pass");
+    const flip = () => {
+      const flipped = pass.classList.toggle("is-flipped");
+      pass.setAttribute("aria-pressed", String(flipped));
+    };
+    pass.addEventListener("click", (event) => {
+      if (pass.classList.contains("dragging")) return;
+      event.preventDefault();
+      flip();
+    });
+    pass.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        flip();
+      }
+    });
+  }
+
   function initialize() {
     if (initialized || !document.querySelector("#contact footer")) return false;
     initialized = true;
@@ -302,6 +336,7 @@
     addUpwardReveals();
     enhanceExperience();
     enhanceToolkitCategories();
+    enhanceDriverPass();
     setupSmoothScroll();
     enableSmoothAnchors();
     return true;
