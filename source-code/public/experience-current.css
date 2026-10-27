@@ -1,0 +1,38 @@
+/* Current roles are visibly live on the experience race line. */
+#experience .experience-stint-controls .experience-stint:nth-child(1),
+#experience .experience-stint-controls .experience-stint:nth-child(2){
+  border-color:var(--red);
+  color:#fff;
+  background:#3a1d1c;
+  box-shadow:0 0 0 6px var(--surface),0 0 20px #ef3c3440;
+}
+#experience .experience-stint-controls .experience-stint:nth-child(1)::after,
+#experience .experience-stint-controls .experience-stint:nth-child(2)::after{
+  content:"CURRENT";
+  position:absolute;
+  left:50%;
+  top:-22px;
+  transform:translateX(-50%);
+  color:var(--red);
+  font-family:Inter,Arial,sans-serif;
+  font-size:7px;
+  font-weight:700;
+  letter-spacing:.12em;
+  white-space:nowrap;
+}
+#experience .experience-stint-controls .experience-stint:nth-child(1)::before,
+#experience .experience-stint-controls .experience-stint:nth-child(2)::before{
+  content:"";
+  position:absolute;
+  width:7px;
+  height:7px;
+  top:5px;
+  right:6px;
+  border-radius:50%;
+  background:#f4d35e;
+  box-shadow:0 0 0 3px #3a1d1c;
+}
+@media(max-width:560px){
+  #experience .experience-stint-controls .experience-stint:nth-child(1)::after,
+  #experience .experience-stint-controls .experience-stint:nth-child(2)::after{font-size:6px;top:-18px}
+}
