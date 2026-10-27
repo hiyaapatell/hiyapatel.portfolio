@@ -5,3 +5,14 @@
 /* Toolkit icon cards match the squared category panels. */
 #toolkit .tool-grid>button,#toolkit .tool-grid>button.selected{border-radius:0!important;border:1px solid var(--line)!important;border-top:4px solid var(--red)!important}
 #toolkit .tool-grid>button.selected{border-color:var(--red)!important}
+
+/* Project 06 uses the same card system as HiddenBoston (03); its artwork remains unique. */
+.project-card.angle{background:#f4d84b!important;color:#1d1d1d}
+.project-card.angle .card-top{height:42px;padding:9px 15px;border-bottom:1px solid #0002}
+.project-card.angle .project-image{height:145px;background:#eee5d6}
+.project-card.angle .project-image>img{width:100%;height:100%;object-fit:cover;object-position:center 7%}
+.project-card.angle .card-bottom{padding:17px 16px}
+.project-card.angle .card-bottom>span{font-size:8px;font-weight:600;text-transform:uppercase;letter-spacing:.7px}
+.project-card.angle .card-bottom h3{font-size:34px;margin:7px 0}
+.project-card.angle .card-bottom p{font-size:10px;margin:0 0 10px}
+.project-card.angle .card-bottom>div{padding-top:9px;border-top:1px solid #0003;font-size:10px}
