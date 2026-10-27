@@ -16,3 +16,10 @@
 .project-card.angle .card-bottom h3{font-size:34px;margin:7px 0}
 .project-card.angle .card-bottom p{font-size:10px;margin:0 0 10px}
 .project-card.angle .card-bottom>div{padding-top:9px;border-top:1px solid #0003;font-size:10px}
+
+/* Keep project 06 within the same physical deck rhythm as projects 01–05. */
+.project-deck{overflow:visible}
+.project-card.angle{width:245px!important;height:359px!important;top:65px!important;z-index:2!important}
+.project-card.angle .card-bottom h3{font-size:26px!important;line-height:1.05!important;white-space:nowrap!important;letter-spacing:-.025em!important}
+.project-card.angle .card-bottom{padding:17px 16px!important}
+.project-card.angle .card-bottom p{font-size:10px!important;margin:0 0 10px!important}
