@@ -146,7 +146,7 @@
         index = (index + 1) % words.length;
         render();
       }, reducedMotion.matches ? 0 : 200);
-    }, 2600);
+    }, 2000);
   }
 
   function initialize() {
