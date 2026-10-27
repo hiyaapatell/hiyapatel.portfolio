@@ -1,0 +1,9 @@
+
+/* Overlapping availability cards, arranged like a small pinboard. */
+#story .mini-stickers{position:relative;display:block;width:min(100%,740px);height:285px;margin-top:42px}
+#story .mini-stickers .sticker{position:absolute;box-sizing:border-box;width:56%;min-height:220px;margin:0;padding:30px 32px;box-shadow:8px 12px 0 #0002}
+#story .mini-stickers .sticker.red{z-index:1;left:0;top:0;transform:rotate(-5deg)}
+#story .mini-stickers .sticker.cream{z-index:2;left:46%;top:31px;transform:rotate(4deg)}
+#story .mini-stickers .sticker strong{font-size:clamp(28px,3vw,42px);line-height:1.05;letter-spacing:-.02em}
+#story .mini-stickers .sticker span{font-size:clamp(13px,1.35vw,18px);margin-top:22px}
+@media(max-width:760px){#story .mini-stickers{display:flex;flex-direction:column;height:auto;gap:18px;width:100%;margin-top:32px}#story .mini-stickers .sticker{position:relative;left:auto!important;top:auto!important;width:min(100%,440px);min-height:0;padding:24px;align-self:center}#story .mini-stickers .sticker.cream{margin-top:0;transform:rotate(3deg)}#story .mini-stickers .sticker.red{transform:rotate(-3deg)}#story .mini-stickers .sticker strong{font-size:30px}#story .mini-stickers .sticker span{font-size:14px;margin-top:14px}}
