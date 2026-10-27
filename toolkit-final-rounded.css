@@ -1,0 +1,11 @@
+/* Final toolkit icon shape override. */
+#toolkit .tool-grid>button,
+#toolkit .tool-grid>button.selected{
+  border-radius:28px!important;
+  border:2px solid #ffffff35!important;
+  border-top:2px solid #ffffff35!important;
+}
+#toolkit .tool-grid>button.selected{
+  border-color:var(--red)!important;
+  border-top-color:var(--red)!important;
+}
