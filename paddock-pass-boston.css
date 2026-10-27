@@ -1,0 +1,10 @@
+/* Restore the original paddock-pass front; the reverse is a Boston skyline. */
+#about .driver-pass .driver-pass-front{position:relative;inset:auto;padding:0;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+#about .driver-pass .driver-pass-back{
+  padding:0;
+  background:#111 url("./paddock-pass-boston.jpg") center/cover no-repeat;
+  transform:rotateY(180deg);
+  box-shadow:inset 0 0 0 1px #ffffff22;
+}
+#about .driver-pass .driver-pass-back>*,
+#about .driver-pass .driver-pass-back::after{display:none}
