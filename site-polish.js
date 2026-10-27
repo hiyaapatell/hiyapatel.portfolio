@@ -149,6 +149,89 @@
     }, 2000);
   }
 
+
+  function enhanceExperience() {
+    const section = document.querySelector("#experience");
+    const list = section?.querySelector(".experience-list");
+    const entries = list ? [...list.querySelectorAll(".experience-entry")] : [];
+    if (!section || !list || !entries.length || section.dataset.stintsReady) return;
+    section.dataset.stintsReady = "true";
+
+    const console = document.createElement("div");
+    console.className = "experience-console";
+    const copyBlock = document.createElement("div");
+    copyBlock.className = "experience-console-copy";
+    const label = copy("CAREER STINTS", "experience-console-label");
+    const counter = copy("", "experience-console-counter");
+    const hint = copy("Choose a role, or follow the lineup as you scroll.", "experience-console-hint");
+    copyBlock.append(label, counter, hint);
+
+    const controls = document.createElement("div");
+    controls.className = "experience-stint-controls";
+    controls.setAttribute("role", "group");
+    controls.setAttribute("aria-label", "Choose a work experience role");
+    const buttons = entries.map((entry, index) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "experience-stint";
+      button.textContent = String(index + 1).padStart(2, "0");
+      button.setAttribute("aria-label", `Show experience ${index + 1}: ${entry.querySelector("h3")?.textContent || "role"}`);
+      controls.append(button);
+      return button;
+    });
+    console.append(copyBlock, controls);
+    section.querySelector(".split-heading")?.insertAdjacentElement("afterend", console);
+
+    let activeIndex = 0;
+    const select = (index, scrollIntoView = false) => {
+      const next = Math.max(0, Math.min(entries.length - 1, index));
+      activeIndex = next;
+      counter.textContent = `STINT ${String(next + 1).padStart(2, "0")} / ${String(entries.length).padStart(2, "0")}`;
+      entries.forEach((entry, entryIndex) => {
+        const selected = entryIndex === next;
+        entry.classList.toggle("experience-active", selected);
+        entry.setAttribute("aria-current", selected ? "step" : "false");
+      });
+      buttons.forEach((button, buttonIndex) => {
+        const selected = buttonIndex === next;
+        button.classList.toggle("selected", selected);
+        button.setAttribute("aria-pressed", String(selected));
+      });
+      if (scrollIntoView) entries[next].scrollIntoView({ behavior: reducedMotion.matches ? "auto" : "smooth", block: "center" });
+    };
+
+    entries.forEach((entry, index) => {
+      entry.dataset.experienceIndex = String(index);
+      entry.tabIndex = 0;
+      entry.addEventListener("mouseenter", () => select(index));
+      entry.addEventListener("focusin", () => select(index));
+      entry.addEventListener("click", () => select(index));
+      entry.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          select(index);
+          return;
+        }
+        const direction = event.key === "ArrowDown" || event.key === "ArrowRight" ? 1 : event.key === "ArrowUp" || event.key === "ArrowLeft" ? -1 : 0;
+        if (!direction) return;
+        event.preventDefault();
+        const next = (index + direction + entries.length) % entries.length;
+        entries[next].focus({ preventScroll: true });
+        select(next);
+      });
+    });
+    buttons.forEach((button, index) => button.addEventListener("click", () => select(index, true)));
+
+    if (!reducedMotion.matches && "IntersectionObserver" in window) {
+      const stintObserver = new IntersectionObserver((observed) => {
+        const visible = observed.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visible) select(Number(visible.target.dataset.experienceIndex));
+      }, { rootMargin: "-42% 0px -42% 0px", threshold: 0 });
+      entries.forEach((entry) => stintObserver.observe(entry));
+    }
+    select(activeIndex);
+  }
+
   function initialize() {
     if (initialized || !document.querySelector("#contact footer")) return false;
     initialized = true;
@@ -156,6 +239,7 @@
     rotateCuriosity();
     updateWorkTitle();
     addUpwardReveals();
+    enhanceExperience();
     setupSmoothScroll();
     enableSmoothAnchors();
     return true;

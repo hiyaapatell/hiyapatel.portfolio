@@ -1,0 +1,19 @@
+
+/* Interactive career stints: uses the portfolio's race-control language. */
+#experience .experience-console{display:flex;align-items:center;justify-content:space-between;gap:26px;margin:38px 0 16px;padding:18px 20px;border:1px solid var(--line);border-left:4px solid var(--red);background:color-mix(in srgb,var(--surface) 88%,var(--red));box-shadow:0 15px 35px #00000012}
+#experience .experience-console-copy{display:grid;gap:4px}
+#experience .experience-console-label{color:var(--red);font-size:9px;font-weight:700;letter-spacing:.16em}
+#experience .experience-console-counter{font-family:"Barlow Condensed",Impact,sans-serif;font-size:26px;font-weight:700;letter-spacing:.04em}
+#experience .experience-console-hint{color:var(--muted);font-size:11px}
+#experience .experience-stint-controls{display:flex;gap:7px;overflow-x:auto;padding:3px}
+#experience .experience-stint{width:35px;height:35px;flex:0 0 35px;border:1px solid var(--line);border-radius:50%;color:var(--muted);font-family:"Barlow Condensed",Impact,sans-serif;font-size:14px;transition:transform 240ms cubic-bezier(.22,1,.36,1),background-color 240ms ease,border-color 240ms ease,color 240ms ease,box-shadow 240ms ease}
+#experience .experience-stint:hover,#experience .experience-stint:focus-visible{transform:translateY(-3px);border-color:var(--red);color:var(--text)}
+#experience .experience-stint.selected{background:var(--red);border-color:var(--red);color:#fff;box-shadow:0 7px 16px #ef3c3440}
+#experience .experience-list{margin-top:14px}
+#experience .experience-entry{position:relative;isolation:isolate;cursor:pointer;margin:0 -18px;padding:32px 18px;border:1px solid transparent;border-top-color:var(--line);transition:transform 360ms cubic-bezier(.22,1,.36,1),background-color 300ms ease,border-color 300ms ease,box-shadow 300ms ease}
+#experience .experience-entry:before{content:"";position:absolute;z-index:-1;inset:0 auto 0 0;width:4px;background:var(--red);transform:scaleY(.18);transform-origin:center;transition:transform 360ms cubic-bezier(.22,1,.36,1)}
+#experience .experience-entry:hover,#experience .experience-entry:focus-visible,#experience .experience-entry.experience-active{transform:translateX(10px);background:color-mix(in srgb,var(--surface) 86%,var(--red));border-color:color-mix(in srgb,var(--line) 48%,var(--red));box-shadow:0 16px 30px #00000016}
+#experience .experience-entry:hover:before,#experience .experience-entry:focus-visible:before,#experience .experience-entry.experience-active:before{transform:scaleY(1)}
+#experience .experience-entry.experience-active .experience-number,#experience .experience-entry:hover .experience-details h4,#experience .experience-entry:focus-visible .experience-details h4{color:var(--red)}
+@media(max-width:700px){#experience .experience-console{align-items:flex-start;flex-direction:column;gap:15px;padding:16px}#experience .experience-stint-controls{width:100%}#experience .experience-entry{margin:0;padding:26px 14px}#experience .experience-entry:hover,#experience .experience-entry:focus-visible,#experience .experience-entry.experience-active{transform:none}}
+@media(prefers-reduced-motion:reduce){#experience .experience-stint,#experience .experience-entry,#experience .experience-entry:before{transition:none}#experience .experience-stint:hover,#experience .experience-stint:focus-visible,#experience .experience-entry:hover,#experience .experience-entry:focus-visible,#experience .experience-entry.experience-active{transform:none}}
