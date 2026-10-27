@@ -220,7 +220,11 @@
         select(next);
       });
     });
-    buttons.forEach((button, index) => button.addEventListener("click", () => select(index, true)));
+    buttons.forEach((button, index) => {
+      button.addEventListener("mouseenter", () => select(index));
+      button.addEventListener("focus", () => select(index));
+      button.addEventListener("click", () => select(index, true));
+    });
 
     if (!reducedMotion.matches && "IntersectionObserver" in window) {
       const stintObserver = new IntersectionObserver((observed) => {
