@@ -1,0 +1,19 @@
+/* Dock starts as a small pill (current page + three dots) and expands on hover. */
+@media (min-width:701px) and (hover:hover) and (pointer:fine){
+  .dock{transition:padding .45s cubic-bezier(.22,1,.36,1),box-shadow .45s ease}
+
+  /* Three dots, shown while collapsed. */
+  .dock::after{content:"\2022\2022\2022";display:block;max-width:64px;padding:0 16px 0 12px;overflow:hidden;white-space:nowrap;font-size:17px;line-height:1;letter-spacing:.14em;color:#ece5db;opacity:1;cursor:default;transition:max-width .45s cubic-bezier(.22,1,.36,1),padding .45s cubic-bezier(.22,1,.36,1),opacity .2s ease}
+
+  /* Every link except the current one folds away. */
+  .dock>a:not(.active){max-width:0;margin-left:-3px;padding-left:0;padding-right:0;overflow:hidden;opacity:0;pointer-events:none;transition:max-width .5s cubic-bezier(.22,1,.36,1),margin .5s cubic-bezier(.22,1,.36,1),padding .5s cubic-bezier(.22,1,.36,1),opacity .3s ease,background .25s,color .25s}
+
+  /* Hover (or keyboard focus) opens the whole dock. */
+  .dock:hover>a:not(.active),.dock:focus-within>a:not(.active){max-width:170px;margin-left:0;padding-left:18px;padding-right:18px;opacity:1;pointer-events:auto;transition-delay:0s,0s,0s,.1s,0s,0s}
+  .dock:hover>a.nav-contact:not(.active),.dock:focus-within>a.nav-contact:not(.active){margin-left:6px}
+  .dock:hover::after,.dock:focus-within::after{max-width:0;padding:0;opacity:0}
+}
+
+@media (min-width:701px) and (hover:hover) and (pointer:fine) and (prefers-reduced-motion:reduce){
+  .dock,.dock::after,.dock>a:not(.active){transition:none}
+}
