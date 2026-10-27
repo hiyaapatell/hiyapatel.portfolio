@@ -1,16 +1,7 @@
-/* Current roles: a full yellow race marker, without a separate dot. */
-#experience .experience-stint-controls .experience-stint:nth-child(1),
-#experience .experience-stint-controls .experience-stint:nth-child(2){
-  background:var(--yellow);
-  border-color:var(--yellow);
-  color:#161616;
-  box-shadow:0 0 0 6px var(--surface),0 0 22px color-mix(in srgb,var(--yellow) 45%,transparent);
-}
-#experience .experience-stint-controls .experience-stint:nth-child(1)::before,
-#experience .experience-stint-controls .experience-stint:nth-child(2)::before{display:none}
-#experience .experience-stint-controls .experience-stint:nth-child(1)::after,
-#experience .experience-stint-controls .experience-stint:nth-child(2)::after{color:var(--yellow)}
-
-/* Both current roles use exactly the same marker. */
-#experience .experience-stint-controls > button.experience-stint:nth-of-type(1),
-#experience .experience-stint-controls > button.experience-stint:nth-of-type(2){background:var(--yellow)!important;border-color:var(--yellow)!important;color:#161616!important;box-shadow:0 0 0 6px var(--surface),0 0 22px color-mix(in srgb,var(--yellow) 45%,transparent)!important}
+/* Permanent active markers for Hiya's two current roles. */
+#experience .experience-stint-controls button.experience-stint:nth-of-type(1),
+#experience .experience-stint-controls button.experience-stint:nth-of-type(2){background:var(--yellow)!important;border-color:var(--yellow)!important;color:#161616!important;box-shadow:0 0 0 6px var(--surface),0 0 22px color-mix(in srgb,var(--yellow) 45%,transparent)!important}
+#experience .experience-stint-controls button.experience-stint:nth-of-type(1)::before,#experience .experience-stint-controls button.experience-stint:nth-of-type(2)::before{display:none!important}
+/* Toolkit icon cards match the squared category panels. */
+#toolkit .tool-grid>button,#toolkit .tool-grid>button.selected{border-radius:0!important;border:1px solid var(--line)!important;border-top:4px solid var(--red)!important}
+#toolkit .tool-grid>button.selected{border-color:var(--red)!important}
