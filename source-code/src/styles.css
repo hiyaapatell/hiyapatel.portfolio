@@ -162,3 +162,18 @@
 #experience .experience-entry.experience-active:not(:hover):not(:focus-visible){transform:none;background:transparent;border-color:transparent;border-top-color:var(--line);box-shadow:none}
 #experience .experience-entry.experience-active:not(:hover):not(:focus-visible):before{transform:scaleY(.18)}
 #experience .experience-stint.selected:not(:hover):not(:focus-visible){background:transparent;border-color:var(--line);color:var(--muted);box-shadow:none}
+
+/* A compact Formula 1 inspired career track. */
+#experience .experience-console{display:grid;grid-template-columns:minmax(170px,.42fr) minmax(0,1fr);align-items:end;gap:34px;margin:38px 0 14px;padding:18px 0 28px;border:0;border-bottom:1px solid var(--line);border-left:0;background:transparent;box-shadow:none}
+#experience .experience-console-copy{gap:3px}
+#experience .experience-console-label{letter-spacing:.2em}
+#experience .experience-console-counter{font-size:22px}
+#experience .experience-console-hint{font-size:10px;line-height:1.45}
+#experience .experience-stint-controls{position:relative;display:flex;justify-content:space-between;gap:0;overflow:visible;padding:16px 14px 0}
+#experience .experience-stint-controls:before{content:"";position:absolute;left:20px;right:20px;top:39px;height:4px;border-radius:999px;background:linear-gradient(90deg,var(--red) 0%,var(--red) 72%,color-mix(in srgb,var(--red) 42%,var(--line)) 72%,color-mix(in srgb,var(--red) 42%,var(--line)) 100%);box-shadow:0 0 16px #ef3c3440}
+#experience .experience-stint-controls:after{content:"";position:absolute;right:7px;top:28px;width:20px;height:20px;border-radius:3px;background:conic-gradient(#f4ecdf 25%,#181818 0 50%,#f4ecdf 0 75%,#181818 0);opacity:.8}
+#experience .experience-stint{position:relative;z-index:1;width:48px;height:48px;flex:0 0 48px;border:2px solid var(--line);border-radius:50%;background:var(--surface);color:var(--muted);font-size:15px;box-shadow:0 0 0 6px var(--surface)}
+#experience .experience-stint:hover,#experience .experience-stint:focus-visible{transform:translateY(-5px) scale(1.06);border-color:var(--red);background:var(--red);color:#fff;box-shadow:0 7px 18px #ef3c3445,0 0 0 6px var(--surface)}
+#experience .experience-stint.selected{background:var(--surface);border-color:var(--line);color:var(--muted);box-shadow:0 0 0 6px var(--surface)}
+#experience .experience-stint.selected:hover,#experience .experience-stint.selected:focus-visible{background:var(--red);border-color:var(--red);color:#fff}
+@media(max-width:760px){#experience .experience-console{display:block;padding-bottom:22px}#experience .experience-console-copy{margin-bottom:16px}#experience .experience-stint-controls{min-width:520px}#experience .experience-console{overflow:hidden}#experience .experience-stint-controls{overflow:visible}#experience .experience-stint{width:42px;height:42px;flex-basis:42px;font-size:13px}}
