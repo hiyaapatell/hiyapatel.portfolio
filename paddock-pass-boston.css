@@ -25,3 +25,12 @@
 #about .moodboard .small-note:hover,#about .moodboard .small-note:focus-visible{transform:rotate(-1deg) translateY(-12px);filter:drop-shadow(0 20px 16px #0008)}
 #about .moodboard .location-note:hover,#about .moodboard .location-note:focus-visible{transform:rotate(-1deg) translateY(-12px);filter:drop-shadow(0 20px 16px #0008)}
 @media(prefers-reduced-motion:reduce){#about .moodboard .about-note,#about .moodboard .photo-note,#about .moodboard .small-note,#about .moodboard .location-note{transition:none}#about .moodboard .about-note:hover,#about .moodboard .photo-note:hover,#about .moodboard .small-note:hover,#about .moodboard .location-note:hover{transform:none}}
+
+/* Compact availability notes. */
+#story .mini-stickers{width:min(100%,420px);height:166px;margin-top:24px}
+#story .mini-stickers .sticker{width:52%;min-height:126px;padding:15px 14px;box-shadow:5px 7px 0 #0002}
+#story .mini-stickers .sticker.red{left:0;top:0}
+#story .mini-stickers .sticker.cream{left:43%;top:18px}
+#story .mini-stickers .sticker strong{font-size:clamp(18px,2vw,25px);line-height:1.08}
+#story .mini-stickers .sticker span{font-size:clamp(10px,1vw,13px);margin-top:10px}
+@media(max-width:760px){#story .mini-stickers{height:auto;width:100%}#story .mini-stickers .sticker{width:min(100%,300px);padding:16px}#story .mini-stickers .sticker strong{font-size:22px}}
