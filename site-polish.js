@@ -291,7 +291,9 @@
       return button;
     });
     reveal.querySelector(".tool-trigger")?.insertAdjacentElement("afterend", controls);
-    setCategory("DESIGN");
+    list.hidden = true;
+    grid.hidden = true;
+    if (description) description.textContent = "Choose a category to explore my skills.";
   }
   function enhanceDriverPass() {
     const pass = document.querySelector("#about .driver-pass");
@@ -327,6 +329,20 @@
     });
   }
 
+  function enhanceEducationLocations() {
+    const journey = document.querySelector("#journey");
+    const label = journey?.querySelector(".stop-navigation span");
+    if (!journey || !label || journey.dataset.locationReady) return;
+    journey.dataset.locationReady = "true";
+    const locations = { MIT: "BOSTON, USA", MassArt: "BOSTON, USA", Nirma: "AHMEDABAD, IN" };
+    const update = () => {
+      const school = Object.keys(locations).find((name) => label.textContent.trim().startsWith(name));
+      if (school) label.textContent = school + " | " + locations[school];
+    };
+    update();
+    new MutationObserver(update).observe(label, { childList: true, characterData: true, subtree: true });
+  }
+
   function initialize() {
     if (initialized || !document.querySelector("#contact footer")) return false;
     initialized = true;
@@ -337,6 +353,7 @@
     enhanceExperience();
     enhanceToolkitCategories();
     enhanceDriverPass();
+    enhanceEducationLocations();
     setupSmoothScroll();
     enableSmoothAnchors();
     return true;

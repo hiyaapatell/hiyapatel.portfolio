@@ -1,0 +1,11 @@
+/* Restore simple affiliations; show locations in the active education panel instead. */
+#story .affiliations strong{display:block;white-space:normal}
+#story .affiliations strong::after{content:"";display:none}
+#journey .stop-navigation span{font-size:11px;letter-spacing:1.6px;color:var(--cream);text-align:center}
+/* Click-to-reveal skill panels with a square F1-panel language. */
+#toolkit .skill-category,#toolkit .skill-list span,#toolkit .tool-grid>button{border-radius:0}
+#toolkit .skill-category{min-height:84px}
+#toolkit .skill-list{margin-top:38px}
+#toolkit .skill-list span{border-left:4px solid var(--red)}
+#toolkit .tool-grid>button{border:1px solid var(--line);border-top:3px solid var(--red)}
+#toolkit .tool-grid>button.selected{border-color:var(--red);border-top-color:var(--red)}
