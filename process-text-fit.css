@@ -1,0 +1,7 @@
+
+/* Keep every process description visible, with one even card height. */
+#process .process-steps{align-items:stretch}
+#process .process-steps .process-card{height:auto;min-height:470px;aspect-ratio:auto;overflow:visible;padding:28px 30px 34px}
+#process .process-card p{overflow:visible}
+@media(max-width:900px){#process .process-steps .process-card{min-height:370px}}
+@media(max-width:560px){#process .process-steps .process-card{min-height:0}}
