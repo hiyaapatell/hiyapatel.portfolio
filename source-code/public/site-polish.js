@@ -84,57 +84,11 @@
   }
 
   function setupSmoothScroll() {
-    const supportsFinePointer = window.matchMedia("(pointer: fine)").matches;
-    if (reducedMotion.matches || !supportsFinePointer || window.__hiyaSmoothScrollTo) return;
-
-    const root = document.documentElement;
-    root.classList.add("smooth-driver");
-    let current = window.scrollY;
-    let target = current;
-    let frame;
-
-    const maxScroll = () => Math.max(0, root.scrollHeight - window.innerHeight);
-    const clampScroll = (value) => Math.max(0, Math.min(maxScroll(), value));
-    const tick = () => {
-      frame = undefined;
-      const distance = target - current;
-      current += distance * 0.13;
-      if (Math.abs(distance) < 0.5) {
-        current = target;
-        window.scrollTo(0, current);
-        return;
-      }
-      window.scrollTo(0, current);
-      frame = requestAnimationFrame(tick);
+    // Let the browser handle wheel, touchpad and touch momentum without a second easing loop.
+    document.documentElement.classList.remove("smooth-driver");
+    window.__hiyaSmoothScrollTo = (position) => {
+      window.scrollTo({ top: position, behavior: reducedMotion.matches ? "instant" : "smooth" });
     };
-    const schedule = () => {
-      if (!frame) frame = requestAnimationFrame(tick);
-    };
-    const scrollTo = (position) => {
-      current = window.scrollY;
-      target = clampScroll(position);
-      schedule();
-    };
-
-    window.__hiyaSmoothScrollTo = scrollTo;
-    window.addEventListener("wheel", (event) => {
-      if (event.ctrlKey || event.metaKey || event.shiftKey || Math.abs(event.deltaX) > Math.abs(event.deltaY)) return;
-      const eventTarget = event.target instanceof Element ? event.target : null;
-      if (document.querySelector("dialog[open]") || eventTarget?.closest("dialog,textarea,input,select,.project-deck,.notes-row,[data-native-scroll]")) return;
-
-      const multiplier = event.deltaMode === 1 ? 18 : 1;
-      event.preventDefault();
-      if (!frame) current = window.scrollY;
-      target = clampScroll((frame ? target : current) + event.deltaY * multiplier * 0.9);
-      schedule();
-    }, { passive: false });
-
-    window.addEventListener("scroll", () => {
-      if (!frame) {
-        current = window.scrollY;
-        target = current;
-      }
-    }, { passive: true });
   }
 
   function updateWorkTitle() {
