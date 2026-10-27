@@ -200,3 +200,11 @@
 #process .process-card p{margin-top:16px;overflow:visible}
 @media(max-width:900px){#process .process-steps .process-card{min-height:300px}}
 @media(max-width:560px){#process .process-steps .process-card{min-height:0;padding:20px 16px}}
+
+/* A clean full-width race line, beginning exactly at stint 01. */
+#experience .experience-console{display:block;margin:32px 0 14px;padding:10px 0 24px}
+#experience .experience-console-copy{display:none}
+#experience .experience-stint-controls{width:100%;padding:16px 0 0}
+#experience .experience-stint-controls:before{left:48px;right:48px;top:39px;background:var(--red);box-shadow:0 0 16px #ef3c3440}
+#experience .experience-stint-controls:after{display:none}
+@media(max-width:760px){#experience .experience-stint-controls{min-width:0}#experience .experience-stint-controls:before{left:40px;right:40px}}
