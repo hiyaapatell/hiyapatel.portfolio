@@ -34,3 +34,17 @@
 #story .mini-stickers .sticker strong{font-size:clamp(18px,2vw,25px);line-height:1.08}
 #story .mini-stickers .sticker span{font-size:clamp(10px,1vw,13px);margin-top:10px}
 @media(max-width:760px){#story .mini-stickers{height:auto;width:100%}#story .mini-stickers .sticker{width:min(100%,300px);padding:16px}#story .mini-stickers .sticker strong{font-size:22px}}
+
+/* White location mark on the city side of the pass. */
+#about .driver-pass .driver-pass-back::before{
+  content:"BOSTON, MA";
+  position:absolute;
+  right:18px;
+  bottom:18px;
+  z-index:2;
+  color:#fff;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.16em;
+  text-shadow:0 2px 10px #000c;
+}
