@@ -1,0 +1,12 @@
+/* Current roles: a full yellow race marker, without a separate dot. */
+#experience .experience-stint-controls .experience-stint:nth-child(1),
+#experience .experience-stint-controls .experience-stint:nth-child(2){
+  background:var(--yellow);
+  border-color:var(--yellow);
+  color:#161616;
+  box-shadow:0 0 0 6px var(--surface),0 0 22px color-mix(in srgb,var(--yellow) 45%,transparent);
+}
+#experience .experience-stint-controls .experience-stint:nth-child(1)::before,
+#experience .experience-stint-controls .experience-stint:nth-child(2)::before{display:none}
+#experience .experience-stint-controls .experience-stint:nth-child(1)::after,
+#experience .experience-stint-controls .experience-stint:nth-child(2)::after{color:var(--yellow)}
