@@ -1,18 +1,16 @@
-/* F1 pit-wall thoughts around the intro portrait. */
+/* F1 pit-wall thoughts around the intro portrait: they pop up on their own once the portrait is in view. */
 #story .intro-portrait{position:relative;isolation:isolate;overflow:visible;cursor:default}
-#story .intro-portrait::after{content:"HOVER FOR HIYA’S PIT-WALL NOTES";position:absolute;left:50%;bottom:-30px;z-index:4;transform:translateX(-50%);font-size:8px;font-weight:800;letter-spacing:.12em;white-space:nowrap;color:var(--red);opacity:.72;transition:opacity .2s ease}
-#story .intro-portrait:hover::after,#story .intro-portrait:focus-within::after{opacity:0}
-#story .pit-thought{position:absolute;z-index:3;display:flex;align-items:center;gap:8px;max-width:172px;padding:9px 12px;border:2px solid var(--red,#ef3c34);border-radius:15px;background:#262323;color:#f6f1e9;box-shadow:0 12px 28px #0005;pointer-events:none;opacity:0;transform:translateY(10px) scale(.92);transition:opacity .25s ease,transform .35s cubic-bezier(.22,1,.36,1)}
+#story .pit-thought{position:absolute;z-index:3;display:flex;align-items:center;gap:8px;max-width:172px;padding:9px 12px;border:2px solid var(--red,#ef3c34);border-radius:15px;background:#262323;color:#f6f1e9;box-shadow:0 12px 28px #0005;pointer-events:none;opacity:0;transform:translateY(10px) scale(.92);transition:opacity .3s ease,transform .6s cubic-bezier(.34,1.56,.64,1)}
 #story .pit-thought b{display:grid;place-items:center;width:22px;height:22px;flex:0 0 22px;border-radius:50%;background:var(--red);color:#fff;font-size:10px;line-height:1}
 #story .pit-thought span{font-size:10px;font-weight:800;line-height:1.18;letter-spacing:.04em}
 #story .pit-thought.one{top:10%;left:-17%}
 #story .pit-thought.two{top:39%;right:-17%}
 #story .pit-thought.three{bottom:13%;left:-21%}
-#story .intro-portrait:hover .pit-thought,#story .intro-portrait:focus-within .pit-thought{opacity:1;transform:translateY(0) scale(1)}
-#story .intro-portrait:hover .pit-thought.one{transition-delay:40ms;animation:pitThoughtFloat 2.6s ease-in-out .4s infinite}
-#story .intro-portrait:hover .pit-thought.two{transition-delay:120ms;animation:pitThoughtFloat 2.6s ease-in-out .7s infinite reverse}
-#story .intro-portrait:hover .pit-thought.three{transition-delay:200ms;animation:pitThoughtFloat 2.6s ease-in-out 1s infinite}
+#story .intro-portrait.pit-live .pit-thought,#story .intro-portrait:hover .pit-thought,#story .intro-portrait:focus-within .pit-thought{opacity:1;transform:translateY(0) scale(1)}
+#story .intro-portrait.pit-live .pit-thought.one{transition-delay:0ms;animation:pitThoughtFloat 2.6s ease-in-out .9s infinite}
+#story .intro-portrait.pit-live .pit-thought.two{transition-delay:260ms;animation:pitThoughtFloat 2.6s ease-in-out 1.2s infinite reverse}
+#story .intro-portrait.pit-live .pit-thought.three{transition-delay:520ms;animation:pitThoughtFloat 2.6s ease-in-out 1.5s infinite}
 @keyframes pitThoughtFloat{50%{transform:translateY(-5px) rotate(-1deg)}}
 @media(max-width:800px){#story .pit-thought{max-width:138px;padding:7px 9px;gap:6px}#story .pit-thought span{font-size:8px}#story .pit-thought.one{left:-8%;top:7%}#story .pit-thought.two{right:-8%}#story .pit-thought.three{left:-8%;bottom:9%}}
-@media(max-width:540px){#story .pit-thought{display:none}#story .intro-portrait::after{display:none}}
-@media(prefers-reduced-motion:reduce){#story .pit-thought{transition:none}#story .intro-portrait:hover .pit-thought{animation:none}}
+@media(max-width:540px){#story .pit-thought{display:none}}
+@media(prefers-reduced-motion:reduce){#story .pit-thought{transition:none}#story .intro-portrait.pit-live .pit-thought{animation:none}}

@@ -16,6 +16,15 @@
       note.innerHTML = "<b>" + icon + "</b><span>" + text + "</span>";
       portrait.append(note);
     });
+    const show = () => setTimeout(() => portrait.classList.add("pit-live"), 450);
+    if ("IntersectionObserver" in window) {
+      const io = new IntersectionObserver((entries) => {
+        if (entries.some((e) => e.isIntersecting)) { io.disconnect(); show(); }
+      }, { threshold: 0.4 });
+      io.observe(portrait);
+    } else {
+      show();
+    }
     return true;
   };
   if (!addPitThoughts()) {
