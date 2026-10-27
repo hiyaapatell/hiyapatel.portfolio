@@ -10,3 +10,7 @@
 #experience .experience-stint-controls .experience-stint:nth-child(2)::before{display:none}
 #experience .experience-stint-controls .experience-stint:nth-child(1)::after,
 #experience .experience-stint-controls .experience-stint:nth-child(2)::after{color:var(--yellow)}
+
+/* Both current roles use exactly the same marker. */
+#experience .experience-stint-controls > button.experience-stint:nth-of-type(1),
+#experience .experience-stint-controls > button.experience-stint:nth-of-type(2){background:var(--yellow)!important;border-color:var(--yellow)!important;color:#161616!important;box-shadow:0 0 0 6px var(--surface),0 0 22px color-mix(in srgb,var(--yellow) 45%,transparent)!important}
