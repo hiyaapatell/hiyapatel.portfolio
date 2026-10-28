@@ -29,6 +29,15 @@ const suppliedStyle=document.createElement("style");suppliedStyle.textContent=`
 #experience .experience-entry .experience-brand-mark.brand-upwork img{border-radius:50%;filter:grayscale(1) contrast(3)}
 #experience .experience-entry .experience-brand-mark.brand-nyserda img{filter:grayscale(1) contrast(8)}
 `;document.head.append(suppliedStyle);
+const logoSizeStyle=document.createElement("style");logoSizeStyle.textContent=`
+#experience .experience-entry .experience-brand-mark.supplied-brand{width:64px;height:56px;right:26px;top:30px;background:transparent!important;border:0!important;box-shadow:none!important;mix-blend-mode:screen}
+#experience .experience-entry .experience-brand-mark.supplied-brand img{width:64px;height:56px;max-width:64px;max-height:56px;object-fit:contain;mix-blend-mode:normal;filter:grayscale(1) contrast(8);background:transparent;border:0;box-shadow:none}
+#experience .experience-entry .experience-brand-mark.brand-massart img{filter:brightness(0) invert(.94)}
+#experience .experience-entry .experience-brand-mark.brand-upwork img{width:48px;height:48px;border-radius:50%;filter:grayscale(1) contrast(8)}
+#experience .experience-entry .experience-brand-mark.brand-le-panthere img{width:64px;height:64px;max-height:64px;filter:grayscale(1) contrast(10)}
+#experience .experience-entry .experience-brand-mark.brand-solidsalt img{width:52px;height:56px;filter:grayscale(1) contrast(10)}
+#experience .experience-entry .experience-brand-mark.brand-nyserda img{filter:grayscale(1) contrast(12)}
+`;document.head.append(logoSizeStyle);
 const setup=()=>{
 const cards=[...document.querySelectorAll("#experience .experience-entry")];if(cards.length!==7)return false;
 cards.slice(1).forEach((card,i)=>{
