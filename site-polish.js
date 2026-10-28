@@ -333,7 +333,18 @@
       const flipped = pass.classList.toggle("is-flipped");
       pass.setAttribute("aria-pressed", String(flipped));
     };
+    pass.addEventListener("mouseenter", () => {
+      if (!window.matchMedia("(hover:hover) and (pointer:fine)").matches) return;
+      pass.classList.add("is-flipped");
+      pass.setAttribute("aria-pressed","true");
+    });
+    pass.addEventListener("mouseleave", () => {
+      if (!window.matchMedia("(hover:hover) and (pointer:fine)").matches) return;
+      pass.classList.remove("is-flipped");
+      pass.setAttribute("aria-pressed","false");
+    });
     pass.addEventListener("click", (event) => {
+      if (window.matchMedia("(hover:hover) and (pointer:fine)").matches) return;
       if (pass.classList.contains("dragging")) return;
       event.preventDefault();
       flip();
@@ -387,6 +398,9 @@
     if (initialized || !document.querySelector("#contact footer")) return false;
     initialized = true;
     refineFooter();
+    const noteCard=document.querySelector("#notes .empty-note");
+    if(noteCard){const label=document.createElement("span");label.textContent="Leave a note";noteCard.replaceChildren(label);}
+
     rotateCuriosity();
     updateWorkTitle();
     addUpwardReveals();
