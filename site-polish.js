@@ -268,6 +268,16 @@
       }));
     };
     const setCategory = (category) => {
+      if (active === category) {
+        active = "";
+        list.hidden = true;
+        grid.hidden = true;
+        list.replaceChildren();
+        reveal.classList.remove("opened");
+        buttons.forEach((button) => button.setAttribute("aria-pressed", "false"));
+        if (description) description.textContent = "Choose a category to explore my skills.";
+        return;
+      }
       active = category;
       reveal.classList.add("opened");
       const showTools = category === "TOOLKIT";
