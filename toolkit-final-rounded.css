@@ -29,3 +29,6 @@
 #toolkit .tool-grid>button,#toolkit .tool-grid>button.selected{transform:none!important;top:0!important;margin-top:0!important;align-self:stretch!important}
 #toolkit .tool-grid>button:hover,#toolkit .tool-grid>button.selected:hover{transform:translateY(-7px)!important}
 @media(prefers-reduced-motion:reduce){#toolkit .tool-grid>button:hover{transform:none!important}}
+
+/* While one category tab is hovered or focused, the others (including the selected one) drop back to normal. */
+#toolkit .skill-category-controls:has(.skill-category:is(:hover,:focus-visible)) .skill-category:not(:is(:hover,:focus-visible)){transform:none;background:var(--surface);color:var(--text);box-shadow:none;border-color:#ffffff35!important;border-top-color:#ffffff35!important}
