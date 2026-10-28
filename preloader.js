@@ -1,6 +1,7 @@
 /* F1 start-lights intro. Plays once per visit, before the home page, then fades out. */
 (() => {
   const KEY = "hiya-lights-out";
+  if ("scrollRestoration" in history) history.scrollRestoration = "manual";
   function play(replay = false) {
   if (document.getElementById("lights-out")) return;
 
@@ -97,7 +98,9 @@ html.lights-intro-reveal main{opacity:1;transform:none;transition:opacity 450ms 
     done = true;
     timers.forEach(clearTimeout);
     try { sessionStorage.setItem(KEY, "1"); } catch (e) {}
-    if (replay) window.scrollTo({top:0,behavior:"instant"});
+    history.replaceState(null,"",location.pathname+location.search+"#top");
+    window.scrollTo({top:0,left:0,behavior:"instant"});
+    document.querySelectorAll("dialog[open]").forEach(dialog=>dialog.close());
     root.classList.remove("lights-intro-running");
     root.classList.add("lights-intro-reveal");
     overlay.classList.add("lo-leave");
@@ -105,6 +108,7 @@ html.lights-intro-reveal main{opacity:1;transform:none;transition:opacity 450ms 
       overlay.remove();
       style.remove();
       root.style.overflow = prevOverflow;
+      window.scrollTo({top:0,left:0,behavior:"instant"});
     }, reduce ? 0 : 475);
   };
 
