@@ -16,14 +16,19 @@
       note.innerHTML = "<b>" + icon + "</b><span>" + text + "</span>";
       portrait.append(note);
     });
-    const show = () => setTimeout(() => portrait.classList.add("pit-live"), 450);
+    const notes = [...portrait.querySelectorAll(".pit-thought")];
+    portrait.classList.add("pit-scroll-sequence");
     if ("IntersectionObserver" in window) {
-      const io = new IntersectionObserver((entries) => {
-        if (entries.some((e) => e.isIntersecting)) { io.disconnect(); show(); }
-      }, { threshold: 0.4 });
-      io.observe(portrait);
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("pit-note-visible");
+          observer.unobserve(entry.target);
+        });
+      }, { threshold: 0.3, rootMargin: "0px 0px -12% 0px" });
+      notes.forEach((note) => observer.observe(note));
     } else {
-      show();
+      notes.forEach((note) => note.classList.add("pit-note-visible"));
     }
     return true;
   };

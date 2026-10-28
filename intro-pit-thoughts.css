@@ -23,3 +23,8 @@ position:absolute!important;top:calc(100% + 10px)!important;left:0!important;rig
 #story .intro-portrait .pit-thought:focus-visible .thought-detail,
 #story .intro-portrait .pit-thought.is-open .thought-detail{opacity:1!important;visibility:visible;transform:translateY(0);margin:0!important}
 @media(prefers-reduced-motion:reduce){#story .intro-portrait .pit-thought .thought-detail{transition:none!important}}
+
+#story .intro-portrait.pit-scroll-sequence .pit-thought{opacity:0!important;visibility:hidden;transform:translateY(18px) scale(.94)!important;animation:none!important;transition:opacity 400ms ease,transform 520ms cubic-bezier(.22,1,.36,1),visibility 400ms ease,background 250ms ease,box-shadow 300ms ease!important}
+#story .intro-portrait.pit-scroll-sequence .pit-thought.pit-note-visible{opacity:1!important;visibility:visible;transform:translateY(0) scale(1)!important}
+#story .intro-portrait.pit-scroll-sequence .pit-thought.pit-note-visible:hover{transform:translateY(-4px) scale(1)!important}
+@media(prefers-reduced-motion:reduce){#story .intro-portrait.pit-scroll-sequence .pit-thought{transition:none!important;transform:none!important}}
