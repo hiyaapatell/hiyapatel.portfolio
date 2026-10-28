@@ -35,20 +35,23 @@
 #story .mini-stickers .sticker span{font-size:clamp(10px,1vw,13px);margin-top:10px}
 @media(max-width:760px){#story .mini-stickers{height:auto;width:100%}#story .mini-stickers .sticker{width:min(100%,300px);padding:16px}#story .mini-stickers .sticker strong{font-size:22px}}
 
-/* White location mark on the city side of the pass. */
+/* White location mark on the city side of the pass: bottom of the photo, over a soft dark fade. */
 #about .driver-pass .driver-pass-back::before{
   content:"BOSTON, MA";
   position:absolute;
-  right:18px;
-  bottom:18px;
+  left:0;
+  right:0;
+  bottom:0;
   z-index:2;
+  display:block;
+  padding:46px 16px 20px;
+  text-align:center;
   color:#fff;
-  font-size:12px;
+  font-size:13px;
   font-weight:800;
-  letter-spacing:.16em;
+  letter-spacing:.24em;
+  text-indent:.24em;
   text-shadow:0 2px 10px #000c;
+  background:linear-gradient(to top,#000b 0%,#0006 45%,transparent 100%);
+  pointer-events:none;
 }
-
-#about .driver-pass::after,#about .driver-pass:not(.is-flipped)::after{display:none!important;content:none!important}
-#notes .empty-note{display:flex;align-items:center;justify-content:center}
-#notes .empty-note>svg,#notes .empty-note>small{display:none!important}

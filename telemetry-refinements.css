@@ -5,7 +5,6 @@
 .helmet-switch{display:flex;align-items:center;gap:8px;background:transparent;border:0;color:#fff;font:inherit;cursor:pointer;padding:4px}
 .helmet-switch i{width:28px;height:16px;border-radius:20px;background:#555;position:relative;transition:background .2s}.helmet-switch i:after{content:"";position:absolute;left:3px;top:3px;width:10px;height:10px;border-radius:50%;background:white;transition:transform .2s}.helmet-switch[aria-checked=true] i{background:#ef3c34}.helmet-switch[aria-checked=true] i:after{transform:translateX(12px)}
 @media(hover:hover) and (pointer:fine){html.helmet-cursor,html.helmet-cursor *{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M5 24V15a11 11 0 0 1 22 0v11H8z' fill='%23ef3c34' stroke='white' stroke-width='2'/%3E%3Cpath d='M13 12h14v9H13l-4-4z' fill='%23181818' stroke='white'/%3E%3Cpath d='M9 26h18' stroke='%23f4d84b' stroke-width='3'/%3E%3C/svg%3E") 5 5,auto!important}}
-#about .driver-pass .driver-pass-back::before{content:none!important;display:none!important}
 .dock>a{transition:background-color .28s ease,color .28s ease,transform .32s cubic-bezier(.22,1,.36,1),max-width .5s cubic-bezier(.22,1,.36,1),padding .5s cubic-bezier(.22,1,.36,1),opacity .3s ease!important}
 .dock>a:hover{transform:translateY(-2px)}.dock>a:active{transform:translateY(0) scale(.97)}
 #story .pit-thought{pointer-events:auto;cursor:pointer;animation:none!important;transition:transform .35s cubic-bezier(.22,1,.36,1),background .25s,box-shadow .25s!important;min-height:46px}
