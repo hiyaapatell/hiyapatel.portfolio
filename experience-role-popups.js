@@ -4,7 +4,7 @@ const roles=[
 {title:"Social Media Designer Intern | NYSERDA",bullets:["Designed visual assets using Adobe Creative Cloud tailored to target audience preferences and strategic goals.","Translated user insights into effective visual communication and digital content strategies."]},
 {title:"UI/UX Designer | Le Panthère",bullets:["Redesigned website navigation architecture to improve overall usability and user flow.","Developed and refined Figma wireframes and high-fidelity interfaces based on usability testing and stakeholder input."]},
 {title:"Freelance Graphic Designer & UX Researcher | Upwork",bullets:["Executed user interviews, competitive analysis, journey mapping, and usability testing to identify friction points.","Built intuitive user flows and interface designs informed directly by primary user research."]},
-{title:"Graphic Design Intern | SolidSalt Communication Pvt Ltd",bullets:["Designed digital interfaces for Indo GSP prioritizing layout structure, usability, and clear visual hierarchy.","Created brand-aligned product packaging for Nirbelo, ensuring consistent visual identity."]},
+{title:"Graphic Design Intern | SolidSalt Communications",bullets:["Designed digital interfaces for Indo GSP prioritizing layout structure, usability, and clear visual hierarchy.","Created brand-aligned product packaging for Nirbelo, ensuring consistent visual identity."]},
 {title:"Branding & Concept Designer | Blue Chisel",bullets:["Created complete visual brand identities for Mementos and Grow & Grub.","Produced visual guidelines including custom typography, color palettes, and illustration assets."]}
 ];
 const style=document.createElement("style");style.textContent=`
