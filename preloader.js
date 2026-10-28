@@ -3,12 +3,12 @@
   const KEY = "hiya-lights-out";
   function play(replay = false) {
   if (document.getElementById("lights-out")) return;
-  try { if (!replay && sessionStorage.getItem(KEY) === "1") return; } catch (e) {}
+
 
   const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const STEP = reduce ? 160 : 650;   // gap between each red light
   const HOLD = reduce ? 200 : 750;   // all five lit, engines screaming
-  const AFTER = reduce ? 350 : 950;  // lights out, then the handover to the site
+  const AFTER = reduce ? 350 : 1400;  // lights out, then the handover to the site
 
   const STATUS = [
     "Warming up the tyres…",
@@ -45,8 +45,20 @@
 @media(prefers-reduced-motion:reduce){#lights-out.lo-enter{animation:none}#lights-out,#lights-out .lo-gantry i,#lights-out .lo-skip svg{transition:none}}
 `;
 
+  const sizing = `
+#lights-out{justify-content:center;align-items:center;gap:clamp(30px,5.5vh,64px);padding:24px;transition:opacity .8s ease,transform .8s cubic-bezier(.22,1,.36,1)}
+#lights-out .lo-gantry{width:min(50vw,668px);box-sizing:border-box;gap:3.6%;padding:6.6%;padding:clamp(18px,3.3vw,44px);border-radius:clamp(18px,2.7vw,36px);flex-shrink:0}
+#lights-out .lo-gantry i{width:auto;flex:1;min-width:0;aspect-ratio:1}
+#lights-out .lo-title{font-size:clamp(28px,4.6vw,64px);max-width:90vw}
+#lights-out .lo-skip{font-size:clamp(14px,1.8vw,24px);display:inline-flex}
+#lights-out.lo-leave{opacity:0;transform:scale(1.015)}
+html.lights-intro-running main{opacity:0;transform:translateY(12px)}
+html.lights-intro-reveal main{opacity:1;transform:none;transition:opacity 900ms ease,transform 900ms cubic-bezier(.22,1,.36,1)}
+@media(max-width:600px){#lights-out .lo-gantry{width:min(86vw,420px);gap:4%;padding:20px}#lights-out .lo-title{font-size:clamp(27px,6vw,36px)}}
+@media(prefers-reduced-motion:reduce){html.lights-intro-running main{transform:none}html.lights-intro-reveal main{transition:none}#lights-out{transition:none}}
+`;
   const style = document.createElement("style");
-  style.textContent = css;
+  style.textContent = css + sizing;
 
   const overlay = document.createElement("div");
   overlay.id = "lights-out";
@@ -64,6 +76,8 @@
   root.append(style, overlay);
   const prevOverflow = root.style.overflow;
   root.style.overflow = "hidden";
+  root.classList.remove("lights-intro-reveal");
+  root.classList.add("lights-intro-running");
 
   const lights = overlay.querySelectorAll(".lo-gantry i");
   const status = overlay.querySelector(".lo-status");
@@ -77,12 +91,14 @@
     timers.forEach(clearTimeout);
     try { sessionStorage.setItem(KEY, "1"); } catch (e) {}
     if (replay) window.scrollTo({top:0,behavior:"instant"});
+    root.classList.remove("lights-intro-running");
+    root.classList.add("lights-intro-reveal");
     overlay.classList.add("lo-leave");
     setTimeout(() => {
       overlay.remove();
       style.remove();
       root.style.overflow = prevOverflow;
-    }, reduce ? 0 : 600);
+    }, reduce ? 0 : 950);
   };
 
   lights.forEach((light, i) => {
