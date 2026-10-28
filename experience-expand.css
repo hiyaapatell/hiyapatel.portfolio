@@ -41,3 +41,16 @@ content:"PREV";display:block!important;position:static!important;order:-1!import
 #experience .experience-list .experience-entry:not(:hover):not(:focus-within)::after{position:absolute!important;top:10px!important;right:14px!important;font-size:8px!important;padding:3px 6px!important}
 #experience .experience-list .experience-entry .experience-details h3{font-size:clamp(24px,2.2vw,34px)!important;line-height:1.12!important;overflow-wrap:normal!important}
 #experience .experience-list .experience-entry{transition:height 480ms cubic-bezier(.22,1,.36,1),gap 480ms cubic-bezier(.22,1,.36,1),transform 320ms cubic-bezier(.22,1,.36,1),box-shadow 320ms ease,background 250ms ease!important}
+
+/* Keep the hover target stationary and use one uninterrupted easing curve. */
+#experience .experience-list.independent-columns .experience-entry,
+#experience .experience-list.independent-columns .experience-entry:hover,
+#experience .experience-list.independent-columns .experience-entry:focus-visible{
+transform:none!important;transition:height 420ms cubic-bezier(.22,1,.36,1) 90ms,gap 420ms cubic-bezier(.22,1,.36,1) 90ms,background-color 260ms ease,box-shadow 300ms ease!important}
+#experience .experience-list.independent-columns .experience-entry:hover,
+#experience .experience-list.independent-columns .experience-entry:focus-within{transition-delay:0s!important}
+#experience .experience-entry:nth-child(n+1) .experience-meta,
+#experience .experience-entry:nth-child(n+1) .experience-details h4,
+#experience .experience-entry:nth-child(n+1) .role-tools{transition:max-height 420ms cubic-bezier(.22,1,.36,1),opacity 220ms ease,padding 420ms cubic-bezier(.22,1,.36,1),margin 420ms cubic-bezier(.22,1,.36,1)!important}
+#experience .experience-stint-controls button.experience-stint{transition:background-color 220ms ease,border-color 220ms ease,color 220ms ease,box-shadow 220ms ease!important}
+@media(prefers-reduced-motion:reduce){#experience .experience-list.independent-columns .experience-entry,#experience .experience-entry:nth-child(n+1) *{transition:none!important}}
