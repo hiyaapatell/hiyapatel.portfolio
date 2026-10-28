@@ -37,3 +37,6 @@
 #toolkit .skill-list{transition:opacity 240ms ease}
 #toolkit .skill-category-controls:has(.skill-category:not([aria-pressed="true"]):is(:hover,:focus-visible)) ~ :is(.skill-list,.tool-grid){opacity:0;pointer-events:none}
 @media(prefers-reduced-motion:reduce){#toolkit .skill-list{transition:none}}
+
+/* A preview of a different category collapses the hidden content completely. */
+#toolkit .skill-category-controls:has(.skill-category:not([aria-pressed="true"]):is(:hover,:focus-visible)) ~ :is(.skill-list,.tool-grid){display:none!important;margin:0!important;padding:0!important;max-height:0!important}

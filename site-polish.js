@@ -313,6 +313,13 @@
       button.dataset.category = category;
       button.textContent = category;
       button.setAttribute("aria-pressed", "false");
+      button.addEventListener("mouseenter", () => {
+        if (active !== category && description) description.textContent = "Choose a category to explore my skills.";
+      });
+      button.addEventListener("mouseleave", () => {
+        if (!description) return;
+        description.textContent = !active ? "Choose a category to explore my skills." : active === "TOOLKIT" ? "Tools I use to turn ideas into thoughtful, usable experiences." : active === "DESIGN" ? "Design skills from concept to system." : "Research methods that keep the work grounded in people.";
+      });
       button.addEventListener("click", () => setCategory(category));
       controls.append(button);
       return button;
