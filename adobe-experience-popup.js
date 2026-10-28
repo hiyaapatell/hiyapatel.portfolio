@@ -31,11 +31,20 @@ const subtle=document.createElement("style");subtle.textContent=`
 #experience .experience-entry:first-child:hover .adobe-popup-cue{color:#f6efe3bb;transform:translate(2px,-2px)}
 @media(prefers-reduced-motion:reduce){#experience .experience-entry:first-child:hover .adobe-popup-cue{transform:none}}
 `;document.head.append(subtle);
+const brandStyle=document.createElement("style");brandStyle.textContent=`
+#experience .experience-entry:first-child .adobe-brand-mark{position:absolute;right:26px;top:36px;width:40px;height:40px;display:block;color:#f6efe3;opacity:0;pointer-events:none;transform:translateY(4px);transition:opacity 260ms ease,transform 300ms ease}
+#experience .experience-entry:first-child .adobe-brand-mark svg{width:100%;height:100%}
+#experience .experience-entry:first-child:hover .adobe-brand-mark,#experience .experience-entry:first-child:focus-within .adobe-brand-mark{opacity:.4;transform:none}
+@media(hover:none){#experience .experience-entry:first-child .adobe-brand-mark{opacity:.4;transform:none}}
+@media(prefers-reduced-motion:reduce){#experience .experience-entry:first-child .adobe-brand-mark{transition:none}}
+`;document.head.append(brandStyle);
 const setup=()=>{
 const card=document.querySelector("#experience .experience-entry");if(!card)return false;
 if(card.dataset.adobePopup)return true;card.dataset.adobePopup="true";
 const cue=document.createElement("span");cue.className="adobe-popup-cue";cue.setAttribute("aria-hidden","true");
 cue.innerHTML='<svg viewBox="0 0 24 24" fill="none"><path d="M6 18 18 6M7 6h11v11"/></svg>';card.append(cue);
+const logo=document.createElement("span");logo.className="adobe-brand-mark";logo.setAttribute("aria-hidden","true");
+logo.innerHTML='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h8.8L0 21V0Zm15.2 0H24v21L15.2 0ZM12 7.7 17.6 21h-3.8l-1.6-4.2H8.1L12 7.7Z"/></svg>';card.append(logo);
 const dialog=document.createElement("dialog");dialog.className="adobe-role-dialog";dialog.setAttribute("aria-labelledby","adobe-role-title");
 dialog.innerHTML='<button type="button" class="adobe-close" aria-label="Close Adobe experience">×</button><h2 id="adobe-role-title">Adobe Student Ambassador | Adobe</h2><p class="role-date">Jul 2026 – Present</p><p class="role-location">Boston, MA</p><ul><li>Drive student engagement and tool adoption across campus by promoting Adobe Creative Cloud resources.</li><li>Create targeted social media content to educate students on design tools and workflows.</li></ul>';
 document.body.append(dialog);
