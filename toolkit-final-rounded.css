@@ -13,3 +13,7 @@
 #toolkit .skill-category{border:2px solid #ffffff35!important;border-radius:28px!important;border-top:2px solid #ffffff35!important}
 #toolkit .skill-category[aria-pressed="true"]{border-color:var(--red)!important;border-top-color:var(--red)!important}
 #toolkit .skill-list span{border:2px solid #ffffff35!important;border-left:2px solid #ffffff35!important;border-radius:24px!important}
+
+/* Subtle corners instead of pill-shaped category and skill controls. */
+#toolkit .skill-category,#toolkit .skill-category[aria-pressed="true"]{border-radius:10px!important}
+#toolkit .skill-list span{border-radius:8px!important}
