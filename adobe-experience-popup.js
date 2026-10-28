@@ -22,11 +22,20 @@ const cueStyle=document.createElement("style");cueStyle.textContent=`
 @keyframes adobeCuePulse{0%,75%,100%{box-shadow:0 0 0 0 #ef3c3400}85%{box-shadow:0 0 0 6px #ef3c3418}}
 @media(prefers-reduced-motion:reduce){#experience .experience-entry:first-child .adobe-popup-cue{animation:none;transition:none}}
 `;document.head.append(cueStyle);
+const subtle=document.createElement("style");subtle.textContent=`
+#experience .experience-entry:first-child .adobe-popup-cue,
+#experience .experience-entry:first-child:hover .adobe-popup-cue,
+#experience .experience-entry:first-child:focus-visible .adobe-popup-cue{width:24px;height:24px;right:26px;bottom:27px;border:0;background:transparent;border-radius:0;box-shadow:none;animation:none;color:#f6efe366;transform:none;transition:color 220ms ease,transform 220ms ease}
+#experience .experience-entry:first-child .adobe-popup-cue svg{width:20px;height:20px}
+#experience .experience-entry:first-child .adobe-popup-cue path{stroke-width:1.4}
+#experience .experience-entry:first-child:hover .adobe-popup-cue{color:#f6efe3bb;transform:translate(2px,-2px)}
+@media(prefers-reduced-motion:reduce){#experience .experience-entry:first-child:hover .adobe-popup-cue{transform:none}}
+`;document.head.append(subtle);
 const setup=()=>{
 const card=document.querySelector("#experience .experience-entry");if(!card)return false;
 if(card.dataset.adobePopup)return true;card.dataset.adobePopup="true";
 const cue=document.createElement("span");cue.className="adobe-popup-cue";cue.setAttribute("aria-hidden","true");
-cue.innerHTML='<svg viewBox="0 0 40 40" fill="none"><rect class="cue-sheet-back" x="9" y="12" width="19" height="20" rx="3"/><rect class="cue-sheet-front" x="13" y="8" width="19" height="20" rx="3"/><path class="cue-arrow" d="M18 22 27 13m-7 0h7v7"/></svg>';card.append(cue);
+cue.innerHTML='<svg viewBox="0 0 24 24" fill="none"><path d="M6 18 18 6M7 6h11v11"/></svg>';card.append(cue);
 const dialog=document.createElement("dialog");dialog.className="adobe-role-dialog";dialog.setAttribute("aria-labelledby","adobe-role-title");
 dialog.innerHTML='<button type="button" class="adobe-close" aria-label="Close Adobe experience">×</button><h2 id="adobe-role-title">Adobe Student Ambassador | Adobe</h2><p class="role-date">Jul 2026 – Present</p><p class="role-location">Boston, MA</p><ul><li>Drive student engagement and tool adoption across campus by promoting Adobe Creative Cloud resources.</li><li>Create targeted social media content to educate students on design tools and workflows.</li></ul>';
 document.body.append(dialog);
