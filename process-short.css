@@ -1,8 +1,8 @@
 /* Compact equal process cards with consistent heading-to-copy spacing. */
 #process .process-steps{align-items:stretch}
-#process .process-steps .process-card{height:210px!important;min-height:210px!important;aspect-ratio:auto!important;display:flex!important;flex-direction:column!important;justify-content:flex-start!important;padding:20px 24px!important;box-sizing:border-box}
+#process .process-steps .process-card{height:185px!important;min-height:185px!important;aspect-ratio:auto!important;display:flex!important;flex-direction:column!important;justify-content:flex-start!important;padding:20px 24px!important;box-sizing:border-box}
 #process .process-card>span{margin:0 0 18px!important;flex-shrink:0}
 #process .process-card h3{min-height:0!important;margin:0!important;font-size:clamp(28px,2.55vw,38px);line-height:1.08!important}
-#process .process-card p{margin:18px 0 0!important;font-size:12px;line-height:1.45!important;overflow:visible}
-@media(max-width:900px){#process .process-steps .process-card{height:210px!important;min-height:210px!important}}
-@media(max-width:560px){#process .process-steps .process-card{height:auto!important;min-height:175px!important;padding:20px 16px!important}}
+#process .process-card p{margin:14px 0 0!important;font-size:12px;line-height:1.45!important;overflow:visible}
+@media(max-width:900px){#process .process-steps .process-card{height:185px!important;min-height:185px!important}}
+@media(max-width:560px){#process .process-steps .process-card{height:auto!important;min-height:165px!important;padding:20px 16px!important}}
