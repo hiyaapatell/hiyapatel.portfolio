@@ -136,6 +136,7 @@ html.lights-intro-reveal main{opacity:1;transform:none;transition:opacity 450ms 
     const mark=event.target.closest?.(".topbar .monogram, .footer-mark");
     if(!mark)return;
     event.preventDefault();event.stopImmediatePropagation();
+    if(mark.matches(".footer-mark")){play(true);return;}
     document.querySelectorAll("dialog[open]").forEach(dialog=>dialog.close());
     history.replaceState(null,"",location.pathname+location.search+"#top");
     window.scrollTo({top:0,left:0,behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"instant":"smooth"});
