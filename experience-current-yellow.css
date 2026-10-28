@@ -39,3 +39,9 @@ background:transparent!important;box-shadow:none!important}
 #experience .experience-stint-controls button.experience-stint:nth-of-type(n+3):hover::before,
 #experience .experience-stint-controls button.experience-stint:nth-of-type(n+3):focus-visible::before,
 #experience .experience-stint-controls button.experience-stint:nth-of-type(n+3).selected::before{background:transparent!important;box-shadow:none!important}
+
+/* Opaque hovered markers mask the track behind the circle. */
+#experience .experience-stint-controls button.experience-stint:nth-of-type(n+3):hover,
+#experience .experience-stint-controls button.experience-stint:nth-of-type(n+3):focus-visible,
+#experience .experience-stint-controls button.experience-stint:nth-of-type(n+3).selected{
+background:var(--surface,#202020)!important;isolation:isolate;box-shadow:0 0 0 6px var(--surface,#202020)!important}
