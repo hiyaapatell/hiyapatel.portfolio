@@ -15,3 +15,6 @@
 @media(prefers-reduced-motion:reduce){.dock>a,#story .pit-thought,#story .thought-detail{transition:none!important;transform:none!important}}
 
 #about .driver-pass .driver-pass-front>p{display:none!important}
+
+.live-telemetry{display:none!important}
+#about .driver-pass .driver-pass-front .pass-footer{margin-top:24px!important}

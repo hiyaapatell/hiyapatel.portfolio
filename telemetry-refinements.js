@@ -1,15 +1,7 @@
 (() => {
 const boot=()=>{
 const hero=document.querySelector(".hero-copy"); if(!hero)return false;
-if(hero.querySelector(".live-telemetry"))return true;
-const bar=document.createElement("div");bar.className="live-telemetry";bar.setAttribute("aria-label","Portfolio telemetry");
-bar.innerHTML='<span class="telemetry-status">● STATUS: AVAILABLE FOR HIRE</span><span class="telemetry-latency">PAGE LOAD: —</span><span class="telemetry-sector">SECTOR 1: PURPLE</span><button type="button" class="helmet-switch" role="switch" aria-checked="false" aria-label="Helmet cursor">HELMET CURSOR <i aria-hidden="true"></i></button>';
-hero.append(bar);
-const timing=performance.getEntriesByType("navigation")[0];
-bar.querySelector(".telemetry-latency").textContent="PAGE LOAD: "+Math.round(timing?.domContentLoadedEventEnd || performance.now())+"ms";
-const toggle=bar.querySelector("button");let enabled=false;try{enabled=localStorage.getItem("hiya-helmet-cursor")==="true"}catch{}
-const render=()=>{toggle.setAttribute("aria-checked",String(enabled));document.documentElement.classList.toggle("helmet-cursor",enabled)};
-render();toggle.addEventListener("click",()=>{enabled=!enabled;render();try{localStorage.setItem("hiya-helmet-cursor",String(enabled))}catch{}});
+document.documentElement.classList.add("helmet-cursor");
 const notes=[
 ["ASK WHY. THEN GO.","I start with people, not assumptions."],
 ["FIND THE RACING LINE.","Make the next step feel clear and natural."],
