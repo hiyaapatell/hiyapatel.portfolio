@@ -1,6 +1,6 @@
 (() => {
 const roles=[
-{title:"Graduate Research Assistant | Massachusetts College of Art & Design",bullets:["Conduct qualitative user research across entrepreneurship, international education, and sustainability domains.","Synthesize research findings into actionable design recommendations to support institutional projects."]},
+{title:"Graduate Research Assistant | MassArt",bullets:["Conduct qualitative user research across entrepreneurship, international education, and sustainability domains.","Synthesize research findings into actionable design recommendations to support institutional projects."]},
 {title:"Social Media Designer Intern | NYSERDA",bullets:["Designed visual assets using Adobe Creative Cloud tailored to target audience preferences and strategic goals.","Translated user insights into effective visual communication and digital content strategies."]},
 {title:"UI/UX Designer | Le Panthère",bullets:["Redesigned website navigation architecture to improve overall usability and user flow.","Developed and refined Figma wireframes and high-fidelity interfaces based on usability testing and stakeholder input."]},
 {title:"Freelance Graphic Designer & UX Researcher | Upwork",bullets:["Executed user interviews, competitive analysis, journey mapping, and usability testing to identify friction points.","Built intuitive user flows and interface designs informed directly by primary user research."]},

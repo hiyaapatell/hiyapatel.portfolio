@@ -63,3 +63,11 @@ transform:none!important;transition:height 420ms cubic-bezier(.22,1,.36,1) 90ms,
 #experience .experience-entry:nth-child(n+1):not(:hover):not(:focus-visible) .experience-details h4,
 #experience .experience-entry:nth-child(n+1):not(:hover):not(:focus-visible) .role-tools{max-height:0!important;opacity:0!important;padding-top:0!important;border-top-width:0!important;margin:0!important}
 }
+
+/* Mouse focus must never leave brand marks visible on collapsed cards. */
+@media(hover:hover) and (pointer:fine){
+#experience .experience-list .experience-entry:not(:hover) .adobe-brand-mark,
+#experience .experience-list .experience-entry:not(:hover) .experience-brand-mark{opacity:0!important;visibility:hidden!important;transition:none!important}
+#experience .experience-list .experience-entry:hover .adobe-brand-mark,
+#experience .experience-list .experience-entry:hover .experience-brand-mark{visibility:visible!important}
+}
