@@ -14,10 +14,24 @@ const style=document.createElement("style");style.textContent=`
 #experience .experience-entry:hover .experience-popup-cue,#experience .experience-entry:focus-visible .experience-popup-cue{color:#f6efe3bb;transform:translate(2px,-2px)}
 @media(prefers-reduced-motion:reduce){#experience .experience-entry .experience-popup-cue{transition:none;transform:none!important}}
 `;document.head.append(style);
+const brandStyle=document.createElement("style");brandStyle.textContent=`
+#experience .experience-entry .experience-brand-mark{position:absolute;top:36px;right:26px;width:64px;height:42px;display:flex;align-items:center;justify-content:center;color:#f6efe3;opacity:0;pointer-events:none;transform:translateY(4px);transition:opacity 260ms ease,transform 300ms ease}
+#experience .experience-entry .experience-brand-mark img{max-width:64px;max-height:40px;object-fit:contain;filter:grayscale(1) brightness(0) invert(.92);display:block}
+#experience .experience-entry .experience-brand-mark span{font-size:12px;font-weight:800;line-height:1.1;text-align:center;letter-spacing:-.03em}
+#experience .experience-entry:hover .experience-brand-mark,#experience .experience-entry:focus-within .experience-brand-mark{opacity:.4;transform:none}
+@media(hover:none){#experience .experience-entry .experience-brand-mark{opacity:.4;transform:none}}
+@media(prefers-reduced-motion:reduce){#experience .experience-entry .experience-brand-mark{transition:none}}
+`;document.head.append(brandStyle);
 const setup=()=>{
 const cards=[...document.querySelectorAll("#experience .experience-entry")];if(cards.length!==7)return false;
 cards.slice(1).forEach((card,i)=>{
 if(card.dataset.rolePopup)return;card.dataset.rolePopup="true";
+const brandNames=["MassArt","NYSERDA","Le Panthère","Upwork","SolidSalt","Blue Chisel"];
+const domains=["massart.edu","nyserda.ny.gov",null,"upwork.com","solidsalt.com","bluechisel.com"];
+const mark=document.createElement("span");mark.className="experience-brand-mark";mark.setAttribute("aria-hidden","true");
+const fallback=document.createElement("span");fallback.textContent=brandNames[i];mark.append(fallback);
+if(domains[i]){const img=document.createElement("img");img.alt="";img.src=i===5?"https://bluechisel.com/theme_bluechisel/static/src/img/bluechisel_white_logo.png":"https://www.google.com/s2/favicons?domain="+domains[i]+"&sz=128";img.addEventListener("load",()=>{fallback.hidden=true});img.addEventListener("error",()=>img.remove());mark.append(img)}
+card.append(mark);
 const role=roles[i];const dialog=document.createElement("dialog");dialog.className="adobe-role-dialog";const titleId="experience-popup-title-"+(i+2);dialog.setAttribute("aria-labelledby",titleId);
 const close=document.createElement("button");close.type="button";close.className="adobe-close";close.setAttribute("aria-label","Close experience details");close.innerHTML='<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>';
 const heading=document.createElement("h2");heading.id=titleId;heading.textContent=role.title;dialog.append(close,heading);
