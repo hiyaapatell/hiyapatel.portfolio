@@ -33,3 +33,6 @@
   html .dock.dock-closed:hover>a:not(.active),html .dock.dock-closed:focus-within>a:not(.active),html .dock.dock-closed:hover>a.nav-contact:not(.active),html .dock.dock-closed:focus-within>a.nav-contact:not(.active){max-width:0;margin-left:-3px;padding-left:0;padding-right:0;opacity:0;pointer-events:none}
   html .dock.dock-closed:hover::after,html .dock.dock-closed:focus-within::after{width:24px;max-width:24px;margin:0 12px;opacity:1}
 }
+
+/* Warm cream active pills across the full navigation in both themes. */
+.dock>a.active,.dock>a[aria-current="location"]{background:#f4ecdf!important;color:#242424!important}
