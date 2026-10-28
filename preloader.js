@@ -132,10 +132,29 @@ html.lights-intro-reveal main{opacity:1;transform:none;transition:opacity 450ms 
   document.addEventListener("keydown",onEscape);
   later(()=>document.removeEventListener("keydown",onEscape),allLit+HOLD+AFTER+700);
   }
+  let topReplayArmed = false;
+  let previousScrollY = window.scrollY;
+  let suppressTopReplayUntil = 0;
+  window.addEventListener("scroll", () => {
+    const y = Math.max(0, window.scrollY);
+    if (document.getElementById("lights-out") || performance.now() < suppressTopReplayUntil) {
+      previousScrollY = y;
+      topReplayArmed = false;
+      return;
+    }
+    if (y > Math.max(160, window.innerHeight * .5)) topReplayArmed = true;
+    if (topReplayArmed && y <= 8 && y < previousScrollY) {
+      topReplayArmed = false;
+      play(true);
+    }
+    previousScrollY = y;
+  }, {passive:true});
   document.addEventListener("click",event=>{
     const mark=event.target.closest?.(".topbar .monogram, .footer-mark");
     if(!mark)return;
     event.preventDefault();event.stopImmediatePropagation();
+    suppressTopReplayUntil = performance.now() + 2500;
+    topReplayArmed = false;
     if(mark.matches(".footer-mark")){play(true);return;}
     document.querySelectorAll("dialog[open]").forEach(dialog=>dialog.close());
     history.replaceState(null,"",location.pathname+location.search+"#top");
