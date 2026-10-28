@@ -1,7 +1,9 @@
 /* F1 start-lights intro. Plays once per visit, before the home page, then fades out. */
 (() => {
   const KEY = "hiya-lights-out";
-  try { if (sessionStorage.getItem(KEY) === "1") return; } catch (e) {}
+  function play(replay = false) {
+  if (document.getElementById("lights-out")) return;
+  try { if (!replay && sessionStorage.getItem(KEY) === "1") return; } catch (e) {}
 
   const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const STEP = reduce ? 160 : 650;   // gap between each red light
@@ -31,7 +33,16 @@
 #lights-out .lo-skip:hover,#lights-out .lo-skip:focus-visible{color:#fff}
 #lights-out .lo-skip:hover svg,#lights-out .lo-skip:focus-visible svg{transform:translateX(5px)}
 #lights-out .lo-skip:focus-visible{outline:2px solid #ef3c34;outline-offset:3px}
-@media(prefers-reduced-motion:reduce){#lights-out,#lights-out .lo-gantry i,#lights-out .lo-skip svg{transition:none}}
+#lights-out{gap:70px}
+#lights-out .lo-gantry{gap:24px;padding:44px;border-radius:36px;box-shadow:none}
+#lights-out .lo-gantry i{width:96px}
+#lights-out .lo-title{font-size:64px}
+#lights-out .lo-status{display:none}
+#lights-out .lo-skip{font-size:24px}
+#lights-out.lo-enter{animation:loReplayIn 400ms ease both}
+@keyframes loReplayIn{from{opacity:0;transform:scale(.98)}to{opacity:1;transform:none}}
+@media(max-width:740px){#lights-out{gap:40px}#lights-out .lo-gantry{gap:clamp(8px,3vw,18px);padding:24px;border-radius:24px}#lights-out .lo-gantry i{width:clamp(34px,11vw,72px)}#lights-out .lo-title{font-size:clamp(32px,7vw,54px)}#lights-out .lo-skip{font-size:18px}}
+@media(prefers-reduced-motion:reduce){#lights-out.lo-enter{animation:none}#lights-out,#lights-out .lo-gantry i,#lights-out .lo-skip svg{transition:none}}
 `;
 
   const style = document.createElement("style");
@@ -39,6 +50,7 @@
 
   const overlay = document.createElement("div");
   overlay.id = "lights-out";
+  if (replay) overlay.classList.add("lo-enter");
   overlay.setAttribute("role", "status");
   overlay.setAttribute("aria-label", "Loading Hiya Patel’s portfolio");
   overlay.innerHTML =
@@ -64,6 +76,7 @@
     done = true;
     timers.forEach(clearTimeout);
     try { sessionStorage.setItem(KEY, "1"); } catch (e) {}
+    if (replay) window.scrollTo({top:0,behavior:"instant"});
     overlay.classList.add("lo-leave");
     setTimeout(() => {
       overlay.remove();
@@ -88,5 +101,14 @@
   later(finish, allLit + HOLD + AFTER);
 
   overlay.querySelector(".lo-skip").addEventListener("click", finish);
-  document.addEventListener("keydown", (e) => { if (e.key === "Escape") finish(); }, { once: true });
+  const onEscape = (event) => { if(event.key === "Escape") { finish(); document.removeEventListener("keydown",onEscape); } };
+  document.addEventListener("keydown",onEscape);
+  later(()=>document.removeEventListener("keydown",onEscape),allLit+HOLD+AFTER+700);
+  }
+  document.addEventListener("click",event=>{
+    const mark=event.target.closest?.(".topbar .monogram, .footer-mark");
+    if(!mark)return;
+    event.preventDefault();event.stopImmediatePropagation();play(true);
+  },true);
+  play();
 })();
