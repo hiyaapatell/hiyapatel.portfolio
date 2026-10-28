@@ -58,7 +58,14 @@ html.lights-intro-reveal main{opacity:1;transform:none;transition:opacity 900ms 
 @media(prefers-reduced-motion:reduce){html.lights-intro-running main{transform:none}html.lights-intro-reveal main{transition:none}#lights-out{transition:none}}
 `;
   const style = document.createElement("style");
-  style.textContent = css + sizing;
+  style.textContent = css + sizing + `
+#lights-out{gap:38px!important}
+#lights-out .lo-gantry{width:min(420px,70vw)!important;padding:24px!important;gap:16px!important;border-radius:22px!important}
+#lights-out .lo-gantry i{width:0!important;flex:1!important}
+#lights-out .lo-title{font-size:clamp(25px,3.3vw,38px)!important}
+#lights-out .lo-skip{display:none!important}
+@media(max-width:500px){#lights-out .lo-gantry{width:82vw!important;padding:18px!important;gap:10px!important}}
+`;
 
   const overlay = document.createElement("div");
   overlay.id = "lights-out";
@@ -116,7 +123,7 @@ html.lights-intro-reveal main{opacity:1;transform:none;transition:opacity 900ms 
   }, allLit + HOLD);
   later(finish, allLit + HOLD + AFTER);
 
-  overlay.querySelector(".lo-skip").addEventListener("click", finish);
+  overlay.querySelector(".lo-skip")?.remove();
   const onEscape = (event) => { if(event.key === "Escape") { finish(); document.removeEventListener("keydown",onEscape); } };
   document.addEventListener("keydown",onEscape);
   later(()=>document.removeEventListener("keydown",onEscape),allLit+HOLD+AFTER+700);

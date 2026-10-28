@@ -39,3 +39,7 @@ position:absolute!important;top:calc(100% + 10px)!important;left:0!important;rig
 #story .intro-portrait.pit-scroll-sequence .pit-thought.pit-note-visible:focus-visible{animation-play-state:paused!important}
 @keyframes thoughtGentleBob{0%,100%{translate:0 0}50%{translate:0 -5px}}
 @media(prefers-reduced-motion:reduce){#story .intro-portrait.pit-scroll-sequence .pit-thought.pit-note-visible{animation:none!important}}
+
+/* Supporting sub-box is visible strictly while its parent badge is hovered. */
+#story .intro-portrait .pit-thought:not(:hover) .thought-detail{opacity:0!important;visibility:hidden!important;pointer-events:none!important;transform:translateY(-5px)!important}
+#story .intro-portrait .pit-thought:hover .thought-detail{opacity:1!important;visibility:visible!important;pointer-events:none!important;transform:translateY(0)!important}
