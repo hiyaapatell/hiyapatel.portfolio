@@ -22,19 +22,24 @@ const brandStyle=document.createElement("style");brandStyle.textContent=`
 @media(hover:none){#experience .experience-entry .experience-brand-mark{opacity:.4;transform:none}}
 @media(prefers-reduced-motion:reduce){#experience .experience-entry .experience-brand-mark{transition:none}}
 `;document.head.append(brandStyle);
+const suppliedStyle=document.createElement("style");suppliedStyle.textContent=`
+.adobe-role-dialog h2 .role-company{color:#ef3c34}
+#experience .experience-entry .experience-brand-mark.supplied-brand img{filter:grayscale(1) contrast(3);mix-blend-mode:screen}
+#experience .experience-entry .experience-brand-mark.brand-massart img{filter:brightness(0) invert(.94);mix-blend-mode:normal}
+#experience .experience-entry .experience-brand-mark.brand-upwork img{border-radius:50%;filter:grayscale(1) contrast(3)}
+#experience .experience-entry .experience-brand-mark.brand-nyserda img{filter:grayscale(1) contrast(8)}
+`;document.head.append(suppliedStyle);
 const setup=()=>{
 const cards=[...document.querySelectorAll("#experience .experience-entry")];if(cards.length!==7)return false;
 cards.slice(1).forEach((card,i)=>{
 if(card.dataset.rolePopup)return;card.dataset.rolePopup="true";
 const brandNames=["MassArt","NYSERDA","Le Panthère","Upwork","SolidSalt","Blue Chisel"];
-const domains=["massart.edu","nyserda.ny.gov",null,"upwork.com","solidsalt.com","bluechisel.com"];
-const mark=document.createElement("span");mark.className="experience-brand-mark";mark.setAttribute("aria-hidden","true");
-const fallback=document.createElement("span");fallback.textContent=brandNames[i];mark.append(fallback);
-if(domains[i]){const img=document.createElement("img");img.alt="";img.src=i===5?"https://bluechisel.com/theme_bluechisel/static/src/img/bluechisel_white_logo.png":"https://www.google.com/s2/favicons?domain="+domains[i]+"&sz=128";img.addEventListener("load",()=>{fallback.hidden=true});img.addEventListener("error",()=>img.remove());mark.append(img)}
-card.append(mark);
+const files=["massart","nyserda","le-panthere","upwork","solidsalt",null];
+const mark=document.createElement("span");mark.className="experience-brand-mark supplied-brand brand-"+(files[i]||"bluechisel");mark.setAttribute("aria-hidden","true");
+const img=document.createElement("img");img.alt="";img.src=files[i]?"./assets/experience-"+files[i]+"-supplied.png":"https://bluechisel.com/theme_bluechisel/static/src/img/bluechisel_white_logo.png";mark.append(img);card.append(mark);
 const role=roles[i];const dialog=document.createElement("dialog");dialog.className="adobe-role-dialog";const titleId="experience-popup-title-"+(i+2);dialog.setAttribute("aria-labelledby",titleId);
 const close=document.createElement("button");close.type="button";close.className="adobe-close";close.setAttribute("aria-label","Close experience details");close.innerHTML='<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>';
-const heading=document.createElement("h2");heading.id=titleId;heading.textContent=role.title;dialog.append(close,heading);
+const heading=document.createElement("h2");heading.id=titleId;const [roleName,company]=role.title.split(' | ');heading.append(document.createTextNode(roleName+' | '));const companyText=document.createElement('span');companyText.className='role-company';companyText.textContent=company;heading.append(companyText);dialog.append(close,heading);
 const meta=[...card.querySelectorAll(".experience-meta p")];meta.forEach((source,j)=>{const p=document.createElement("p");p.className=j===0?"role-date":"role-location";p.textContent=source.textContent;dialog.append(p)});
 const ul=document.createElement("ul");role.bullets.forEach(text=>{const li=document.createElement("li");li.textContent=text;ul.append(li)});dialog.append(ul);document.body.append(dialog);
 const cue=document.createElement("span");cue.className="experience-popup-cue";cue.setAttribute("aria-hidden","true");cue.innerHTML='<svg viewBox="0 0 24 24" fill="none"><path d="M6 18 18 6M7 6h11v11"/></svg>';card.append(cue);
