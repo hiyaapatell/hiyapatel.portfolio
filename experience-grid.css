@@ -17,3 +17,12 @@
 @media(max-width:1000px){#experience .experience-list{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
 @media(max-width:640px){#experience .experience-list{grid-template-columns:1fr!important;gap:18px!important}#experience .experience-list .experience-entry{min-height:280px;padding:26px 22px!important}}
 @media(prefers-reduced-motion:reduce){#experience .experience-list .experience-entry{transition:none!important}}
+
+/* Match the lift and shadow used across the other cards. */
+#experience .experience-list .experience-entry .experience-number{display:none!important}
+#experience .experience-list .experience-entry{transition:transform 320ms cubic-bezier(.22,1,.36,1),box-shadow 320ms ease,border-color 250ms ease,background 250ms ease!important}
+@media(hover:hover){
+#experience .experience-list .experience-entry:hover{transform:translateY(-10px)!important;box-shadow:0 22px 35px #0007!important}
+}
+#experience .experience-list .experience-entry:focus-visible{transform:translateY(-10px)!important;outline:2px solid #f4d84b;outline-offset:4px}
+@media(prefers-reduced-motion:reduce){#experience .experience-list .experience-entry:hover,#experience .experience-list .experience-entry:focus-visible{transform:none!important;transition:none!important}}
