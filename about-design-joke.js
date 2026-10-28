@@ -18,7 +18,7 @@ const padding=getComputedStyle(card).padding;
 const inner=document.createElement("div");inner.className="design-joke-inner";
 const front=document.createElement("div");front.className="design-joke-front";front.style.padding=padding;while(card.firstChild)front.append(card.firstChild);
 const back=document.createElement("div");back.className="design-joke-back";back.style.padding=padding;
-back.innerHTML='<span class="joke-label">DESIGN PIT STOP / TEAM RADIO</span><h3>Box, box.<br>The button is <em>2px off.</em></h3><p>We had the pace.<br>We just didn’t have the spacing.</p><span class="joke-timing">ALIGN → TEST → BACK ON TRACK</span>';
+back.innerHTML='<span class="joke-label">A LITTLE REMINDER</span><h3>Keep calm.<br><em>Trust the process.</em></h3><p>Good ideas take a few practice laps.</p><span class="joke-timing">TRY → LEARN → MAKE IT BETTER</span>';
 inner.append(front,back);card.append(inner);card.classList.add("design-joke-flip");card.tabIndex=0;return true};
 if(!setup()){const observer=new MutationObserver(()=>{if(setup())observer.disconnect()});observer.observe(document.getElementById("root")||document.body,{childList:true,subtree:true})}
 })();

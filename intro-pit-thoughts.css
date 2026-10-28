@@ -79,3 +79,5 @@ background:#16161666!important;border:1px solid #ffffff35!important;border-radiu
 #story .intro-portrait .pit-thought.is-open,
 #story .intro-portrait .pit-thought .thought-detail,
 #story .intro-portrait .pit-thought:hover .thought-detail{border:1px solid #ffffff80!important}
+
+#experience .resume-button,#experience .resume-button:hover,#experience .resume-button:focus-visible{border:1px solid #ffffff80!important}
