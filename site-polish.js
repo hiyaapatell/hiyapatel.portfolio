@@ -313,6 +313,9 @@
     const pass = document.querySelector("#about .driver-pass");
     if (!pass || pass.dataset.flipReady) return;
     pass.dataset.flipReady = "true";
+    const flag=pass.querySelector(".pass-top svg");
+    if(flag){flag.setAttribute("viewBox","0 0 24 24");flag.innerHTML='<path d="M4 21V4m0 1c5-5 10 4 16-1v12c-6 5-11-4-16 1" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 5c1.4-1.4 2.8-1.6 4-.9v4c-1.2-.7-2.6-.5-4 .9V5Zm8 .5c1.3.8 2.6 1.4 4 1.1v4c-1.4.3-2.7-.3-4-1.1v-4ZM16 6.6c1.3-.1 2.6-.8 4-2.6v4c-1.4 1.8-2.7 2.5-4 2.6v-4ZM8 8.1c1.3.5 2.6 1.4 4 2.2v4c-1.4-.8-2.7-1.7-4-2.2v-4ZM4 13c1.4-1.4 2.8-1.6 4-.9v4c-1.2-.7-2.6-.5-4 .9v-4ZM12 13.5c1.3.8 2.6 1.4 4 1.1v2c-1.4.3-2.7-.3-4-1.1v-2ZM16 10.6c1.3-.1 2.6-.8 4-2.6v4c-1.4 1.8-2.7 2.5-4 2.6v-4Z" fill="currentColor"/>';}
+
     const inner = document.createElement("div");
     inner.className = "driver-pass-inner";
     const front = document.createElement("div");
