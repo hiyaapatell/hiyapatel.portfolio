@@ -5,7 +5,7 @@ const slides=[
 {src:"https://upload.wikimedia.org/wikipedia/commons/5/5e/Felipe_Massa_2012_Malaysia_Qualify.jpg",alt:"Felipe Massa’s Ferrari at the 2012 Malaysian Grand Prix",credit:"Morio · CC BY-SA 3.0",url:"https://commons.wikimedia.org/wiki/File:Felipe_Massa_2012_Malaysia_Qualify.jpg",license:"https://creativecommons.org/licenses/by-sa/3.0/"}
 ];
 const style=document.createElement("style");style.textContent=`
-#about .photo-note{position:relative}
+
 #about .photo-note>img{transition:opacity 350ms ease}
 .ferrari-slideshow-toggle{position:absolute;right:13px;bottom:12px;border:0;background:transparent;color:#272727;cursor:pointer;font:16px/1 sans-serif;padding:5px}
 .ferrari-photo-credit{display:block;font:7px/1.3 sans-serif!important;letter-spacing:0!important;color:#555;text-align:center;margin-top:4px;min-height:10px}
