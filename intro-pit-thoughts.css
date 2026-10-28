@@ -91,3 +91,7 @@ background:#16161666!important;border:1px solid #ffffff35!important;border-radiu
 
 #story .intro-portrait .pit-thought .thought-detail,
 #story .intro-portrait .pit-thought:hover .thought-detail{background:rgba(32,29,27,.86)!important;border:1px solid #ffffff80!important;border-radius:10px!important;color:#f4ecdf!important;-webkit-backdrop-filter:blur(20px)!important;backdrop-filter:blur(20px)!important}
+
+/* Theme-red supporting boxes for all three portrait thoughts. */
+#story .intro-portrait .pit-thought .thought-detail,
+#story .intro-portrait .pit-thought:hover .thought-detail{background:rgba(239,60,52,.88)!important;color:#fff!important;border:1px solid #ffffff80!important;border-radius:10px!important;-webkit-backdrop-filter:blur(16px)!important;backdrop-filter:blur(16px)!important}
