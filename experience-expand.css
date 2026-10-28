@@ -20,3 +20,15 @@ transition:height 420ms cubic-bezier(.22,1,.36,1),transform 320ms cubic-bezier(.
 #experience .experience-entry:nth-child(n+4):focus-within .role-tools{max-height:110px!important;opacity:1!important;padding-top:18px!important;border-top-width:1px!important;margin-top:auto!important}
 @media(hover:none){#experience .experience-list .experience-entry:nth-child(n+4){height:330px!important;gap:18px!important}#experience .experience-entry:nth-child(n+4) .experience-meta{max-height:70px;opacity:1}#experience .experience-entry:nth-child(n+4) .experience-details{flex:1!important;gap:12px!important}#experience .experience-entry:nth-child(n+4) .experience-details h4{max-height:90px!important;opacity:1!important}#experience .experience-entry:nth-child(n+4) .role-tools{max-height:110px!important;opacity:1!important;padding-top:18px!important;border-top-width:1px!important;margin-top:auto!important}}
 @media(prefers-reduced-motion:reduce){#experience .experience-list .experience-entry:nth-child(n+4),#experience .experience-entry:nth-child(n+4) *{transition:none!important}}
+
+/* All experience borders match the education panel, including current roles. */
+#experience .experience-list .experience-entry,
+#experience .experience-list .experience-entry:nth-child(-n+2),
+#experience .experience-list .experience-entry:hover,
+#experience .experience-list .experience-entry:focus-visible,
+#experience .experience-list .experience-entry.experience-active,
+#experience .experience-list .experience-entry:nth-child(-n+2):hover,
+#experience .experience-list .experience-entry:nth-child(-n+2):focus-visible,
+#experience .experience-list .experience-entry:nth-child(-n+2).experience-active{
+border:1px solid #ffffff25!important;border-top:4px solid #ef3c34!important}
+#experience .experience-list .experience-entry:focus-visible{outline-color:#ef3c34!important}
