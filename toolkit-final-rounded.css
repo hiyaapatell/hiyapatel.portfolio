@@ -19,3 +19,8 @@
 #toolkit .skill-list span{border-radius:8px!important}
 
 #toolkit .tool-grid>button,#toolkit .tool-grid>button.selected{border-radius:8px!important}
+
+/* Tool selection does not leave a persistent red border. */
+#toolkit .tool-grid>button,#toolkit .tool-grid>button.selected{border-color:#ffffff35!important;border-top-color:#ffffff35!important;transition:border-color 220ms ease,background 220ms ease,transform 300ms cubic-bezier(.22,1,.36,1)}
+#toolkit .tool-grid>button:hover,#toolkit .tool-grid>button.selected:hover{border-color:var(--red)!important;border-top-color:var(--red)!important}
+#toolkit .tool-grid>button:focus-visible{outline:2px solid var(--red);outline-offset:4px}
