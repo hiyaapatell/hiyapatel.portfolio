@@ -9,8 +9,8 @@ const notes=[
 ];
 const enhanceNotes=()=>{
 const cards=[...document.querySelectorAll("#story .pit-thought")];if(cards.length!==3)return;
-cards.forEach((card,i)=>{if(card.dataset.refined)return;card.dataset.refined="true";card.tabIndex=0;card.setAttribute("role","button");card.removeAttribute("aria-hidden");card.setAttribute("aria-expanded","false");card.querySelector("span").textContent=notes[i][0];const detail=document.createElement("small");detail.className="thought-detail";detail.textContent=notes[i][1];card.querySelector("span").append(detail);
-const flip=()=>{const open=card.classList.toggle("is-open");card.setAttribute("aria-expanded",String(open))};card.addEventListener("click",flip);card.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();flip()}})});
+cards.forEach((card,i)=>{if(card.dataset.refined)return;card.dataset.refined="true";card.tabIndex=0;card.removeAttribute("aria-hidden");card.querySelector("span").textContent=notes[i][0];const detail=document.createElement("small");detail.className="thought-detail";detail.textContent=notes[i][1];card.querySelector("span").append(detail);
+});
 };
 enhanceNotes();const observer=new MutationObserver(enhanceNotes);observer.observe(document.getElementById("root"),{childList:true,subtree:true});return true;
 };
