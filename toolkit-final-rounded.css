@@ -32,3 +32,8 @@
 
 /* While one category tab is hovered or focused, the others (including the selected one) drop back to normal. */
 #toolkit .skill-category-controls:has(.skill-category:is(:hover,:focus-visible)) .skill-category:not(:is(:hover,:focus-visible)){transform:none;background:var(--surface);color:var(--text);box-shadow:none;border-color:#ffffff35!important;border-top-color:#ffffff35!important}
+
+/* Hovering a tab that is not selected sends the selected category's skills (or tool icons) back to their resting, faded state. */
+#toolkit .skill-list{transition:opacity 240ms ease}
+#toolkit .skill-category-controls:has(.skill-category:not([aria-pressed="true"]):is(:hover,:focus-visible)) ~ :is(.skill-list,.tool-grid){opacity:0;pointer-events:none}
+@media(prefers-reduced-motion:reduce){#toolkit .skill-list{transition:none}}
