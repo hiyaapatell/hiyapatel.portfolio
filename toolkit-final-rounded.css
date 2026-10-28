@@ -17,3 +17,5 @@
 /* Subtle corners instead of pill-shaped category and skill controls. */
 #toolkit .skill-category,#toolkit .skill-category[aria-pressed="true"]{border-radius:10px!important}
 #toolkit .skill-list span{border-radius:8px!important}
+
+#toolkit .tool-grid>button,#toolkit .tool-grid>button.selected{border-radius:8px!important}
