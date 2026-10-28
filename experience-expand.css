@@ -32,3 +32,7 @@ transition:height 420ms cubic-bezier(.22,1,.36,1),transform 320ms cubic-bezier(.
 #experience .experience-list .experience-entry:nth-child(-n+2).experience-active{
 border:1px solid #ffffff25!important;border-top:4px solid #ef3c34!important}
 #experience .experience-list .experience-entry:focus-visible{outline-color:#ef3c34!important}
+
+#experience .experience-list .experience-entry:nth-child(n+3)::after{
+content:"PREV";display:block!important;position:static!important;order:-1!important;align-self:flex-start!important;padding:6px 10px!important;margin:0 0 2px!important;border:1px solid #ffffff35!important;border-radius:6px!important;background:#ffffff08!important;color:#c5c5bd!important;font:700 10px/1.2 monospace!important;letter-spacing:.12em!important;width:auto!important;height:auto!important;transform:none!important}
+#experience .experience-list .experience-entry:nth-child(n+4):not(:hover):not(:focus-within)::after{position:absolute!important;top:10px!important;right:14px!important;font-size:8px!important;padding:3px 6px!important}
