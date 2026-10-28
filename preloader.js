@@ -6,9 +6,9 @@
 
 
   const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const STEP = reduce ? 160 : 650;   // gap between each red light
-  const HOLD = reduce ? 200 : 750;   // all five lit, engines screaming
-  const AFTER = reduce ? 350 : 1400;  // lights out, then the handover to the site
+  const STEP = reduce ? 120 : 350;   // gap between each red light
+  const HOLD = reduce ? 150 : 350;   // all five lit, engines screaming
+  const AFTER = reduce ? 200 : 550;  // lights out, then the handover to the site
 
   const STATUS = [
     "Warming up the tyres…",
