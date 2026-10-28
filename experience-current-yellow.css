@@ -50,3 +50,7 @@ background:var(--yellow,#f4d84b)!important;border-color:var(--yellow,#f4d84b)!im
 #experience .experience-stint-controls button.experience-stint:nth-of-type(n+1):not(.timeline-hover){
 background:#16161666!important;border:1px solid #ffffff80!important;color:#eee8df!important;-webkit-backdrop-filter:blur(16px)!important;backdrop-filter:blur(16px)!important;box-shadow:0 0 0 6px var(--surface,#202020)!important}
 #experience .experience-stint-controls button.experience-stint{border-radius:50%!important}
+
+/* Neutral glass surface masks red track bleed inside every resting marker. */
+#experience .experience-stint-controls button.experience-stint:nth-of-type(n+1):not(.timeline-hover){
+background:linear-gradient(145deg,#ffffff05,#ffffff00),#1e1e1e!important;background-color:#1e1e1e!important;box-shadow:0 0 0 6px var(--surface,#202020)!important}
