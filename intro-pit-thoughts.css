@@ -30,3 +30,12 @@ position:absolute!important;top:calc(100% + 10px)!important;left:0!important;rig
 @media(prefers-reduced-motion:reduce){#story .intro-portrait.pit-scroll-sequence .pit-thought{transition:none!important;transform:none!important}}
 
 #story .intro-portrait .pit-thought,#story .intro-portrait .pit-thought:hover,#story .intro-portrait .pit-thought.is-open{border-radius:10px!important}
+
+/* Gentle independent motion after each scroll reveal. */
+#story .intro-portrait.pit-scroll-sequence .pit-thought.pit-note-visible{animation:thoughtGentleBob 3.8s ease-in-out infinite!important}
+#story .intro-portrait.pit-scroll-sequence .pit-thought.two.pit-note-visible{animation-delay:-1.2s!important;animation-duration:4.2s!important}
+#story .intro-portrait.pit-scroll-sequence .pit-thought.three.pit-note-visible{animation-delay:-2.4s!important;animation-duration:4.6s!important}
+#story .intro-portrait.pit-scroll-sequence .pit-thought.pit-note-visible:hover,
+#story .intro-portrait.pit-scroll-sequence .pit-thought.pit-note-visible:focus-visible{animation-play-state:paused!important}
+@keyframes thoughtGentleBob{0%,100%{translate:0 0}50%{translate:0 -5px}}
+@media(prefers-reduced-motion:reduce){#story .intro-portrait.pit-scroll-sequence .pit-thought.pit-note-visible{animation:none!important}}
