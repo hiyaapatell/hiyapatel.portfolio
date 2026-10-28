@@ -38,6 +38,15 @@ const brandStyle=document.createElement("style");brandStyle.textContent=`
 @media(hover:none){#experience .experience-entry:first-child .adobe-brand-mark{opacity:.4;transform:none}}
 @media(prefers-reduced-motion:reduce){#experience .experience-entry:first-child .adobe-brand-mark{transition:none}}
 `;document.head.append(brandStyle);
+const closeStyle=document.createElement("style");closeStyle.textContent=`
+.adobe-role-dialog .adobe-close{display:grid;place-items:center;padding:0;box-sizing:border-box;line-height:1;transition:transform 220ms cubic-bezier(.22,1,.36,1),background-color 220ms ease,border-color 220ms ease,box-shadow 220ms ease}
+.adobe-role-dialog .adobe-close svg{display:block;width:17px;height:17px;pointer-events:none}
+.adobe-role-dialog .adobe-close path{stroke:currentColor;stroke-width:2;stroke-linecap:round}
+.adobe-role-dialog .adobe-close:hover{transform:translateY(-2px);background:#ef3c3426;border-color:#ef3c34;box-shadow:0 5px 14px #0004}
+.adobe-role-dialog .adobe-close:active{transform:translateY(0) scale(.95)}
+.adobe-role-dialog .adobe-close:focus-visible{outline:2px solid #f4d84b;outline-offset:3px}
+@media(prefers-reduced-motion:reduce){.adobe-role-dialog .adobe-close{transition:none}.adobe-role-dialog .adobe-close:hover{transform:none}}
+`;document.head.append(closeStyle);
 const setup=()=>{
 const card=document.querySelector("#experience .experience-entry");if(!card)return false;
 if(card.dataset.adobePopup)return true;card.dataset.adobePopup="true";
@@ -46,7 +55,7 @@ cue.innerHTML='<svg viewBox="0 0 24 24" fill="none"><path d="M6 18 18 6M7 6h11v1
 const logo=document.createElement("span");logo.className="adobe-brand-mark";logo.setAttribute("aria-hidden","true");
 logo.innerHTML='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h8.8L0 21V0Zm15.2 0H24v21L15.2 0ZM12 7.7 17.6 21h-3.8l-1.6-4.2H8.1L12 7.7Z"/></svg>';card.append(logo);
 const dialog=document.createElement("dialog");dialog.className="adobe-role-dialog";dialog.setAttribute("aria-labelledby","adobe-role-title");
-dialog.innerHTML='<button type="button" class="adobe-close" aria-label="Close Adobe experience">×</button><h2 id="adobe-role-title">Adobe Student Ambassador | Adobe</h2><p class="role-date">Jul 2026 – Present</p><p class="role-location">Boston, MA</p><ul><li>Drive student engagement and tool adoption across campus by promoting Adobe Creative Cloud resources.</li><li>Create targeted social media content to educate students on design tools and workflows.</li></ul>';
+dialog.innerHTML='<button type="button" class="adobe-close" aria-label="Close Adobe experience"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button><h2 id="adobe-role-title">Adobe Student Ambassador | Adobe</h2><p class="role-date">Jul 2026 – Present</p><p class="role-location">Boston, MA</p><ul><li>Drive student engagement and tool adoption across campus by promoting Adobe Creative Cloud resources.</li><li>Create targeted social media content to educate students on design tools and workflows.</li></ul>';
 document.body.append(dialog);
 card.setAttribute("role","button");card.setAttribute("aria-haspopup","dialog");card.setAttribute("aria-label","View Adobe Student Ambassador experience");card.tabIndex=0;
 const open=()=>{if(!dialog.open)dialog.showModal()};
