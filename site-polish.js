@@ -182,6 +182,19 @@
     console.append(copyBlock, controls);
     section.querySelector(".split-heading")?.insertAdjacentElement("afterend", console);
 
+    const highlightHovered = (index) => {
+      buttons.forEach((button, buttonIndex) => button.classList.toggle("timeline-hover",buttonIndex===index));
+    };
+    entries.forEach((entry,index)=>{
+      entry.addEventListener("mouseenter",()=>highlightHovered(index));
+      entry.addEventListener("mouseleave",()=>highlightHovered(-1));
+      entry.addEventListener("focusin",()=>{if(entry.matches(":focus-visible"))highlightHovered(index)});
+      entry.addEventListener("focusout",()=>highlightHovered(-1));
+    });
+    buttons.forEach((button,index)=>{
+      button.addEventListener("mouseenter",()=>highlightHovered(index));
+      button.addEventListener("mouseleave",()=>highlightHovered(-1));
+    });
     let activeIndex = 0;
     const select = (index, scrollIntoView = false) => {
       const next = Math.max(0, Math.min(entries.length - 1, index));

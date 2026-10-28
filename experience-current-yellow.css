@@ -41,3 +41,7 @@ background:transparent!important;box-shadow:none!important}
 #experience .experience-stint-controls button.experience-stint:nth-of-type(n+1):focus-visible,
 #experience .experience-stint-controls button.experience-stint:nth-of-type(n+1).selected{
 background:var(--surface,#202020)!important;isolation:isolate;box-shadow:0 0 0 6px var(--surface,#202020)!important}
+
+/* Only the hovered role receives a yellow timeline marker. */
+#experience .experience-stint-controls button.experience-stint.timeline-hover:nth-of-type(n+1){
+background:var(--yellow,#f4d84b)!important;border-color:var(--yellow,#f4d84b)!important;color:#161616!important;box-shadow:0 0 0 6px var(--surface,#202020),0 0 18px #f4d84b38!important}
