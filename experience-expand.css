@@ -1,25 +1,25 @@
 /* Compact past-role panels expand within the existing three-column grid. */
 #experience .experience-list{align-items:start!important}
-#experience .experience-list .experience-entry:nth-child(n+4){
+#experience .experience-list .experience-entry:nth-child(n+1){
 min-height:0!important;height:108px!important;overflow:hidden!important;gap:0!important;
 transition:height 420ms cubic-bezier(.22,1,.36,1),transform 320ms cubic-bezier(.22,1,.36,1),box-shadow 320ms ease,border-color 250ms ease,background 250ms ease!important}
-#experience .experience-entry:nth-child(n+4) .experience-meta{max-height:0;opacity:0;overflow:hidden;transition:max-height .35s ease,opacity .25s ease,margin .35s ease}
-#experience .experience-entry:nth-child(n+4) .experience-details{flex:0!important;gap:0!important}
-#experience .experience-entry:nth-child(n+4) .experience-details h3{font-size:clamp(24px,2.4vw,38px)!important}
-#experience .experience-entry:nth-child(n+4) .experience-details h4,
-#experience .experience-entry:nth-child(n+4) .role-tools{max-height:0!important;opacity:0!important;overflow:hidden!important;padding-top:0!important;border-top-width:0!important;margin:0!important;transition:max-height .35s ease,opacity .3s ease,padding .35s ease,margin .35s ease}
-#experience .experience-list .experience-entry:nth-child(n+4):hover,
-#experience .experience-list .experience-entry:nth-child(n+4):focus-within{height:330px!important;gap:18px!important}
-#experience .experience-entry:nth-child(n+4):hover .experience-meta,
-#experience .experience-entry:nth-child(n+4):focus-within .experience-meta{max-height:70px;opacity:1}
-#experience .experience-entry:nth-child(n+4):hover .experience-details,
-#experience .experience-entry:nth-child(n+4):focus-within .experience-details{flex:1!important;gap:12px!important}
-#experience .experience-entry:nth-child(n+4):hover .experience-details h4,
-#experience .experience-entry:nth-child(n+4):focus-within .experience-details h4{max-height:90px!important;opacity:1!important}
-#experience .experience-entry:nth-child(n+4):hover .role-tools,
-#experience .experience-entry:nth-child(n+4):focus-within .role-tools{max-height:110px!important;opacity:1!important;padding-top:18px!important;border-top-width:1px!important;margin-top:auto!important}
-@media(hover:none){#experience .experience-list .experience-entry:nth-child(n+4){height:330px!important;gap:18px!important}#experience .experience-entry:nth-child(n+4) .experience-meta{max-height:70px;opacity:1}#experience .experience-entry:nth-child(n+4) .experience-details{flex:1!important;gap:12px!important}#experience .experience-entry:nth-child(n+4) .experience-details h4{max-height:90px!important;opacity:1!important}#experience .experience-entry:nth-child(n+4) .role-tools{max-height:110px!important;opacity:1!important;padding-top:18px!important;border-top-width:1px!important;margin-top:auto!important}}
-@media(prefers-reduced-motion:reduce){#experience .experience-list .experience-entry:nth-child(n+4),#experience .experience-entry:nth-child(n+4) *{transition:none!important}}
+#experience .experience-entry:nth-child(n+1) .experience-meta{max-height:0;opacity:0;overflow:hidden;transition:max-height .35s ease,opacity .25s ease,margin .35s ease}
+#experience .experience-entry:nth-child(n+1) .experience-details{flex:0!important;gap:0!important}
+#experience .experience-entry:nth-child(n+1) .experience-details h3{font-size:clamp(24px,2.4vw,38px)!important}
+#experience .experience-entry:nth-child(n+1) .experience-details h4,
+#experience .experience-entry:nth-child(n+1) .role-tools{max-height:0!important;opacity:0!important;overflow:hidden!important;padding-top:0!important;border-top-width:0!important;margin:0!important;transition:max-height .35s ease,opacity .3s ease,padding .35s ease,margin .35s ease}
+#experience .experience-list .experience-entry:nth-child(n+1):hover,
+#experience .experience-list .experience-entry:nth-child(n+1):focus-within{height:330px!important;gap:18px!important}
+#experience .experience-entry:nth-child(n+1):hover .experience-meta,
+#experience .experience-entry:nth-child(n+1):focus-within .experience-meta{max-height:70px;opacity:1}
+#experience .experience-entry:nth-child(n+1):hover .experience-details,
+#experience .experience-entry:nth-child(n+1):focus-within .experience-details{flex:1!important;gap:12px!important}
+#experience .experience-entry:nth-child(n+1):hover .experience-details h4,
+#experience .experience-entry:nth-child(n+1):focus-within .experience-details h4{max-height:90px!important;opacity:1!important}
+#experience .experience-entry:nth-child(n+1):hover .role-tools,
+#experience .experience-entry:nth-child(n+1):focus-within .role-tools{max-height:110px!important;opacity:1!important;padding-top:18px!important;border-top-width:1px!important;margin-top:auto!important}
+@media(hover:none){#experience .experience-list .experience-entry:nth-child(n+1){height:330px!important;gap:18px!important}#experience .experience-entry:nth-child(n+1) .experience-meta{max-height:70px;opacity:1}#experience .experience-entry:nth-child(n+1) .experience-details{flex:1!important;gap:12px!important}#experience .experience-entry:nth-child(n+1) .experience-details h4{max-height:90px!important;opacity:1!important}#experience .experience-entry:nth-child(n+1) .role-tools{max-height:110px!important;opacity:1!important;padding-top:18px!important;border-top-width:1px!important;margin-top:auto!important}}
+@media(prefers-reduced-motion:reduce){#experience .experience-list .experience-entry:nth-child(n+1),#experience .experience-entry:nth-child(n+1) *{transition:none!important}}
 
 /* All experience borders match the education panel, including current roles. */
 #experience .experience-list .experience-entry,
@@ -35,4 +35,9 @@ border:1px solid #ffffff25!important;border-top:4px solid #ef3c34!important}
 
 #experience .experience-list .experience-entry:nth-child(n+3)::after{
 content:"PREV";display:block!important;position:static!important;order:-1!important;align-self:flex-start!important;padding:6px 10px!important;margin:0 0 2px!important;border:1px solid #ffffff35!important;border-radius:6px!important;background:#ffffff08!important;color:#c5c5bd!important;font:700 10px/1.2 monospace!important;letter-spacing:.12em!important;width:auto!important;height:auto!important;transform:none!important}
-#experience .experience-list .experience-entry:nth-child(n+4):not(:hover):not(:focus-within)::after{position:absolute!important;top:10px!important;right:14px!important;font-size:8px!important;padding:3px 6px!important}
+#experience .experience-list .experience-entry:nth-child(n+1):not(:hover):not(:focus-within)::after{position:absolute!important;top:10px!important;right:14px!important;font-size:8px!important;padding:3px 6px!important}
+
+/* Uniform compact headings and corner badges for all seven cards. */
+#experience .experience-list .experience-entry:not(:hover):not(:focus-within)::after{position:absolute!important;top:10px!important;right:14px!important;font-size:8px!important;padding:3px 6px!important}
+#experience .experience-list .experience-entry .experience-details h3{font-size:clamp(24px,2.2vw,34px)!important;line-height:1.12!important;overflow-wrap:normal!important}
+#experience .experience-list .experience-entry{transition:height 480ms cubic-bezier(.22,1,.36,1),gap 480ms cubic-bezier(.22,1,.36,1),transform 320ms cubic-bezier(.22,1,.36,1),box-shadow 320ms ease,background 250ms ease!important}
