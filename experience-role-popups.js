@@ -1,0 +1,34 @@
+(() => {
+const roles=[
+{title:"Graduate Research Assistant | Massachusetts College of Art & Design",bullets:["Conduct qualitative user research across entrepreneurship, international education, and sustainability domains.","Synthesize research findings into actionable design recommendations to support institutional projects."]},
+{title:"Social Media Designer Intern | NYSERDA",bullets:["Designed visual assets using Adobe Creative Cloud tailored to target audience preferences and strategic goals.","Translated user insights into effective visual communication and digital content strategies."]},
+{title:"UI/UX Designer | Le Panthère",bullets:["Redesigned website navigation architecture to improve overall usability and user flow.","Developed and refined Figma wireframes and high-fidelity interfaces based on usability testing and stakeholder input."]},
+{title:"Freelance Graphic Designer & UX Researcher | Upwork",bullets:["Executed user interviews, competitive analysis, journey mapping, and usability testing to identify friction points.","Built intuitive user flows and interface designs informed directly by primary user research."]},
+{title:"Graphic Design Intern | SolidSalt Communication Pvt Ltd",bullets:["Designed digital interfaces for Indo GSP prioritizing layout structure, usability, and clear visual hierarchy.","Created brand-aligned product packaging for Nirbelo, ensuring consistent visual identity."]},
+{title:"Branding & Concept Designer | Blue Chisel",bullets:["Created complete visual brand identities for Mementos and Grow & Grub.","Produced visual guidelines including custom typography, color palettes, and illustration assets."]}
+];
+const style=document.createElement("style");style.textContent=`
+#experience .experience-entry{cursor:pointer}
+#experience .experience-entry .experience-popup-cue{position:absolute;right:26px;bottom:27px;width:24px;height:24px;color:#f6efe366;pointer-events:none;transition:color 220ms ease,transform 220ms ease}
+#experience .experience-entry .experience-popup-cue svg{display:block;width:20px;height:20px;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+#experience .experience-entry:hover .experience-popup-cue,#experience .experience-entry:focus-visible .experience-popup-cue{color:#f6efe3bb;transform:translate(2px,-2px)}
+@media(prefers-reduced-motion:reduce){#experience .experience-entry .experience-popup-cue{transition:none;transform:none!important}}
+`;document.head.append(style);
+const setup=()=>{
+const cards=[...document.querySelectorAll("#experience .experience-entry")];if(cards.length!==7)return false;
+cards.slice(1).forEach((card,i)=>{
+if(card.dataset.rolePopup)return;card.dataset.rolePopup="true";
+const role=roles[i];const dialog=document.createElement("dialog");dialog.className="adobe-role-dialog";const titleId="experience-popup-title-"+(i+2);dialog.setAttribute("aria-labelledby",titleId);
+const close=document.createElement("button");close.type="button";close.className="adobe-close";close.setAttribute("aria-label","Close experience details");close.innerHTML='<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>';
+const heading=document.createElement("h2");heading.id=titleId;heading.textContent=role.title;dialog.append(close,heading);
+const meta=[...card.querySelectorAll(".experience-meta p")];meta.forEach((source,j)=>{const p=document.createElement("p");p.className=j===0?"role-date":"role-location";p.textContent=source.textContent;dialog.append(p)});
+const ul=document.createElement("ul");role.bullets.forEach(text=>{const li=document.createElement("li");li.textContent=text;ul.append(li)});dialog.append(ul);document.body.append(dialog);
+const cue=document.createElement("span");cue.className="experience-popup-cue";cue.setAttribute("aria-hidden","true");cue.innerHTML='<svg viewBox="0 0 24 24" fill="none"><path d="M6 18 18 6M7 6h11v11"/></svg>';card.append(cue);
+card.tabIndex=0;card.setAttribute("role","button");card.setAttribute("aria-haspopup","dialog");card.setAttribute("aria-label","View "+role.title+" experience");
+const open=()=>{if(!dialog.open)dialog.showModal()};
+card.addEventListener("click",open);card.addEventListener("keydown",event=>{if(event.key==="Enter"||event.key===" "){event.preventDefault();open()}});
+close.addEventListener("click",()=>dialog.close());dialog.addEventListener("click",event=>{if(event.target!==dialog)return;const b=dialog.getBoundingClientRect();if(event.clientX<b.left||event.clientX>b.right||event.clientY<b.top||event.clientY>b.bottom)dialog.close()});dialog.addEventListener("close",()=>card.focus({preventScroll:true}));
+});return true;
+};
+if(!setup()){const observer=new MutationObserver(()=>{if(setup())observer.disconnect()});observer.observe(document.getElementById("root")||document.body,{childList:true,subtree:true})}
+})();
