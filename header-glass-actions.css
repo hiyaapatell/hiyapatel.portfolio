@@ -1,0 +1,15 @@
+/* Header actions match the landing scene-pin glass buttons. */
+.topbar .available i{display:none!important}
+.topbar .available,.topbar .theme{
+gap:10px;padding:10px 15px!important;background:#24242488!important;
+-webkit-backdrop-filter:blur(14px)!important;backdrop-filter:blur(14px)!important;
+border:1px solid #ffffff70!important;border-radius:30px!important;color:#fff!important;
+box-shadow:0 4px 18px #0004!important;
+transition:transform .3s,background .3s!important}
+.topbar .available:hover,.topbar .theme:hover{
+transform:translateY(-7px)!important;background:#bb2525d9!important}
+.topbar .available:focus-visible,.topbar .theme:focus-visible{
+background:#bb2525d9!important;outline:2px solid #ffffffb3;outline-offset:3px}
+@media(prefers-reduced-motion:reduce){
+.topbar .available,.topbar .theme{transition:none!important}
+.topbar .available:hover,.topbar .theme:hover{transform:none!important}}
