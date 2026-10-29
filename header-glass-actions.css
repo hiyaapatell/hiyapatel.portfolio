@@ -13,7 +13,3 @@ background:#bb2525d9!important;outline:2px solid #ffffffb3;outline-offset:3px}
 @media(prefers-reduced-motion:reduce){
 .topbar .available,.topbar .theme{transition:none!important}
 .topbar .available:hover,.topbar .theme:hover{transform:none!important}}
-
-/* Equal dimensions for the paired desktop header actions. */
-.topbar .available,.topbar .theme{box-sizing:border-box;width:200px!important;height:44px!important;min-height:44px!important;flex-shrink:0;align-items:center;justify-content:center;white-space:nowrap}
-@media(max-width:700px){.topbar .theme{width:auto!important;min-width:88px}}
