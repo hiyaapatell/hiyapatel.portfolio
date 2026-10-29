@@ -36,3 +36,7 @@
 
 /* Warm cream active pills across the full navigation in both themes. */
 .dock>a.active,.dock>a[aria-current="location"]{background:#f4ecdf!important;color:#242424!important}
+
+/* Contact keeps its racing-red identity when selected. */
+.dock>a.nav-contact.active,.dock>a.nav-contact[aria-current="location"]{background:#ef3c34!important;color:#fff!important}
+.dock>a.nav-contact.active svg,.dock>a.nav-contact[aria-current="location"] svg{color:#fff!important}
