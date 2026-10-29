@@ -1,6 +1,6 @@
-/* Cycle the three landing messages in order at a quicker pace. */
+/* Cycle the two landing messages in order at a quicker pace. */
 (() => {
-const messages=['PRODUCT · UX · EXPERIENCE DESIGNER','Open to full-time roles · May 2027','MDes @MassArt | MIT'];
+const messages=['PRODUCT · UX · EXPERIENCE DESIGNER','MDes @MassArt & MIT'];
 const phases=messages.map(text=>({text,delay:2400}));
 const setup=()=>{
  const kicker=document.querySelector('.hero .hero-kicker');if(!kicker)return false;
