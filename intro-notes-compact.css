@@ -3,7 +3,7 @@
 #story .mini-stickers{width:min(100%,520px);height:205px;margin-top:30px}
 #story .mini-stickers .sticker{width:52%;min-height:158px;padding:20px 18px;box-shadow:6px 9px 0 #0002}
 #story .mini-stickers .sticker.red{left:0;top:0}
-#story .mini-stickers .sticker.cream{left:43%;top:22px}
+#story .mini-stickers .sticker.cream{left:49%;top:34px}
 #story .mini-stickers .sticker strong{font-size:clamp(22px,2.35vw,30px);line-height:1.08}
 #story .mini-stickers .sticker span{font-size:clamp(11px,1.15vw,15px);margin-top:14px}
 @media(max-width:760px){#story .mini-stickers{height:auto;width:100%;margin-top:26px}#story .mini-stickers .sticker{width:min(100%,360px);min-height:0;padding:20px}#story .mini-stickers .sticker strong{font-size:26px}}
