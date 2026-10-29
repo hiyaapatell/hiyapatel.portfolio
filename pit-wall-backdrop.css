@@ -4,3 +4,10 @@
 #notes::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,#121212a6 0%,#12121270 45%,#121212cc 100%);pointer-events:none}
 #notes .center-heading,#notes .notes-row,#notes .notes-info{position:relative}
 #notes .center-heading>p,#notes .notes-info{color:#e0dfd8}
+
+/* Fade both scenes through the same charcoal at their shared edge. */
+#notes{background:#151515!important}
+#notes::before{-webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 72%,transparent 100%);mask-image:linear-gradient(to bottom,#000 0%,#000 72%,transparent 100%)}
+#notes::after{background:linear-gradient(180deg,#121212a6 0%,#12121270 45%,#15151599 76%,#151515 100%)!important}
+#contact{background:#151515!important;border-top:0!important}
+#contact .contact-backdrop{-webkit-mask-image:linear-gradient(to bottom,transparent 0%,#000 30%,#000 100%);mask-image:linear-gradient(to bottom,transparent 0%,#000 30%,#000 100%)}
