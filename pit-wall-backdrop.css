@@ -22,3 +22,9 @@
 .note-dialog{max-height:calc(100dvh - 40px);overflow-y:auto;box-sizing:border-box}
 
 #notes .notes-info{display:none!important}
+
+/* Reduce the empty space between the note invitation and contact heading. */
+#notes{padding-bottom:48px!important}
+#notes>.center-heading{margin-bottom:0}
+#contact{padding-top:54px!important}
+@media(max-width:700px){#notes{padding-bottom:36px!important}#contact{padding-top:44px!important}}
