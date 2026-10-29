@@ -1,7 +1,7 @@
-/* Cycle the landing role line with sequential typing dots between messages. */
+/* Cycle the three landing messages in order at a quicker pace. */
 (() => {
 const messages=['PRODUCT · UX · EXPERIENCE DESIGNER','Open to full-time roles · May 2027','MDes @MassArt | MIT'];
-const phases=[{text:messages[0],delay:3800},{text:'.',delay:300},{text:'..',delay:300},{text:'...',delay:600},{text:messages[1],delay:3800},{text:'.',delay:300},{text:'..',delay:300},{text:'...',delay:600},{text:messages[2],delay:3800}];
+const phases=messages.map(text=>({text,delay:2400}));
 const setup=()=>{
  const kicker=document.querySelector('.hero .hero-kicker');if(!kicker)return false;
  if(kicker.dataset.roleRotation)return true;kicker.dataset.roleRotation='true';
