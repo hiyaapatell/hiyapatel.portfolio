@@ -11,3 +11,8 @@
 #notes::after{background:linear-gradient(180deg,#121212a6 0%,#12121270 45%,#15151599 76%,#151515 100%)!important}
 #contact{background:#151515!important;border-top:0!important}
 #contact .contact-backdrop{-webkit-mask-image:linear-gradient(to bottom,transparent 0%,#000 30%,#000 100%);mask-image:linear-gradient(to bottom,transparent 0%,#000 30%,#000 100%)}
+
+/* Blend the pit-wall entrance into the preceding dark section. */
+#notes{background:linear-gradient(to bottom,var(--bg,#141414) 0%,#151515 38%,#151515 100%)!important}
+#notes::before{-webkit-mask-image:linear-gradient(to bottom,transparent 0%,#000 24%,#000 72%,transparent 100%);mask-image:linear-gradient(to bottom,transparent 0%,#000 24%,#000 72%,transparent 100%)}
+#notes::after{background:linear-gradient(180deg,transparent 0%,#121212a6 24%,#12121270 45%,#15151599 76%,#151515 100%)!important}
