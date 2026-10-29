@@ -20,3 +20,15 @@ box-sizing:border-box!important;height:44px!important;min-height:44px!important;
 width:auto!important;min-width:0!important;padding:0 15px!important;
 align-items:center!important;justify-content:center!important;white-space:nowrap}
 @media(max-width:700px){.topbar .available,.topbar .theme,.hero .scene-pin{height:40px!important;min-height:40px!important}}
+
+/* Match the portrait thought's gentle motion on the two landing links only. */
+.hero .scene-pin{
+animation:heroPinGentleBob 3.8s ease-in-out infinite;
+transition:transform 520ms cubic-bezier(.22,1,.36,1),background .3s}
+.hero .pin-about{animation-duration:4.2s;animation-delay:-1.2s}
+.hero .scene-pin:hover,.hero .scene-pin:focus-visible{
+animation-play-state:paused;transform:translateY(-4px)}
+@keyframes heroPinGentleBob{0%,100%{translate:0 0}50%{translate:0 -5px}}
+@media(prefers-reduced-motion:reduce){
+.hero .scene-pin{animation:none;transition:none}
+.hero .scene-pin:hover,.hero .scene-pin:focus-visible{transform:none;translate:none}}
