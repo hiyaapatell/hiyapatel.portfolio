@@ -23,3 +23,6 @@
 #contact .contact-say-hi-link svg{width:16px;height:16px}
 #contact .contact-say-hi-link::before{width:17px;height:19px;top:-13px;left:-14px}
 @media(max-width:480px){#contact .contact-say-hi{right:10px}#contact .contact-invite-row{padding-bottom:66px}}
+
+/* Place the callout in the marked open space beside the upper heading. */
+@media(min-width:1101px){#contact .contact-say-hi{top:22%;bottom:auto;right:clamp(60px,9vw,145px)}}
