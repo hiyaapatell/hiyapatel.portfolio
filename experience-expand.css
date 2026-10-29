@@ -71,3 +71,10 @@ transform:none!important;transition:height 420ms cubic-bezier(.22,1,.36,1) 90ms,
 #experience .experience-list .experience-entry:hover .adobe-brand-mark,
 #experience .experience-list .experience-entry:hover .experience-brand-mark{visibility:visible!important}
 }
+
+/* The bottom-right arrow grows gently when pointed at, without resizing the card. */
+#experience .experience-entry :is(.adobe-popup-cue,.experience-popup-cue){pointer-events:auto!important;cursor:pointer}
+#experience .experience-entry :is(.adobe-popup-cue,.experience-popup-cue) svg{transition:transform 220ms cubic-bezier(.22,1,.36,1);transform-origin:center}
+@media(hover:hover){#experience .experience-entry :is(.adobe-popup-cue,.experience-popup-cue):hover svg{transform:scale(1.25)!important}}
+#experience .experience-entry:focus-visible :is(.adobe-popup-cue,.experience-popup-cue) svg{transform:scale(1.25)}
+@media(prefers-reduced-motion:reduce){#experience .experience-entry :is(.adobe-popup-cue,.experience-popup-cue) svg{transition:none}}
