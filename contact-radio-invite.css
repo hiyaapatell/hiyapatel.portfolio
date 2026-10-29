@@ -26,3 +26,7 @@
 
 /* Place the callout in the marked open space beside the upper heading. */
 @media(min-width:1101px){#contact .contact-say-hi{top:22%;bottom:auto;right:clamp(60px,9vw,145px)}}
+
+/* Tighten the space between the hiring heading and supporting sentence. */
+@media(min-width:1101px){#contact .contact-invite-row{padding-bottom:0}}
+#contact .contact-invite-row+p{margin-top:18px}

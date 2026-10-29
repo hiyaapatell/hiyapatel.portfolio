@@ -1,0 +1,5 @@
+.note-dialog .primary:disabled{opacity:.65;cursor:wait;transform:none!important}
+.note-dialog .note-delivery-status{font-size:13px;line-height:1.5;margin:15px 0 0;color:var(--text,#f4ecdf)}
+.note-dialog .note-delivery-status[data-state="success"]{color:#7bcf8b}
+.note-dialog .note-delivery-status[data-state="error"]{color:#ff938b}
+.note-dialog .note-delivery-status a{text-decoration:underline;color:inherit}
