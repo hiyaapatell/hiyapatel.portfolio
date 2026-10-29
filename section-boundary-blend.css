@@ -2,3 +2,10 @@
 #experience,.web-work{
 background:linear-gradient(to bottom,var(--bg,#151515) 0px,var(--surface,#202020) clamp(120px,14vw,220px),var(--surface,#202020) calc(100% - clamp(120px,14vw,220px)),var(--bg,#151515) 100%)!important;
 border-top-color:transparent!important;border-bottom-color:transparent!important}
+
+/* Let the workshop scene dissolve into Selected Work's background. */
+#process{background:var(--bg,#151515)!important;border-bottom:0!important}
+#process .process-backdrop,#process .process-shade{
+-webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 calc(100% - clamp(160px,18vw,280px)),transparent 100%);
+mask-image:linear-gradient(to bottom,#000 0%,#000 calc(100% - clamp(160px,18vw,280px)),transparent 100%)}
+#work{background:var(--bg,#151515)!important;border-top:0!important}
