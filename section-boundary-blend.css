@@ -1,0 +1,4 @@
+/* Soften the solid dark-to-gray section boundaries without moving content. */
+#experience,.web-work{
+background:linear-gradient(to bottom,var(--bg,#151515) 0px,var(--surface,#202020) clamp(120px,14vw,220px),var(--surface,#202020) calc(100% - clamp(120px,14vw,220px)),var(--bg,#151515) 100%)!important;
+border-top-color:transparent!important;border-bottom-color:transparent!important}
