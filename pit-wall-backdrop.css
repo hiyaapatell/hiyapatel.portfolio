@@ -16,3 +16,7 @@
 #notes{background:linear-gradient(to bottom,var(--bg,#141414) 0%,#151515 38%,#151515 100%)!important}
 #notes::before{-webkit-mask-image:linear-gradient(to bottom,transparent 0%,#000 24%,#000 72%,transparent 100%);mask-image:linear-gradient(to bottom,transparent 0%,#000 24%,#000 72%,transparent 100%)}
 #notes::after{background:linear-gradient(180deg,transparent 0%,#121212a6 24%,#12121270 45%,#15151599 76%,#151515 100%)!important}
+
+/* No blank starter-card row; keep the expanded form reachable on small screens. */
+#notes .notes-row:empty{display:none!important}
+.note-dialog{max-height:calc(100dvh - 40px);overflow-y:auto;box-sizing:border-box}
