@@ -1,6 +1,6 @@
 /* Generated Ferrari pit-garage backdrop for the visitor pit wall. */
 #notes{position:relative;isolation:isolate;background:#121513!important}
-#notes::before{content:"";position:absolute;inset:0;z-index:-2;background:url("./assets/ferrari-pit-plain-car.jpg") center center/cover no-repeat;pointer-events:none}
+#notes::before{content:"";position:absolute;inset:0;z-index:-2;background:url("./assets/ferrari-pit-matched-car.webp") center center/cover no-repeat;pointer-events:none}
 #notes::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,#121212a6 0%,#12121270 45%,#121212cc 100%);pointer-events:none}
 #notes .center-heading,#notes .notes-row,#notes .notes-info{position:relative}
 #notes .center-heading>p,#notes .notes-info{color:#e0dfd8}
