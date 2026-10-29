@@ -20,3 +20,5 @@
 /* No blank starter-card row; keep the expanded form reachable on small screens. */
 #notes .notes-row:empty{display:none!important}
 .note-dialog{max-height:calc(100dvh - 40px);overflow-y:auto;box-sizing:border-box}
+
+#notes .notes-info{display:none!important}
