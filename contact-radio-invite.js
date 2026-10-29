@@ -6,7 +6,6 @@ const setup=()=>{
  heading.innerHTML='Hiring for product,<br>UX or experience<br>design? Let’s <em>talk.</em>';
  const row=document.createElement('div');row.className='contact-invite-row';
  heading.before(row);row.append(heading);
- const intro=content.querySelector(':scope > p:not(.eyebrow)');if(intro)intro.remove();
  const callout=document.createElement('div');callout.className='contact-say-hi';
  const link=document.createElement('a');link.className='contact-say-hi-link';
  link.href=section.querySelector('.key-M')?.getAttribute('href')||section.querySelector('a[href^="mailto:"]')?.href||'#contact';
