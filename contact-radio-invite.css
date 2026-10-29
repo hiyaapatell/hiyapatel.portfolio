@@ -30,3 +30,7 @@
 /* Tighten the space between the hiring heading and supporting sentence. */
 @media(min-width:1101px){#contact .contact-invite-row{padding-bottom:0}}
 #contact .contact-invite-row+p{margin-top:18px}
+
+/* Match the portrait supporting note's translucent red background. */
+#contact .contact-say-hi-link,#contact .contact-say-hi-link:hover{
+background:rgba(239,60,52,.88);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}
