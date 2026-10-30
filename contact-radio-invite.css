@@ -50,3 +50,8 @@ background:rgba(239,60,52,.88);-webkit-backdrop-filter:blur(16px);backdrop-filte
  #contact .contact-say-hi,#contact .contact-prompt{position:relative;left:auto;right:auto;top:auto;bottom:auto}
  #contact .contact-prompt{display:inline-block}
 }
+
+/* Mirror only the first two prompt pointers onto their upper-right corners. */
+#contact .contact-prompt-1 .contact-say-hi-link::before,
+#contact .contact-prompt-2 .contact-say-hi-link::before{
+left:auto;right:-14px;transform:scaleX(-1) rotate(-8deg)}
