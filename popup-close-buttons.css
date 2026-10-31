@@ -1,12 +1,18 @@
 /* Dark X controls turn racing red on hover across all popups. */
-html body :is(.adobe-role-dialog .adobe-close,.lightbox-close,.note-close,.case-dialog button[aria-label="Close"]){
+html body :is(.adobe-role-dialog .adobe-close,.lightbox-close,.note-close){
 display:grid!important;place-items:center!important;box-sizing:border-box!important;
 width:40px!important;height:40px!important;min-width:40px!important;min-height:40px!important;
 padding:0!important;border:1px solid #ffffff24!important;border-radius:50%!important;
 background:#292929!important;color:#fff!important;cursor:pointer;
 box-shadow:none;transition:transform 220ms cubic-bezier(.22,1,.36,1),background-color 220ms ease,box-shadow 220ms ease!important}
-html body :is(.adobe-role-dialog .adobe-close,.lightbox-close,.note-close,.case-dialog button[aria-label="Close"]) svg{display:block;width:20px!important;height:20px!important;color:inherit;pointer-events:none}
-@media(hover:hover){html body :is(.adobe-role-dialog .adobe-close,.lightbox-close,.note-close,.case-dialog button[aria-label="Close"]):hover{background:#ef3c34!important;border-color:#ff766b!important;transform:none!important;box-shadow:none!important}}
-html body :is(.adobe-role-dialog .adobe-close,.lightbox-close,.note-close,.case-dialog button[aria-label="Close"]):active{transform:none!important;background:#d8312a!important}
-html body :is(.adobe-role-dialog .adobe-close,.lightbox-close,.note-close,.case-dialog button[aria-label="Close"]):focus-visible{outline:2px solid #f4d84b!important;outline-offset:3px}
-@media(prefers-reduced-motion:reduce){html body :is(.adobe-role-dialog .adobe-close,.lightbox-close,.note-close,.case-dialog button[aria-label="Close"]){transition:none!important}html body :is(.adobe-role-dialog .adobe-close,.lightbox-close,.note-close,.case-dialog button[aria-label="Close"]):hover,html body :is(.adobe-role-dialog .adobe-close,.lightbox-close,.note-close,.case-dialog button[aria-label="Close"]):active{transform:none!important}}
+html body :is(.adobe-role-dialog .adobe-close,.lightbox-close,.note-close) svg{display:block;width:20px!important;height:20px!important;color:inherit;pointer-events:none}
+@media(hover:hover){html body :is(.adobe-role-dialog .adobe-close,.lightbox-close,.note-close):hover{background:#ef3c34!important;border-color:#ff766b!important;transform:none!important;box-shadow:none!important}}
+html body :is(.adobe-role-dialog .adobe-close,.lightbox-close,.note-close):active{transform:none!important;background:#d8312a!important}
+html body :is(.adobe-role-dialog .adobe-close,.lightbox-close,.note-close):focus-visible{outline:2px solid #f4d84b!important;outline-offset:3px}
+@media(prefers-reduced-motion:reduce){html body :is(.adobe-role-dialog .adobe-close,.lightbox-close,.note-close){transition:none!important}html body :is(.adobe-role-dialog .adobe-close,.lightbox-close,.note-close):hover,html body :is(.adobe-role-dialog .adobe-close,.lightbox-close,.note-close):active{transform:none!important}}
+
+/* Case-study back and close controls share one smooth interaction. */
+.case-dialog .case-nav .round{transition:transform 220ms cubic-bezier(.22,1,.36,1),background-color 220ms ease,border-color 220ms ease,box-shadow 220ms ease!important;will-change:transform}
+@media(hover:hover){.case-dialog .case-nav .round:hover{transform:translateY(-2px)!important;background:#ef3c34!important;border-color:#ff766b!important;box-shadow:0 8px 18px #0004!important}}
+.case-dialog .case-nav .round:active{transform:translateY(0) scale(.94)!important;transition-duration:80ms!important}
+@media(prefers-reduced-motion:reduce){.case-dialog .case-nav .round{transition:none!important}.case-dialog .case-nav .round:hover,.case-dialog .case-nav .round:active{transform:none!important}}
