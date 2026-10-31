@@ -26,7 +26,7 @@
     if (!isCurrent) {
       const mark = document.createElement("a");
       mark.className = "footer-mark";
-      mark.href = "#top";
+      mark.href = "/";
       mark.textContent = "HP";
       mark.setAttribute("aria-label", "Back to top");
       footer.className = "site-footer";

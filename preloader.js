@@ -98,7 +98,7 @@ html.lights-intro-reveal main{opacity:1;transform:none;transition:opacity 450ms 
     done = true;
     timers.forEach(clearTimeout);
     try { sessionStorage.setItem(KEY, "1"); } catch (e) {}
-    history.replaceState(null,"",location.pathname+location.search+"#top");
+    history.replaceState(null,"",location.pathname+location.search);
     window.scrollTo({top:0,left:0,behavior:"instant"});
     document.querySelectorAll("dialog[open]").forEach(dialog=>dialog.close());
     root.classList.remove("lights-intro-running");
@@ -157,7 +157,7 @@ html.lights-intro-reveal main{opacity:1;transform:none;transition:opacity 450ms 
     topReplayArmed = false;
     if(mark.matches(".footer-mark")){play(true);return;}
     document.querySelectorAll("dialog[open]").forEach(dialog=>dialog.close());
-    history.replaceState(null,"",location.pathname+location.search+"#top");
+    history.replaceState(null,"",location.pathname+location.search);
     window.scrollTo({top:0,left:0,behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"instant":"smooth"});
   },true);
   play();
