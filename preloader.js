@@ -150,15 +150,18 @@ html.lights-intro-reveal main{opacity:1;transform:none;transition:opacity 450ms 
     previousScrollY = y;
   }, {passive:true});
   document.addEventListener("click",event=>{
-    const mark=event.target.closest?.(".topbar .monogram, .footer-mark");
+    const mark=event.target.closest?.(".topbar .monogram, .footer-mark, .dock .nav-top");
     if(!mark)return;
+    const isDockHome=mark.matches(".dock .nav-top");
+    if(isDockHome&&(event.metaKey||event.ctrlKey||event.shiftKey||event.altKey))return;
     event.preventDefault();event.stopImmediatePropagation();
     suppressTopReplayUntil = performance.now() + 2500;
     topReplayArmed = false;
     if(mark.matches(".footer-mark")){play(true);return;}
     document.querySelectorAll("dialog[open]").forEach(dialog=>dialog.close());
     history.replaceState(null,"",location.pathname+location.search);
-    window.scrollTo({top:0,left:0,behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"instant":"smooth"});
+    if(isDockHome&&event.detail!==0){mark.closest(".dock")?.classList.add("dock-closed");mark.blur();}
+    window.scrollTo({top:0,left:0,behavior:isDockHome||matchMedia("(prefers-reduced-motion:reduce)").matches?"instant":"smooth"});
   },true);
   play();
 })();
