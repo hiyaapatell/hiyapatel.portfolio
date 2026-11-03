@@ -161,7 +161,7 @@ html.lights-intro-reveal main{opacity:1;transform:none;transition:opacity 450ms 
     document.querySelectorAll("dialog[open]").forEach(dialog=>dialog.close());
     history.replaceState(null,"",location.pathname+location.search);
     if(isDockHome&&event.detail!==0){mark.closest(".dock")?.classList.add("dock-closed");mark.blur();}
-    window.scrollTo({top:0,left:0,behavior:isDockHome||matchMedia("(prefers-reduced-motion:reduce)").matches?"instant":"smooth"});
+    window.scrollTo({top:0,left:0,behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"instant":"smooth"});
   },true);
   play();
 })();
