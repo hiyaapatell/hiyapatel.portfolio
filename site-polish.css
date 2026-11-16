@@ -286,3 +286,26 @@ html.motion-ready .upward-reveal.upward-visible {
 .case-dialog .tags span:hover{transform:translateY(-3px);border-color:var(--red);background:var(--surface);box-shadow:0 8px 20px rgba(239,60,52,.13)}
 }
 @media(prefers-reduced-motion:reduce){.case-story article,.case-story article>span,.case-dialog .tags span{transition:none}.case-story article:hover,.case-dialog .tags span:hover{transform:none}}
+
+/* Keep the upper About card compact and clear of the two lower cards. */
+@media (min-width: 761px) {
+  #about .moodboard .about-note {
+    top: 7%;
+    padding: 18px 22px;
+    width: 30%;
+    box-sizing: border-box;
+    transform: rotate(1deg);
+  }
+  #about .moodboard .about-note .eyebrow { margin-bottom: 8px; }
+  #about .moodboard .about-note h3 {
+    font-size: clamp(24px, 2.4vw, 31px);
+    line-height: 1.04;
+    margin-bottom: 10px;
+  }
+  #about .moodboard .about-note p {
+    font-size: clamp(11px, 1vw, 13px);
+    line-height: 1.4;
+    margin: 0 0 9px;
+  }
+  #about .moodboard .about-note p:last-child { margin-bottom: 0; }
+}
