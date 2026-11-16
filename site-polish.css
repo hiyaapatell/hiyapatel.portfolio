@@ -309,3 +309,15 @@ html.motion-ready .upward-reveal.upward-visible {
   }
   #about .moodboard .about-note p:last-child { margin-bottom: 0; }
 }
+
+/* Tighten the About pinboard: bring the lower postcards into the open middle. */
+@media (min-width: 901px) {
+  #about .moodboard { height: 610px; }
+  #about .moodboard .small-note { bottom: 5%; }
+  #about .moodboard .location-note { bottom: 5%; }
+}
+@media (min-width: 761px) and (max-width: 900px) {
+  #about .moodboard { height: 650px; }
+  #about .moodboard .small-note { bottom: 5%; }
+  #about .moodboard .location-note { bottom: 5%; }
+}
