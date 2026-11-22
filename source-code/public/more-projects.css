@@ -1,5 +1,5 @@
 /* Additional projects, styled like the existing affiliations row. */
-#work .more-projects{margin:70px 4.5% 0;padding-top:32px;gap:32px;position:relative;z-index:1}
+#work .more-projects{margin:70px 4.5% 0;padding-top:32px;gap:32px;position:relative;top:40px;z-index:1}
 #work .more-projects>a{color:var(--text);text-decoration:none;transition:color .2s ease,transform .2s ease}
 #work .more-projects>a:hover{color:var(--red);transform:translateY(-3px)}
 #work .more-projects>a:focus-visible{outline:2px solid var(--red);outline-offset:8px;border-radius:3px}
@@ -7,3 +7,5 @@
 @media(max-width:1000px){#work .more-projects{flex-wrap:wrap;gap:24px}#work .more-projects>span{width:100%;max-width:none}#work .more-projects strong{font-size:27px}}
 @media(max-width:600px){#work .more-projects{margin:40px 24px 0;display:grid;grid-template-columns:1fr;gap:24px}}
 @media(prefers-reduced-motion:reduce){#work .more-projects>a{transition:none}#work .more-projects>a:hover{transform:none}}
+
+@media(max-width:600px){#work .more-projects{top:20px}}
